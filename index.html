@@ -27,7 +27,7 @@ body {
 
 .hero {
   display:flex; flex-direction:column; align-items:center; justify-content:center;
-  min-height: 60vh; text-align:center; padding:60px 28px 30px;
+  min-height: 40vh; text-align:center; padding:60px 28px 30px;
   background: radial-gradient(ellipse at center, var(--bg-zen) 0%, var(--bg-dark) 70%);
 }
 .hero .logo-img {
@@ -43,6 +43,30 @@ body {
 .hero h1 { font-size:32px; color:var(--gold); letter-spacing:6px; margin-bottom:12px; font-weight:700; }
 .hero .sub { font-size:18px; color:var(--text-muted); margin-bottom:6px; letter-spacing:2px; }
 .hero .desc { font-size:16px; color:var(--text-muted); max-width:600px; line-height:2.2; margin-top:16px; }
+
+/* ═══ 注册道号 ═══ */
+.zen-register-box {
+  margin:20px auto; padding:20px 24px; background:var(--bg-card); border:2px solid var(--border-zen);
+  border-radius:8px; max-width:360px; text-align:center;
+}
+.reg-title { font-size:22px; color:var(--gold); letter-spacing:4px; margin-bottom:12px; font-weight:600; }
+.reg-input {
+  font-size:24px; padding:12px 16px; border:2px solid var(--border-zen); border-radius:6px;
+  background:var(--bg-card); color:var(--text-zen); font-family:inherit;
+  width:100%; text-align:center; outline:none; margin-bottom:10px;
+}
+.reg-input-pwd { -webkit-text-security:disc; }
+.reg-input:focus { border-color:var(--gold); }
+.reg-hint { font-size:18px; color:var(--text-muted); line-height:2.4; margin-bottom:12px; }
+.reg-btn {
+  padding:14px 40px; border:2px solid var(--gold); background:transparent;
+  color:var(--gold); font-family:inherit; font-size:22px; letter-spacing:4px;
+  cursor:pointer; transition:all 0.4s; border-radius:6px;
+  -webkit-tap-highlight-color: transparent;
+}
+.reg-btn:hover,.reg-btn:active { background:var(--gold-glow); box-shadow:0 0 40px rgba(232,192,96,0.4); }
+.reg-registered { font-size:22px; color:var(--teal-zen); letter-spacing:2px; }
+.reg-registered .name-val { color:#fff; font-weight:700; font-size:24px; }
 
 .section-title {
   text-align:center; font-size:24px; color:var(--gold); letter-spacing:4px;
@@ -83,6 +107,8 @@ body {
 @media (max-width:600px) {
   .hero h1 { font-size:26px; letter-spacing:4px; }
   .hero .sub { font-size:16px; }
+  .hero { min-height:30vh; }
+  .zen-register-box { max-width:90%; }
   .book-grid { grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:12px; }
   .book-card .book-name { font-size:16px; }
 }
@@ -96,12 +122,20 @@ body {
   <div class="sub">悟道闯关 · 36册参悟之旅</div>
   <div class="desc">
     儒释道三教合一，心身性命之学<br>
-    每关精选原文，选项皆似合理，唯有真悟者方能辨明<br>
-    选择一册开始你的参悟之旅
+    选项皆似合理，唯有真悟者方能辨明
   </div>
 </div>
 
-<div class="section-title">选择册数</div>
+<!-- 注册道号 -->
+<div class="zen-register-box" id="registerBox">
+  <div class="reg-title">注册道号 · 留名悟境</div>
+  <input type="text" class="reg-input" id="regNameInput" maxlength="8" placeholder="输入您的道号">
+  <input type="text" class="reg-input reg-input-pwd" id="regPwdInput" maxlength="8" placeholder="输入任意口令（如1234）" inputmode="numeric">
+  <div class="reg-hint">道号将显示在积分与榜单上<br>口令防止他人冒用您的道号<br>答对一题 +1分<br>道号跨册通用——一册注册即可通行全部</div>
+  <button class="reg-btn" onclick="registerName()" id="regBtn" type="button">注 册 登 堂</button>
+</div>
+
+<div class="section-title">正宗册数</div>
 <div class="section-sub">点击进入对应册的闯关答题</div>
 
 <div class="book-grid" id="bookGrid"></div>
@@ -117,6 +151,45 @@ var books = [
   {num:2, name:"第二册", available:true, levels:196, questions:392},
   {num:3, name:"第三册", available:true, levels:175, questions:235},
 ];
+
+// Registration
+var playerName = localStorage.getItem('zen_name') || '';
+var isRegistered = !!playerName;
+
+function registerName() {
+  var nameInput = document.getElementById('regNameInput');
+  var pwdInput = document.getElementById('regPwdInput');
+  var name = nameInput ? nameInput.value.trim() : '';
+  var pwd = pwdInput ? pwdInput.value.trim() : '';
+  if (!name) {
+    nameInput.style.borderColor = '#e74c3c';
+    nameInput.setAttribute('placeholder', '请输入道号');
+    setTimeout(function(){ nameInput.style.borderColor = ''; }, 2000);
+    return;
+  }
+  if (!pwd) {
+    pwdInput.style.borderColor = '#e74c3c';
+    pwdInput.setAttribute('placeholder', '请输入口令');
+    setTimeout(function(){ pwdInput.style.borderColor = ''; }, 2000);
+    return;
+  }
+  playerName = name;
+  isRegistered = true;
+  localStorage.setItem('zen_name', name);
+  localStorage.setItem('zen_pwd_' + name, pwd);
+  updateRegisterUI();
+}
+
+function updateRegisterUI() {
+  var regBox = document.getElementById('registerBox');
+  if (!regBox) return;
+  if (isRegistered && playerName) {
+    var score = parseInt(localStorage.getItem('zen_score') || '0');
+    regBox.innerHTML = '<div class="reg-registered">✦ 道号：<span class="name-val">' + playerName + '</span></div>'
+      + '<div style="font-size:22px;color:var(--text-zen);text-align:center;margin-top:8px">悟境 ' + score + ' 分 · 答对+1</div>'
+      + '<div style="font-size:20px;color:var(--gold);text-align:center;letter-spacing:4px;margin-top:10px">✦ 道号已记录于榜单 · 跨册通用</div>';
+  }
+}
 
 // Generate 36 book cards
 var grid = document.getElementById('bookGrid');
