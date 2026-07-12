@@ -1,0 +1,2720 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta property="og:title" content="林子正宗统论 · 第4册 · 参悟闯关">
+<meta property="og:description" content="深度参悟林兆恩思想。选项皆似合理，唯有真悟者方能辨明。">
+<meta property="og:type" content="website">
+<title>林子正宗统论 · 第4册 · 参悟闯关</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap');
+:root {
+  --bg-dark: #0a0a08; --bg-zen: #1a1815; --bg-card: #222019; --bg-card-light: #2d2b24;
+  --text-zen: #f0e8d6; --text-light: #ffffff; --text-muted: #d0c8b0; --text-bright: #ffffff;
+  --gold: #e8c060; --gold-dim: #b89848; --gold-glow: rgba(232,192,96,0.22);
+  --vermillion: #e05848; --vermillion-dim: rgba(224,88,72,0.40);
+  --teal-zen: #78d0a0; --teal-dim: rgba(120,208,160,0.30);
+  --purple-zen: #b898d8; --purple-dim: rgba(184,152,216,0.30);
+  --border-zen: #6a6050; --border-light: #807060;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: "Noto Serif SC","Source Han Serif SC","SimSun",serif;
+  background: var(--bg-dark); color: var(--text-zen); line-height: 2.6; font-size: 22px;
+  min-height: 100vh; overflow-x: hidden;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ═══ 册导航 ═══ */
+.book-nav {
+  display:flex; gap:6px; flex-wrap:wrap; justify-content:center;
+  padding:10px 10px 4px; background:var(--bg-zen); border-bottom:1px solid var(--border-zen);
+}
+.nav-book {
+  padding:6px 12px; border:1px solid var(--border-zen); border-radius:4px;
+  font-size:16px; color:var(--text-muted); cursor:pointer; transition:all 0.3s;
+  background:var(--bg-card); letter-spacing:1px; -webkit-tap-highlight-color:transparent;
+}
+.nav-book:hover,.nav-book:active { background:var(--gold-glow); color:var(--gold); }
+.nav-book.active { border-color:var(--gold); color:var(--gold); background:var(--gold-glow); }
+.nav-book.done { border-color:var(--teal-zen); color:var(--teal-zen); background:var(--teal-dim); }
+.nav-book.done.active { border-color:var(--gold); color:var(--gold); background:var(--gold-glow); }
+
+/* ═══ 入口页 ═══ */
+.zen-entrance {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  min-height:100vh; min-height:100dvh; text-align:center; padding:60px 28px 50px;
+  background: radial-gradient(ellipse at center, var(--bg-zen) 0%, var(--bg-dark) 70%);
+}
+.zen-entrance .seal {
+  width:120px; height:120px; border-radius:50%; border:3px solid var(--gold);
+  display:flex; align-items:center; justify-content:center;
+  font-size:46px; color:var(--gold); margin-bottom:40px;
+  background:radial-gradient(circle,var(--gold-glow) 0%,transparent 70%);
+  animation: seal-glow 3s ease-in-out infinite;
+}
+@keyframes seal-glow {
+  0%,100% { box-shadow:0 0 28px rgba(232,192,96,0.25); }
+  50% { box-shadow:0 0 56px rgba(232,192,96,0.45); }
+}
+.zen-entrance h1 { font-size:34px; color:var(--gold); letter-spacing:8px; margin-bottom:14px; font-weight:700; }
+.zen-entrance .sub { font-size:20px; color:var(--text-muted); margin-bottom:8px; letter-spacing:3px; }
+.zen-entrance .desc { font-size:20px; color:var(--text-muted); max-width:420px; margin-bottom:40px; line-height:2.8; }
+.zen-entrance .enter-btn {
+  padding:20px 72px; border:2px solid var(--gold); background:transparent;
+  color:var(--gold); font-family:inherit; font-size:22px; letter-spacing:6px;
+  cursor:pointer; transition:all 0.4s; border-radius:6px;
+  -webkit-tap-highlight-color: transparent;
+}
+.zen-entrance .enter-btn:hover,
+.zen-entrance .enter-btn:active { background:var(--gold-glow); box-shadow:0 0 40px rgba(232,192,96,0.4); }
+.zen-entrance .level-count { font-size:18px; color:var(--gold-dim); margin-top:14px; letter-spacing:2px; }
+
+.score-row { display:flex; align-items:center; justify-content:center; gap:12px; margin-top:10px; }
+.score-display { font-size:22px; color:var(--text-zen); letter-spacing:2px; }
+.score-val { color:var(--gold); font-weight:700; font-size:26px; }
+.zen-leaderboard-btn {
+  padding:8px 18px; border:1px solid var(--gold-dim); background:transparent;
+  color:var(--gold); font-family:inherit; font-size:18px; letter-spacing:3px;
+  cursor:pointer; transition:all 0.3s; border-radius:4px;
+  -webkit-tap-highlight-color: transparent;
+}
+.zen-leaderboard-btn:hover,.zen-leaderboard-btn:active { background:var(--gold-glow); }
+
+/* ═══ 注册道号 ═══ */
+.zen-register-box {
+  margin-top:20px; padding:20px; background:var(--bg-card); border:2px solid var(--border-light);
+  border-radius:8px; max-width:360px; text-align:center;
+}
+.reg-title { font-size:22px; color:var(--gold); letter-spacing:4px; margin-bottom:12px; font-weight:600; }
+.reg-input {
+  font-size:24px; padding:12px 16px; border:2px solid var(--border-zen); border-radius:6px;
+  background:var(--bg-card); color:var(--text-zen); font-family:inherit;
+  width:100%; text-align:center; outline:none; margin-bottom:10px;
+}
+.reg-input-pwd { -webkit-text-security:disc; }
+.reg-input:focus { border-color:var(--gold); }
+.reg-hint { font-size:18px; color:var(--text-muted); line-height:2.4; margin-bottom:12px; }
+.reg-btn {
+  padding:14px 40px; border:2px solid var(--gold); background:transparent;
+  color:var(--gold); font-family:inherit; font-size:22px; letter-spacing:4px;
+  cursor:pointer; transition:all 0.4s; border-radius:6px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ═══ 排行榜 ═══ */
+.zen-leaderboard-overlay {
+  display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85);
+  z-index:999; padding:20px; overflow-y:auto;
+}
+.zen-leaderboard-overlay.visible { display:flex; flex-direction:column; align-items:center; }
+.zen-lb-card {
+  background:var(--bg-card); border:2px solid var(--border-light); border-radius:8px;
+  padding:24px; max-width:400px; width:100%; margin-top:40px;
+}
+.zen-lb-title { font-size:26px; color:var(--gold); letter-spacing:6px; text-align:center; font-weight:700; margin-bottom:16px; }
+.zen-lb-my-score { font-size:22px; color:var(--text-zen); text-align:center; margin-bottom:16px; }
+.zen-lb-input-row { display:flex; align-items:center; gap:8px; margin-bottom:12px; }
+.zen-lb-input-row label { font-size:20px; color:var(--text-muted); }
+.zen-lb-input-row input { font-size:22px; padding:10px 14px; border:2px solid var(--border-zen); border-radius:6px; background:var(--bg-card); color:var(--text-zen); font-family:inherit; flex:1; outline:none; }
+.zen-lb-save-btn {
+  padding:12px 30px; border:2px solid var(--gold); background:transparent;
+  color:var(--gold); font-family:inherit; font-size:20px; letter-spacing:4px;
+  cursor:pointer; transition:all 0.4s; border-radius:6px; width:100%;
+}
+.zen-lb-list { margin-top:16px; }
+.zen-lb-item { display:flex; align-items:center; padding:8px 0; border-bottom:1px solid var(--border-zen); }
+.lb-rank { width:40px; font-size:20px; color:var(--text-muted); font-weight:600; }
+.lb-rank.top3 { color:var(--gold); }
+.lb-name { flex:1; font-size:22px; color:var(--text-light); }
+.lb-score { font-size:22px; color:var(--gold); font-weight:600; }
+.zen-lb-empty { font-size:20px; color:var(--text-muted); text-align:center; padding:20px; }
+.zen-lb-close-btn {
+  margin-top:16px; padding:12px 30px; border:2px solid var(--border-light); background:transparent;
+  color:var(--text-muted); font-family:inherit; font-size:20px; letter-spacing:4px;
+  cursor:pointer; transition:all 0.3s; border-radius:6px;
+}
+
+/* ═══ 主应用 ═══ */
+.zen-app { display:none; max-width:100%; margin:0 auto; padding:20px 20px 100px; }
+.zen-score-badge {
+  display:flex; align-items:center; gap:6px; padding:10px 16px;
+  background:var(--bg-card); border:1px solid var(--border-zen); border-radius:6px;
+  margin-bottom:16px;
+}
+.zen-name-tag { font-size:18px; color:var(--gold); letter-spacing:2px; }
+.score-icon { color:var(--gold); font-size:18px; }
+.score-label { font-size:18px; color:var(--text-muted); }
+.score-num { font-size:22px; color:var(--gold); font-weight:700; }
+
+/* ═══ 进度条 ═══ */
+.zen-progress {
+  display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;
+  padding:20px 0 16px; margin-bottom:20px;
+}
+.zen-node {
+  width:50px; height:50px; border-radius:50%; border:2px solid var(--border-zen);
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px; color:var(--text-muted); transition:all 0.4s; background:var(--bg-card);
+  cursor:pointer; -webkit-tap-highlight-color: transparent;
+}
+.zen-node.active { border-color:var(--gold); color:var(--gold); background:var(--gold-glow); box-shadow:0 0 20px rgba(232,192,96,0.4); }
+.zen-node.done { border-color:var(--teal-zen); color:var(--teal-zen); background:var(--teal-dim); }
+
+/* ═══ 关卡标题 ═══ */
+.zen-level-header { text-align:center; padding:24px 0 18px; border-bottom:1px solid var(--border-light); margin-bottom:20px; }
+.zen-level-header .level-num { font-size:18px; color:var(--text-muted); letter-spacing:4px; margin-bottom:6px; }
+.zen-level-header .level-title { font-size:26px; font-weight:700; letter-spacing:3px; margin-bottom:10px; }
+.zen-level-header .level-title.gold { color:var(--gold); }
+.zen-level-header .level-title.vermillion { color:var(--vermillion); }
+.zen-level-header .level-title.teal { color:var(--teal-zen); }
+.zen-level-header .level-title.purple { color:var(--purple-zen); }
+
+/* ═══ 原文框 ═══ */
+.zen-original-box {
+  background:var(--bg-card); border:2px solid var(--border-light);
+  border-radius:8px; padding:28px 20px; margin-bottom:18px; position:relative;
+}
+.zen-original-box::before {
+  content:'原文'; position:absolute; top:-1px; left:16px;
+  padding:3px 12px; background:var(--gold); color:var(--bg-dark);
+  font-size:18px; letter-spacing:3px; border-radius:0 0 6px 6px;
+}
+.zen-original-text { font-size:26px; line-height:2.8; color:var(--text-light); padding-top:10px; }
+
+/* ═══ 注解 ═══ */
+.zen-meditate-section { margin-bottom:18px; }
+.zen-meditate-label {
+  display:flex; align-items:center; gap:10px; font-size:22px; color:var(--teal-zen);
+  letter-spacing:4px; margin-bottom:14px; font-weight:600;
+}
+.zen-meditate-label .dot { width:8px; height:8px; border-radius:50%; background:var(--teal-zen); }
+.zen-annotation-list { list-style:none; }
+.zen-annotation-item {
+  display:flex; gap:10px; padding:10px 0; border-bottom:1px solid var(--border-zen);
+}
+.zen-annotation-item .term {
+  min-width:80px; font-size:22px; color:var(--gold); font-weight:600; letter-spacing:2px;
+}
+.zen-annotation-item .explain { font-size:22px; color:var(--text-zen); line-height:2.6; }
+.zen-interpretation {
+  margin-top:14px; padding:18px; background:var(--bg-card-light); border-radius:6px;
+  font-size:22px; line-height:2.8; color:var(--text-zen);
+}
+.key-concept { color:var(--gold); font-weight:700; }
+
+/* ═══ 静坐 ═══ */
+.zen-sit-section { margin-bottom:18px; text-align:center; }
+.sit-title { font-size:24px; color:var(--purple-zen); letter-spacing:6px; font-weight:600; margin-bottom:10px; }
+.sit-hint { font-size:20px; color:var(--text-muted); line-height:2.6; margin-bottom:14px; }
+.zen-sit-btn {
+  padding:16px 50px; border:2px solid var(--purple-zen); background:transparent;
+  color:var(--purple-zen); font-family:inherit; font-size:22px; letter-spacing:4px;
+  cursor:pointer; transition:all 0.4s; border-radius:6px;
+  -webkit-tap-highlight-color: transparent;
+}
+.zen-sit-btn:hover,.zen-sit-btn:active { background:var(--purple-dim); }
+.zen-sit-btn.sitting { background:var(--purple-dim); animation:pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
+.zen-sit-timer { font-size:24px; color:var(--purple-zen); margin-top:10px; letter-spacing:4px; }
+
+/* ═══ 叩问 ═══ */
+.zen-question-section { margin-bottom:18px; }
+.zen-question-label {
+  display:flex; align-items:center; gap:10px; font-size:22px; color:var(--vermillion);
+  letter-spacing:4px; margin-bottom:14px; font-weight:600;
+}
+.zen-question-label .icon { font-size:20px; }
+.zen-question-text { font-size:24px; line-height:2.8; color:var(--text-light); margin-bottom:14px; }
+.zen-options { list-style:none; }
+.zen-option-item {
+  display:flex; align-items:flex-start; gap:10px; padding:14px 12px;
+  border:1px solid var(--border-zen); border-radius:6px; margin-bottom:8px;
+  cursor:pointer; transition:all 0.3s; background:var(--bg-card);
+  -webkit-tap-highlight-color: transparent;
+}
+.zen-option-item:hover,.zen-option-item:active { background:var(--bg-card-light); }
+.zen-option-item.selected { border-color:var(--gold); background:var(--gold-glow); }
+.opt-letter { font-size:22px; color:var(--gold); font-weight:600; min-width:30px; }
+.opt-text { font-size:22px; color:var(--text-zen); line-height:2.6; }
+.zen-submit-btn {
+  padding:14px 40px; border:2px solid var(--gold); background:transparent;
+  color:var(--gold); font-family:inherit; font-size:22px; letter-spacing:4px;
+  cursor:pointer; transition:all 0.4s; border-radius:6px; margin-top:10px;
+  -webkit-tap-highlight-color: transparent;
+}
+.zen-submit-btn:disabled { opacity:0.4; cursor:not-allowed; }
+.zen-submit-btn:hover:not(:disabled),.zen-submit-btn:active:not(:disabled) { background:var(--gold-glow); }
+
+/* ═══ 结果 ═══ */
+.zen-result { margin-bottom:18px; display:none; }
+.zen-result.enlightened { border:2px solid var(--gold); }
+.zen-result.unenlightened { border:2px solid var(--vermillion); }
+.zen-result-header {
+  font-size:24px; letter-spacing:6px; text-align:center; padding:14px;
+  font-weight:700;
+}
+.zen-result.enlightened .zen-result-header { color:var(--gold); background:var(--gold-glow); }
+.zen-result.unenlightened .zen-result-header { color:var(--vermillion); background:var(--vermillion-dim); }
+.zen-result-body { padding:20px; }
+.analysis-title { font-size:22px; color:var(--text-muted); letter-spacing:3px; margin-bottom:10px; }
+.analysis-text { font-size:22px; line-height:2.8; color:var(--text-zen); }
+.zen-traps { list-style:none; margin-top:12px; }
+.zen-trap-item {
+  padding:8px 0; border-bottom:1px solid var(--border-zen);
+  font-size:20px; color:var(--text-muted); line-height:2.4;
+}
+.trap-label { color:var(--vermillion); font-weight:600; }
+.trap-text { color:var(--text-muted); }
+
+/* ═══ 悟境铭言 ═══ */
+.zen-insight {
+  margin-top:16px; padding:18px; background:var(--bg-card-light);
+  border:1px solid var(--gold-dim); border-radius:6px; text-align:center;
+}
+.insight-title { font-size:22px; color:var(--gold); letter-spacing:4px; font-weight:600; margin-bottom:10px; }
+.insight-text { font-size:24px; color:var(--text-light); line-height:2.8; }
+
+/* ═══ 下一关按钮 ═══ */
+.zen-next-btn {
+  padding:16px 50px; border:2px solid var(--gold); background:transparent;
+  color:var(--gold); font-family:inherit; font-size:22px; letter-spacing:4px;
+  cursor:pointer; transition:all 0.4s; border-radius:6px;
+  -webkit-tap-highlight-color: transparent; margin-top:8px;
+}
+
+/* ═══ 通关 ═══ */
+.zen-final {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  min-height:80vh; padding:40px 20px; text-align:center;
+  background:radial-gradient(ellipse at center, var(--bg-zen) 0%, var(--bg-dark) 70%);
+}
+.final-seal {
+  width:120px; height:120px; border-radius:50%; border:3px solid var(--gold);
+  display:flex; align-items:center; justify-content:center;
+  font-size:46px; color:var(--gold); margin-bottom:30px;
+  background:radial-gradient(circle,var(--gold-glow) 0%,transparent 70%);
+}
+.zen-final h2 { font-size:28px; color:var(--gold); letter-spacing:6px; margin-bottom:18px; }
+.final-insight { font-size:22px; color:var(--text-zen); line-height:2.8; max-width:420px; }
+.final-quote {
+  margin-top:24px; font-size:26px; color:var(--gold); letter-spacing:4px; line-height:3.0;
+  border:1px solid var(--gold-dim); padding:20px; border-radius:6px;
+}
+
+/* ═══ 更新提示 ═══ */
+.zen-update-hint {
+  font-size:18px; color:var(--text-muted); text-align:center; margin-top:20px; letter-spacing:2px;
+}
+.wechat-toolbar-space { height:60px; width:100%; }
+</style>
+</head>
+<body>
+
+<!-- ═══ 册导航 ═══ -->
+<div class="book-nav" id="bookNav"><div class="nav-book" onclick="switchBook(1)">第1册</div><div class="nav-book" onclick="switchBook(2)">第2册</div><div class="nav-book" onclick="switchBook(3)">第3册</div><div class="nav-book active" onclick="switchBook(4)">第4册</div><div class="nav-book" onclick="switchBook(5)">第5册</div><div class="nav-book" onclick="switchBook(6)">第6册</div><div class="nav-book" onclick="switchBook(7)">第7册</div><div class="nav-book" onclick="switchBook(8)">第8册</div><div class="nav-book" onclick="switchBook(9)">第9册</div><div class="nav-book" onclick="switchBook(10)">第10册</div><div class="nav-book" onclick="switchBook(11)">第11册</div><div class="nav-book" onclick="switchBook(12)">第12册</div><div class="nav-book" onclick="switchBook(13)">第13册</div><div class="nav-book" onclick="switchBook(14)">第14册</div><div class="nav-book" onclick="switchBook(15)">第15册</div><div class="nav-book" onclick="switchBook(16)">第16册</div><div class="nav-book" onclick="switchBook(17)">第17册</div><div class="nav-book" onclick="switchBook(18)">第18册</div><div class="nav-book" onclick="switchBook(19)">第19册</div><div class="nav-book" onclick="switchBook(20)">第20册</div><div class="nav-book" onclick="switchBook(21)">第21册</div><div class="nav-book" onclick="switchBook(22)">第22册</div><div class="nav-book" onclick="switchBook(23)">第23册</div><div class="nav-book" onclick="switchBook(24)">第24册</div><div class="nav-book" onclick="switchBook(25)">第25册</div><div class="nav-book" onclick="switchBook(26)">第26册</div><div class="nav-book" onclick="switchBook(27)">第27册</div><div class="nav-book" onclick="switchBook(28)">第28册</div><div class="nav-book" onclick="switchBook(29)">第29册</div><div class="nav-book" onclick="switchBook(30)">第30册</div><div class="nav-book" onclick="switchBook(31)">第31册</div><div class="nav-book" onclick="switchBook(32)">第32册</div><div class="nav-book" onclick="switchBook(33)">第33册</div><div class="nav-book" onclick="switchBook(34)">第34册</div><div class="nav-book" onclick="switchBook(35)">第35册</div><div class="nav-book" onclick="switchBook(36)">第36册</div></div>
+
+<div class="zen-entrance" id="zenEntrance">
+  <div class="seal">悟</div>
+  <h1>林子正宗统论</h1>
+  <div class="sub">第4册 · 参悟闯关</div>
+  <div class="desc">
+    此非考试，乃参悟之旅。<br>
+    每关先静心品读原文，再叩问印证悟境。<br>
+    选项皆似合理，唯有真悟者方能辨明。<br>
+    答错非失败——乃是参悟方向的指引。
+  </div>
+  <button class="enter-btn" onclick="enterZen()" id="enterBtn">入 堂 参 悟</button>
+  <div class="score-row">
+    <div class="score-display">悟境 <span class="score-val" id="entranceScore">0</span> 分</div>
+    <button class="zen-leaderboard-btn" onclick="showLeaderboard()">榜 单</button>
+  </div>
+  <div class="level-count" id="levelCount"></div>
+  <div style="font-size:20px;color:#4CAF50;text-align:center;margin-top:6px;letter-spacing:2px" id="versionTag">v1</div>
+  <div id="unregisteredHint" style="font-size:22px;color:var(--gold);letter-spacing:2px;margin-top:10px;text-align:center;display:none">⚠ 未注册道号仅可参悟前两关 · 注册后可继续深入</div>
+  <!-- 注册道号 -->
+  <div class="zen-register-box" id="registerBox">
+    <div class="reg-title">注册道号 · 留名悟境</div>
+    <input type="text" class="reg-input" id="regNameInput" maxlength="8" placeholder="输入您的道号">
+    <input type="text" class="reg-input reg-input-pwd" id="regPwdInput" maxlength="8" placeholder="输入任意口令（如1234）" inputmode="numeric">
+    <div class="reg-hint">道号将显示在积分与榜单上<br>口令防止他人冒用您的道号<br>答对一题 +1分<br>道号跨册通用——一册注册即可通行全部</div>
+    <button class="reg-btn" onclick="registerName()" id="regBtn" type="button">注 册 登 堂</button>
+  </div>
+</div>
+
+<!-- 排行榜浮层 -->
+<div class="zen-leaderboard-overlay" id="lbOverlay">
+  <div class="zen-lb-card">
+    <div class="zen-lb-title">悟 境 榜 单</div>
+    <div class="zen-lb-my-score">我的悟境：<span class="val" id="lbMyScore">0</span> 分 · <span id="lbMyName" style="color:var(--gold)"></span></div>
+    <div class="zen-lb-input-row">
+      <label>道号</label>
+      <input type="text" id="lbNameInput" maxlength="8" placeholder="输入道号登榜" value="">
+    </div>
+    <button class="zen-lb-save-btn" onclick="saveToLeaderboard()">留 名 登 榜</button>
+    <div class="zen-lb-list" id="lbList"></div>
+  </div>
+  <button class="zen-lb-close-btn" onclick="closeLeaderboard()">返 回 参 悟</button>
+</div>
+
+<div class="zen-app" id="zenApp">
+  <div class="zen-score-badge" id="scoreBadge">
+    <span class="zen-name-tag" id="badgeName"></span>
+    <span class="score-icon">✦</span>
+    <span class="score-label">悟境</span>
+    <span class="score-num" id="gameScore">0</span>
+    <span class="score-label">分</span>
+  </div>
+  <div class="zen-progress" id="zenProgress"></div>
+  <div id="zenContent"></div>
+  <div class="zen-update-hint">新关卡持续更新 · 关注公众号获取最新关卡</div>
+  <div class="wechat-toolbar-space"></div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// 关卡数据加载逻辑
+// 优先从 zen-data-4.json 动态加载
+// 加载失败则使用内嵌 fallback 数据
+// ═══════════════════════════════════════════
+
+// 内嵌 fallback 数据
+var LEVELS_FALLBACK = [
+  {
+    "id": 1,
+    "title": "古师教道今师学文",
+    "titleColor": "#e74c3c",
+    "book": "第四册·明经堂",
+    "originalText": "林子曰：“古之为师者，教人以修道；今之为师者，教人以学文。”",
+    "annotations": [
+      {
+        "text": "古之为师者",
+        "note": "古代的教师，以引导学生修道为职责核心"
+      },
+      {
+        "text": "教人以修道",
+        "note": "修道的根本在于心性修炼，而非单纯知识传授"
+      },
+      {
+        "text": "今之为师者",
+        "note": "当今教师职责已偏移，更多聚焦于文学知识的教授"
+      },
+      {
+        "text": "教人以学文",
+        "note": "学文指文学技艺与知识技能的训练，偏离了修道的本旨"
+      }
+    ],
+    "interpretation": "林子开篇直指教育本质的偏差：古代教师的使命是引导学生修道——修炼心性、塑造人格；而当今教师则偏重文学知识的传授。这不是否定学文的价值，而是警示教育重心已从“道”偏移到了“文”，本末倒置。修道是体，学文是用，两者不可偏废。",
+    "sitHint": "静坐三秒，回想一位真正影响你内在成长的老师。",
+    "insightText": "修道为体，学文为用——偏废其一，便是本末倒置。",
+    "questions": [
+      {
+        "text": "林子说“古之为师者教人以修道，今之为师者教人以学文”，核心批评的是什么？",
+        "options": [
+          "教育重心从修道偏移到学文，本末倒置",
+          "古代教师比现代教师更高明",
+          "学文毫无价值，应当彻底摒弃",
+          "修道与学文完全无关，应各行其道"
+        ],
+        "correctIndex": 0,
+        "analysis": "林子并非否定学文，而是指出教育重心偏移导致本末倒置——修道是根本，学文是辅助。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将古今对比简化为“古人更高明”，忽视了林子说的是职责偏移，而非个人能力高低"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：极端否定学文的价值，林子后文明确说“必兼以文”"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：割裂道与文的关联，林子恰恰主张道与文并重"
+          }
+        ]
+      },
+      {
+        "text": "“教人以修道”与“教人以学文”的根本区别在于？",
+        "options": [
+          "修道重在心性人格的塑造，学文重在知识技能的传授",
+          "修道只讲理论，学文只讲实践",
+          "修道是道家独有，学文是儒家独有",
+          "修道不需要老师，学文才需要老师指导"
+        ],
+        "correctIndex": 0,
+        "analysis": "修道关注内在心性的修炼与人格的塑造，学文关注外在知识的积累与技能的训练，这是内外、体用之别。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：颠倒理论与实践的关系，修道恰恰需要实践修炼"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：将道与文割裂为不同教派，林子主张三教合一、道文并重"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：修道同样需要师者指引，古之为师者正是“教人以修道”"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "道专文兼·有体有用",
+    "titleColor": "#e74c3c",
+    "book": "第四册·明经堂",
+    "originalText": "今诸生之所以从我者，固专在道，而我之所以与诸生者，必兼以文。……其惟正心修身，以为兼善之地；业举遵制，以为进身之阶。斯谓之有体有用之学，大中至正之道也。",
+    "annotations": [
+      {
+        "text": "固专在道",
+        "note": "学生追随林子，目的确实在修道——这是“体”"
+      },
+      {
+        "text": "必兼以文",
+        "note": "林子教导时必须兼顾文学——这是“用”，体用不可偏废"
+      },
+      {
+        "text": "正心修身",
+        "note": "内在修炼是兼善天下的根基，即“体”"
+      },
+      {
+        "text": "业举遵制",
+        "note": "参加科举遵守国制是进身之阶，即“用”"
+      },
+      {
+        "text": "有体有用之学",
+        "note": "内在修养为体，外在应用为用，体用兼备才是完整学问"
+      },
+      {
+        "text": "大中至正之道",
+        "note": "不偏不倚、恰到好处的大道，既不偏于空修也不偏于功利"
+      }
+    ],
+    "interpretation": "这是明经堂的总纲！学生求道（体），林子兼文（用）——“道专文兼”正是有体有用的学问。正心修身是内在之体，业举遵制是外在之用。只有体用兼备，才是大中至正之道——不偏于空修也不偏于功利，不偏于出世也不偏于入世。",
+    "sitHint": "静坐三秒，感受内心修养（体）与外在行动（用）的统一。",
+    "insightText": "有体有用，大中至正——修道非空谈，学文非功利。",
+    "questions": [
+      {
+        "text": "“诸生从我固专在道，我与诸生必兼以文”——林子为什么要“必兼以文”？",
+        "options": [
+          "修道是体但不能孤立，必须兼以文作为用，体用兼备才是完整学问",
+          "因为学生不满足于只学道，要求加文学内容",
+          "文学比修道更重要，所以必须兼顾",
+          "林子自己擅长文学，所以顺便教一下"
+        ],
+        "correctIndex": 0,
+        "analysis": "林子“必兼以文”不是妥协或附带，而是基于“有体有用”的完整学问观——道是体，文是用，缺一不可。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将“必兼以文”解读为学生压力下的妥协，忽视了这是林子主动的教育理念"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：颠倒体用关系，将“用”置于“体”之上"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：将深刻的教育理念降格为个人兴趣的附带行为"
+          }
+        ]
+      },
+      {
+        "text": "“有体有用之学，大中至正之道”——“大中至正”的核心含义是？",
+        "options": [
+          "不偏于空修也不偏于功利，体用兼备、恰到好处的中正之道",
+          "规模宏大、居中正统的官方学术",
+          "完全遵循传统、不做任何创新",
+          "儒家独尊、排斥道释的中正之道"
+        ],
+        "correctIndex": 0,
+        "analysis": "大中至正意味着不偏不倚——既不偏于只修道的空谈，也不偏于只学文的功利，体用兼备才是中正。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将“大中至正”降格为官方正统地位，而非内在的中正平衡"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：解读为保守僵化，而林子恰恰是在创新地提出体用并重"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：将三教合一的“大中至正”歪曲为排他性的儒家独尊"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "仲尼之徒幼学壮行",
+    "titleColor": "#e74c3c",
+    "book": "第四册·明经堂",
+    "originalText": "独不观之仲尼之徒乎？问政为邦，仕鲁仕卫，盖幼学壮行，圣人之所不废也。况科举之兴，出自国制，而仲尼之圣，亦曰从周。",
+    "annotations": [
+      {
+        "text": "仲尼之徒",
+        "note": "孔子门徒如子路、冉有等，不仅有学识更有实践"
+      },
+      {
+        "text": "问政为邦",
+        "note": "弟子向孔子问治国之道，说明学道不离现实政治"
+      },
+      {
+        "text": "仕鲁仕卫",
+        "note": "弟子在鲁、卫为官，是幼学壮行的典范"
+      },
+      {
+        "text": "幼学壮行",
+        "note": "幼时学习积累，壮年实践运用，学与行不可割裂"
+      },
+      {
+        "text": "圣人之所不废",
+        "note": "圣人从未废弃入世实践，出世与入世不可偏废"
+      },
+      {
+        "text": "亦曰从周",
+        "note": "即便是孔子这样的圣人，也主张遵从周朝礼制——遵从国制不是妥协"
+      }
+    ],
+    "interpretation": "林子以孔子门徒为证：他们学道不废为官，修道不弃实践。幼学壮行是圣人所倡导的完整路径——学是基础，行是归宿。科举出自国制，孔子亦言从周，遵从国家制度并非对修道的背叛，而是修道在现实中的落实。",
+    "sitHint": "静坐三秒，感受学与行的统一——知行合一。",
+    "insightText": "幼学壮行，圣人不废——修道非避世，遵制非妥协。",
+    "questions": [
+      {
+        "text": "林子引用“仲尼之徒问政为邦、仕鲁仕卫”的论证意图是什么？",
+        "options": [
+          "证明修道不应排斥入世实践，学与行是完整路径的两环",
+          "批评孔子门徒不该去做官",
+          "说明只有儒家才主张入世为官",
+          "暗示科举制度是孔子发明的"
+        ],
+        "correctIndex": 0,
+        "analysis": "林子引用孔子门徒的实践，论证修道与入世并不矛盾——幼学壮行是完整路径。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：完全颠倒论证方向，林子是肯定而非批评门徒为官"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：将论据歪曲为排他性的“只有儒家主张”，而林子主张三教合一"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：科举是国制而非孔子发明，“从周”是遵从礼制而非创立制度"
+          }
+        ]
+      },
+      {
+        "text": "“仲尼之圣亦曰从周”——林子引用此句要说明什么？",
+        "options": [
+          "圣人亦遵从当时制度，遵从国制（如科举）并非对修道的背叛",
+          "孔子只推崇周朝，否定其他朝代",
+          "修道之人应当完全服从任何政治制度",
+          "周朝制度是永恒不变的完美制度"
+        ],
+        "correctIndex": 0,
+        "analysis": "孔子“从周”说明圣人亦遵从当时合理的制度，类比科举出自国制——遵制不是背叛修道。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将“从周”歪曲为排他性的时代偏好，而非“遵从合理制度”的原则"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：从“遵从合理制度”滑向“无条件服从一切”的极端"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：将“从周”固化为永恒完美，而孔子“从周”是因周制在当时最合理"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "四九日作文修行",
+    "titleColor": "#3498db",
+    "book": "第四册·明经堂",
+    "originalText": "一作文。以四九日为期，每期作文一篇，辰候至午候而止。诸生所习之经不同，会日俱作四书文，经文随便自作。",
+    "annotations": [
+      {
+        "text": "一作文",
+        "note": "修行第一项具体实践——写作，借助写作提升思维与对经典的理解"
+      },
+      {
+        "text": "四九日为期",
+        "note": "每四日和九日为一个周期，定期写作培养恒心与节奏"
+      },
+      {
+        "text": "辰候至午候",
+        "note": "辰时（7-9点）至午时（11-13点），限定写作时段培养专注"
+      },
+      {
+        "text": "会日俱作四书文",
+        "note": "聚会之日统一撰写四书文章，促进集体交流"
+      },
+      {
+        "text": "经文随便自作",
+        "note": "个人所习经文可自由写作，尊重个体差异与兴趣"
+      }
+    ],
+    "interpretation": "写作是修行的第一步实践！林子设计了完整的写作修行体系：定期（四九日周期）、限时（辰至午）、有公共要求（聚会日写四书文）、有个人自由（经文随便自作）。这既有集体规范又有个人空间，既有时间纪律又有内容自由——正是“有体有用”在写作实践中的体现。",
+    "sitHint": "静坐三秒，想象在清晨辰时安静地写一篇关于经典的感悟。",
+    "insightText": "定期写作、限时专注——修行从笔端开始。",
+    "questions": [
+      {
+        "text": "林子规定“以四九日为期，每期作文一篇”的修行意图是什么？",
+        "options": [
+          "通过定期写作培养恒心节奏，借助写作深化对经典的理解与思维",
+          "只是为了让学生忙起来，不至于懒惰",
+          "四九日是神秘数字，有特殊法力",
+          "写作只是形式，内容不重要"
+        ],
+        "correctIndex": 0,
+        "analysis": "定期写作培养恒心与节奏，写作过程本身是深化理解、锻炼思维的修行实践。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将修行意图降格为“防懒”的管理手段，忽视了写作本身的修行价值"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：将“四九日”神秘化为数字法力，实际只是实用的周期安排"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：割裂形式与内容，写作恰恰是内容驱动的修行实践"
+          }
+        ]
+      },
+      {
+        "text": "“会日俱作四书文，经文随便自作”——这体现了什么教育理念？",
+        "options": [
+          "既有集体交流的统一要求，又有尊重个人兴趣的自由空间",
+          "四书比其他经典更重要，必须优先",
+          "个人可以完全不写，只有聚会才写",
+          "随便自作意味着没有标准，写什么都行"
+        ],
+        "correctIndex": 0,
+        "analysis": "聚会日写四书文促进集体交流与标准，经文自作尊重个体差异——统一与自由的平衡。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将“俱作四书文”歪曲为四书独尊的排他立场，实际是为了集体交流的便利"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：将“随便自作”歪曲为可以不写，实际是写作内容的自由而非写或不写的自由"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：将“随便自作”解读为毫无标准，实际是内容自由而非质量无要求"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "辰至午·限时专注",
+    "titleColor": "#3498db",
+    "book": "第四册·明经堂",
+    "originalText": "辰候至午候而止。诸生所习之经不同，会日俱作四书文，经文随便自作。",
+    "annotations": [
+      {
+        "text": "辰候",
+        "note": "辰时约上午7-9点，清晨精神最饱满之时"
+      },
+      {
+        "text": "午候",
+        "note": "午时约上午11-13点，限定上午时段完成写作"
+      },
+      {
+        "text": "而止",
+        "note": "到午时即止，不拖延不勉强，培养节制与效率"
+      }
+    ],
+    "interpretation": "辰至午的限时写作暗含修行智慧：清晨精神饱满时开始，午前完成不拖延。这培养的是专注力与节制——在该写的时候专注投入，在该停的时候果断收笔。修行不是无限延长劳作，而是在限定时间内做到极致。",
+    "sitHint": "静坐三秒，感受限时专注的力量——在边界内做到极致。",
+    "insightText": "限时非束缚，乃专注之锚——辰至午，精神饱满时精进。",
+    "questions": [
+      {
+        "text": "林子限定“辰候至午候而止”的写作时间，其修行意义是什么？",
+        "options": [
+          "在精神饱满时专注写作，到时即止培养节制与效率，而非无限拖延",
+          "因为下午时间不适合做任何事",
+          "只是为了统一时间方便管理",
+          "写作只能在上午完成，下午写就没有价值"
+        ],
+        "correctIndex": 0,
+        "analysis": "限时写作的修行意义：清晨专注投入，到时果断收笔——培养专注力与节制，而非拖延。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将限时简化为“下午不适合”，忽视了这是培养专注与节制的修行设计"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：将修行意图降格为管理便利，忽视了时间设计的内在修行价值"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：将限时绝对化为“下午写无价值”，实际是培养节制的节奏而非时间歧视"
+          }
+        ]
+      },
+      {
+        "text": "“到午候而止”——“止”字的修行含义是什么？",
+        "options": [
+          "知止而后有定——在该停的时候果断收笔，培养节制与不贪",
+          "止是因为写累了必须休息",
+          "止意味着写作不重要，随便停",
+          "止是被迫的，因为午时要做其他事"
+        ],
+        "correctIndex": 0,
+        "analysis": "“止”暗合“知止而后有定”的大学之道——在限定时间内做到极致，到时果断收笔是不贪与节制。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将“止“降格为疲劳休息，忽视了这是主动的节制修行"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：将“止”歪曲为写作不重要，实际是恰恰重视写作才设限时专注"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：将“止”解读为被动安排，而林子设计的是主动的修行节奏"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "作文以理为主气辅之",
+    "titleColor": "#9b59b6",
+    "book": "第四册·明经堂",
+    "originalText": "一作文以理为主，气辅之。平淡中取奇，词苑之巨匠也。",
+    "annotations": [
+      {
+        "text": "以理为主",
+        "note": "文章以思想哲理为核心骨架——理是文的“体”"
+      },
+      {
+        "text": "气辅之",
+        "note": "气势文风作为辅助支撑——气是文的“用”"
+      },
+      {
+        "text": "平淡中取奇",
+        "note": "在看似平淡的文字中蕴含独到深意，是文坛巨匠的标志"
+      },
+      {
+        "text": "词苑之巨匠",
+        "note": "能在平淡中发掘独特之处的，才是真正的文学大师"
+      }
+    ],
+    "interpretation": "写作之道同样是“有体有用”！理是体——思想哲理是文章的核心骨架；气是用——气势文风是辅助支撑。真正的巨匠不在辞藻华丽，而在“平淡中取奇”——看似质朴的文字蕴含深意，这正是绚烂至极而归于平淡的大道。",
+    "sitHint": "静坐三秒，感受理与气的关系——思想是骨，气势是翼。",
+    "insightText": "理为骨气为翼，平淡中取奇——写作之道亦是有体有用。",
+    "questions": [
+      {
+        "text": "“作文以理为主，气辅之”——这与林子“有体有用之学”的对应关系是什么？",
+        "options": [
+          "理和气是两种完全独立的写作风格",
+          "理是文之体（思想核心），气是文之用（气势辅助），写作之道亦是体用兼备",
+          "理比气重要得多，气几乎可以忽略",
+          "理是外在修辞技巧，气是内在情感"
+        ],
+        "correctIndex": 1,
+        "analysis": "理为体、气为用——写作之道与修道之道的结构完全一致，都是体用兼备。",
+        "traps": [
+          {
+            "selected": 0,
+            "explanation": "陷阱：割裂理与气的体用关系，将二者并列为独立风格"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：极端贬低“气”的价值，林子说“气要昌大”绝非可忽略"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：颠倒内外关系，理是内在思想而非外在技巧"
+          }
+        ]
+      },
+      {
+        "text": "“平淡中取奇，词苑之巨匠也”——“平淡中取奇”的核心含义是？",
+        "options": [
+          "故意写得平淡无味，让人看不出深意",
+          "看似质朴的文字中蕴含独到深意，绚烂至极归于平淡",
+          "平淡就是简单直白，不需要任何技巧",
+          "只有平淡的写法才是对的，华丽就是错"
+        ],
+        "correctIndex": 1,
+        "analysis": "“平淡中取奇”是绚烂至极归于平淡——不是肤浅的简单，而是深厚之后的质朴。",
+        "traps": [
+          {
+            "selected": 0,
+            "explanation": "陷阱：将“平淡中取奇”歪曲为故意掩盖深意，实际是深厚之后的自然呈现"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：将“平淡”降格为“简单直白”，忽视了平淡是功夫积累后的境界"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：将平淡与华丽绝对对立，林子引用苏轼恰恰说明平淡是绚烂之极"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "绚烂之极归于平淡",
+    "titleColor": "#9b59b6",
+    "book": "第四册·明经堂",
+    "originalText": "苏子瞻曰：“凡作文字，少小时须令气象峥嵘，采色绚烂，渐老渐熟，乃造平淡。其实不是平淡，乃绚烂之极也。”真可谓文章之评矣。",
+    "annotations": [
+      {
+        "text": "气象峥嵘",
+        "note": "年少时文章气象雄浑壮阔，文采飞扬"
+      },
+      {
+        "text": "采色绚烂",
+        "note": "年轻时追求文采的绚烂丰富，是成长的必经阶段"
+      },
+      {
+        "text": "渐老渐熟",
+        "note": "随着岁月沉淀与阅历积累，逐渐走向成熟"
+      },
+      {
+        "text": "乃造平淡",
+        "note": "成熟后达到平淡自然的境界"
+      },
+      {
+        "text": "绚烂之极",
+        "note": "此平淡非肤浅之平淡，而是绚烂至极后回归质朴的深厚境界"
+      }
+    ],
+    "interpretation": "苏轼的文论揭示了一个深刻的修行次第：年轻时气象峥嵘、采色绚烂是成长的必经阶段；渐老渐熟后归于平淡——但此平淡非肤浅的简单，而是绚烂之极后的自然回归。这与修道之道完全一致：从“有相”到“无相”，从“有为”到“无为”，不是跳过绚烂直接平淡，而是经历了绚烂之后的真正平淡。",
+    "sitHint": "静坐三秒，感受从绚烂到平淡的自然回归——不是跳过，而是经历之后。",
+    "insightText": "绚烂之极归于平淡——不是跳过绚烂，而是经历之后的自然回归。",
+    "questions": [
+      {
+        "text": "苏轼说“少小时须令气象峥嵘，渐老渐熟乃造平淡”——这个“须令”说明什么？",
+        "options": [
+          "年轻时应该故意写得夸张浮夸",
+          "年轻时不必认真，随便写就行",
+          "绚烂是成长的必经阶段，不能跳过绚烂直接追求平淡",
+          "平淡是低级境界，绚烂才是高级"
+        ],
+        "correctIndex": 2,
+        "analysis": "“须令”说明绚烂是必经阶段——平淡是绚烂之极的归宿，不能跳过过程直接到结果。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将“气象峥嵘”歪曲为“夸张浮夸”，峥嵘是雄浑而非浮夸"
+          },
+          {
+            "selected": 0,
+            "explanation": "陷阱：与“须令”相反——年轻时恰恰需要认真追求绚烂"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：颠倒次第——绚烂是过程，平淡是更高的归宿境界"
+          }
+        ]
+      },
+      {
+        "text": "“其实不是平淡，乃绚烂之极也”——苏轼要纠正什么误解？",
+        "options": [
+          "说明平淡是一种伪装，内心还是绚烂的",
+          "否定平淡的价值，主张永远绚烂",
+          "平淡和绚烂是完全矛盾的两种风格",
+          "纠正人们将成熟后的平淡误认为肤浅简单，实则绚烂之极的自然回归"
+        ],
+        "correctIndex": 3,
+        "analysis": "苏轼纠正的是：成熟后的平淡不是肤浅，而是绚烂积累到极致后的自然回归。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将“绚烂之极”歪曲为伪装，实际是真正的境界升华"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：完全否定平淡，与“乃造平淡”矛盾"
+          },
+          {
+            "selected": 0,
+            "explanation": "陷阱：割裂平淡与绚烂的关系，而苏轼恰恰说二者是一体的升华过程"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "漫袭词与艰深词·才不足气不昌",
+    "titleColor": "#9b59b6",
+    "book": "第四册·明经堂",
+    "originalText": "近来作文者，不会汉人六代之意，漫袭汉人六代之词，自以为高古美丽；又有一等，专用新奇之字，文以艰深之词，断手截足，令人难句为高。是皆才不足而气不昌，故不得已假此以取名尔。",
+    "annotations": [
+      {
+        "text": "不会之意",
+        "note": "未能领悟汉魏六朝文章的真意精髓"
+      },
+      {
+        "text": "漫袭之词",
+        "note": "盲目模仿外在辞藻而失却本真——形式主义的弊病"
+      },
+      {
+        "text": "断手截足",
+        "note": "语句支离破碎、文辞残缺——晦涩主义的弊病"
+      },
+      {
+        "text": "令人难句为高",
+        "note": "以难以理解为高明——这是反教育的立场"
+      },
+      {
+        "text": "才不足而气不昌",
+        "note": "根本原因：才力有限、文气不畅，不得已借外在手段博名"
+      },
+      {
+        "text": "假此以取名",
+        "note": "借用形式主义或晦涩主义来博取名声——名与实严重不符"
+      }
+    ],
+    "interpretation": "林子批判写作的两种极端病态：一是“漫袭词”——盲目模仿古人辞藻，自以为高古美丽却空洞乏味；二是“艰深词”——故意用新奇晦涩的字眼，断手截足让人难句为高。这两种病态的根源相同：才不足而气不昌——内在修养不够，只好用外在手段取名。这正是“有体有用”的反面——无体而假用。",
+    "sitHint": "静坐三秒，辨别外在包装与内在真意的区别。",
+    "insightText": "漫袭词与艰深词——无体而假用，才不足而假名。",
+    "questions": [
+      {
+        "text": "林子批评“漫袭汉人六代之词”与“文以艰深之词”两种病态，它们的共同根源是什么？",
+        "options": [
+          "两者完全没有关系，是不同的问题",
+          "才不足而气不昌——内在修养不足，只好借外在手段博名",
+          "都是因为太崇拜古人导致的",
+          "都是因为词汇量太大导致的"
+        ],
+        "correctIndex": 1,
+        "analysis": "两种病态的根源完全相同：才不足气不昌——内在（体）不足，只好借外在（用）博名。",
+        "traps": [
+          {
+            "selected": 0,
+            "explanation": "陷阱：割裂两种病态的关联，林子明确说“是皆才不足而气不昌”"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：将漫袭词歪曲为崇拜古人，实际是才不足导致的模仿"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：荒谬归因——词汇量大不是问题，问题在于用词汇掩盖内在空虚"
+          }
+        ]
+      },
+      {
+        "text": "“断手截足，令人难句为高”——林子对此的批评核心是什么？",
+        "options": [
+          "文章必须通俗易懂，不能有任何深度",
+          "晦涩是一种高级写作技巧，只是需要更聪明的读者",
+          "以难以理解为高明是反教育的立场，真正的文章应让人理解深意而非困惑",
+          "句子断开是排版问题，与写作水平无关"
+        ],
+        "correctIndex": 2,
+        "analysis": "林子批评的是“以难理解为高”的反教育立场——好文章让人理解深意，而非故作晦涩。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：从批评“故作晦涩”滑向“不能有任何深度”的极端"
+          },
+          {
+            "selected": 0,
+            "explanation": "陷阱：为晦涩主义辩护，与林子的批评立场完全相反"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：将问题降格为排版问题，实际是写作理念的根本偏差"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "有德者必有言",
+    "titleColor": "#9b59b6",
+    "book": "第四册·明经堂",
+    "originalText": "今后作文，理要精微，气要昌大，转折处亦要圆活，然此非可以易言也。盖由养之于内既至，而后发之于词自顺矣。故曰：“有德者必有言。”诸生毋徒求之文字之间可也。",
+    "annotations": [
+      {
+        "text": "理要精微",
+        "note": "道理要深邃微妙——理是文章的内核，需深入而非浮浅"
+      },
+      {
+        "text": "气要昌大",
+        "note": "文气要恢弘畅达——气是文章的翼，需宏大而非萎靡"
+      },
+      {
+        "text": "转折圆活",
+        "note": "转折处要圆润自如——技巧是文章的关节，需灵活而非僵硬"
+      },
+      {
+        "text": "养之于内既至",
+        "note": "内在修养达到高度，文章自然流畅——体至则用顺"
+      },
+      {
+        "text": "有德者必有言",
+        "note": "品德修养到位，言辞自然精当——德是体，言是用"
+      },
+      {
+        "text": "毋徒求之文字",
+        "note": "不要只在文字表面雕琢——要在内在修养上下功夫"
+      }
+    ],
+    "interpretation": "林子给出写作的三项标准：理精微、气昌大、转折圆活——但这“非可以易言也”，不是技巧能解决的。根本在于“养之于内既至”——内在修养到位，文章自然流畅。所以“有德者必有言”——品德是体，言辞是用，体至则用顺。勿徒求文字之间——要在内在修养上下功夫，这正是“有体有用”在写作中的最终收束。",
+    "sitHint": "静坐三秒，感受内在修养与外在表达的自然统一。",
+    "insightText": "有德者必有言——体至则用顺，勿徒求文字之间。",
+    "questions": [
+      {
+        "text": "“理要精微，气要昌大，转折处亦要圆活”——林子紧接着说“此非可以易言也”，这是什么意思？",
+        "options": [
+          "这三项标准太复杂了，一般人学不会",
+          "写作标准不重要，随便写就行",
+          "只要多练习就能轻松达到这三项标准",
+          "这三项标准不能靠技巧轻松达到，根本在于内在修养到位后自然呈现"
+        ],
+        "correctIndex": 3,
+        "analysis": "“非可以易言也”意味着不是技巧问题——根本在于内在修养，养之于内既至而后发之于词自顺。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将“非易言”解读为“太复杂学不会”的消极放弃，实际是指出根本在内在修养"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：从“非易言”滑向“不重要”的极端否定"
+          },
+          {
+            "selected": 0,
+            "explanation": "陷阱：与“非可以易言也”完全相反——恰恰不能靠简单练习轻松达到"
+          }
+        ]
+      },
+      {
+        "text": "“有德者必有言”——林子引用此句的论证意图是什么？",
+        "options": [
+          "有道德的人自然会说话，不需要学习表达",
+          "品德修养是言辞表达的根本（体），有体则用自然顺——勿徒求文字表面",
+          "说话多的人品德一定好",
+          "只有品德好的人才能写作，其他人不能写"
+        ],
+        "correctIndex": 1,
+        "analysis": "“有德者必有言”论证体用关系：德是体，言是用，体至则用顺——不要只在用上雕琢。",
+        "traps": [
+          {
+            "selected": 0,
+            "explanation": "陷阱：将“必有言”歪曲为不需要学习表达，实际是根本在内而非不需要学"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：颠倒因果——是德导致言，而非言多等于德好"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：将“有德者必有言”歪曲为排他性的“只有德者能写”"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "读书·义论策表",
+    "titleColor": "#27ae60",
+    "book": "第四册·明经堂",
+    "originalText": "一读书。每十日义二篇，论策表各一篇。",
+    "annotations": [
+      {
+        "text": "一读书",
+        "note": "修行第二项实践——阅读，通过深入研读积累知识与智慧"
+      },
+      {
+        "text": "每十日义二篇",
+        "note": "每十天精读理解两篇文章，“义”即精读领悟"
+      },
+      {
+        "text": "论策表各一篇",
+        "note": "论：深入剖析观点；策：提出解决方案；表：陈述汇报心得"
+      }
+    ],
+    "interpretation": "读书是修行的第二项实践！每十日精读两篇义文，同时撰写论（剖析观点）、策（提出方案）、表（汇报心得）各一篇。这三类文体对应三种思维训练：论练分析力，策练解决力，表练表达力。读是吸收，写是转化——从“作文”到“读书”，修行体系层层递进。",
+    "sitHint": "静坐三秒，感受阅读吸收与写作转化的循环。",
+    "insightText": "读以吸收，写以转化——义论策表，三种思维三种功夫。",
+    "questions": [
+      {
+        "text": "“论策表各一篇”——论、策、表三种文体分别训练什么能力？",
+        "options": [
+          "论是理论，策是策略，表是表格——只是不同格式",
+          "三种文体训练的是同一种能力，只是名称不同",
+          "论练分析力（剖析观点），策练解决力（提出方案），表练表达力（汇报心得）",
+          "论最重要，策和表是附属的次要练习"
+        ],
+        "correctIndex": 2,
+        "analysis": "论策表分别训练分析、解决、表达三种核心思维能力，各有侧重不可偏废。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将论策表降格为“不同格式”，忽视了三种思维能力的深层差异"
+          },
+          {
+            "selected": 0,
+            "explanation": "陷阱：将三种文体等同为同一能力，实际上它们训练不同的思维维度"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：贬低策和表的价值，林子要求“各一篇”说明三者同等重要"
+          }
+        ]
+      },
+      {
+        "text": "从“一作文”到“一读书”，林子的修行体系为什么先写作后阅读？",
+        "options": [
+          "阅读比写作简单，所以写作排在前面",
+          "顺序不重要，先读后写也可以",
+          "写作是高级修行，读书是初级修行",
+          "写作是主动输出（检验理解深度），阅读是被动吸收（积累知识）——先检验再积累更有针对性"
+        ],
+        "correctIndex": 3,
+        "analysis": "先写后读的逻辑：写作检验理解深度（主动输出），阅读补充知识积累（被动吸收），先检验再积累更有方向。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将顺序简化为难度排序，实际是修行逻辑的递进设计"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：否定顺序的修行意义，林子的条规是有逻辑递进关系的"
+          },
+          {
+            "selected": 0,
+            "explanation": "陷阱：颠倒高低关系——写作和读书各有价值，不分高低"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "看书·白文小注熟诵",
+    "titleColor": "#27ae60",
+    "book": "第四册·明经堂",
+    "originalText": "一看书。每日上午四书，下午本经，各一页半。所看书，白文务要熟诵，小注亦要熟诵。",
+    "annotations": [
+      {
+        "text": "上午四书",
+        "note": "上午研习四书——《大学》《中庸》《论语》《孟子》"
+      },
+      {
+        "text": "下午本经",
+        "note": "下午研习各自专攻的经典——尊重个体差异"
+      },
+      {
+        "text": "各一页半",
+        "note": "每天每类一页半的定量要求——不多不少，持之以恒"
+      },
+      {
+        "text": "白文务要熟诵",
+        "note": "经书原文必须熟诵——原文是“体”"
+      },
+      {
+        "text": "小注亦要熟诵",
+        "note": "注释也要熟诵——注释是理解的“用”，体用不可偏废"
+      }
+    ],
+    "interpretation": "看书的要求细致而平衡：上午四书、下午本经——公共基础与个人专攻；每天一页半——定量而不贪多；白文熟诵是体，小注熟诵是用——原文与注释同样重要，不可只读正文忽略注释，也不可只看注释不背原文。",
+    "sitHint": "静坐三秒，感受原文（白文）与解释（小注）的互补统一。",
+    "insightText": "白文为体，小注为用——原文与注释，熟诵不可偏废。",
+    "questions": [
+      {
+        "text": "“白文务要熟诵，小注亦要熟诵”——为什么白文和小注都要熟诵？",
+        "options": [
+          "小注比白文更重要，所以要优先背诵小注",
+          "白文是经书原文（体），小注是理解辅助（用），体用不可偏废",
+          "白文和小注只是不同的背诵材料，没有体用关系",
+          "只要背诵白文就够了，小注可以跳过"
+        ],
+        "correctIndex": 1,
+        "analysis": "白文是原文之体，小注是理解之用——只背原文不理解，只看注释不记原文，都是偏废。",
+        "traps": [
+          {
+            "selected": 0,
+            "explanation": "陷阱：颠倒体用关系，将注释置于原文之上"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：割裂白文与小注的体用关系，将二者并列为无差别的背诵材料"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：与“亦要熟诵”直接矛盾——林子明确要求两者都熟诵"
+          }
+        ]
+      },
+      {
+        "text": "“上午四书，下午本经”的安排体现了什么原则？",
+        "options": [
+          "四书只能在上午学，下午不能学",
+          "上午学重要的，下午学不重要的",
+          "公共基础（四书）与个人专攻（本经）的平衡——集体与个体的兼顾",
+          "本经比四书难，所以放在下午慢慢学"
+        ],
+        "correctIndex": 2,
+        "analysis": "上午四书是公共基础，下午本经是个人专攻——集体规范与个人自由的平衡。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将时间安排绝对化，实际是节奏设计而非时间歧视"
+          },
+          {
+            "selected": 0,
+            "explanation": "陷阱：以重要性排序，而两者同等重要只是分工不同"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：以难度排序，实际是公共与个人的分工而非难度区分"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "title": "四九日会齐明经堂",
+    "titleColor": "#e67e22",
+    "book": "第四册·明经堂",
+    "originalText": "一每月四九日下午，会齐明经堂。",
+    "annotations": [
+      {
+        "text": "每月四九日",
+        "note": "每月初四与初九——固定的聚会周期，培养恒心与节奏"
+      },
+      {
+        "text": "下午",
+        "note": "午后时分聚会——上午写作，下午交流，一日之内体用兼备"
+      },
+      {
+        "text": "会齐",
+        "note": "全体成员齐聚——修行非孤独之事，集体共修互促精进"
+      },
+      {
+        "text": "明经堂",
+        "note": "专门修学场所——“明经”二字直指通经之学的根本"
+      }
+    ],
+    "interpretation": "明经堂会规以“四九日”为周期：每月初四初九下午齐聚。上午辰至午写作（个体修行），下午齐聚明经堂（集体共修）——个体与集体、上午与下午，又是一重“有体有用”。“明经”之名直指通经之学——这不仅是聚会的场所，更是修行的命名。",
+    "sitHint": "静坐三秒，感受个体修行与集体共修的互补。",
+    "insightText": "上午独修，下午共修——明经堂上，体用兼备。",
+    "questions": [
+      {
+        "text": "“每月四九日下午会齐明经堂”——为什么是下午聚会而非上午？",
+        "options": [
+          "下午比上午更有精神",
+          "上午不适合聚会，只能独自学习",
+          "只是时间安排的巧合，没有修行逻辑",
+          "上午辰至午是个人写作时间（个体修行），下午聚会是集体共修——个体与集体各有时段"
+        ],
+        "correctIndex": 3,
+        "analysis": "上午写作是个体修行，下午聚会是集体共修——一日之内体用兼备、独修与共修互补。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：以精神状态解释，忽视了修行逻辑的分工设计"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：将上午限定为只能独修，实际是节奏设计而非绝对限制"
+          },
+          {
+            "selected": 0,
+            "explanation": "陷阱：否定时间安排背后的修行逻辑，林子的条规处处有深意"
+          }
+        ]
+      },
+      {
+        "text": "“明经堂”这个命名反映了什么修行理念？",
+        "options": [
+          "只是一个普通的教室名字",
+          "“明经”直指通经之学的根本——修学场所的命名即修行宗旨的宣言",
+          "明经是考试场所，只与科举有关",
+          "明经堂是道教修炼场所"
+        ],
+        "correctIndex": 1,
+        "analysis": "“明经”二字是修行宗旨的宣言——通经之学是有体有用之学的具体落实。",
+        "traps": [
+          {
+            "selected": 0,
+            "explanation": "陷阱：将“明经堂”降格为普通教室名，忽视了命名背后的修行宣言"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：将“明经”局限于科举考试，林子说的是通经之学更广的含义"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：将明经堂归类为道教场所，实际是三教合一的修学场所"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "title": "笔削批点·掣籖背经",
+    "titleColor": "#e67e22",
+    "book": "第四册·明经堂",
+    "originalText": "先将本日所作之文，私相笔削批点，然后呈览，览毕，听掣籖背经书白文，得籖者即背五句，依次左旋，各背五句，周而复始，至所看书毕而止。",
+    "annotations": [
+      {
+        "text": "私相笔削批点",
+        "note": "私下互相修改批注文章——互评互促，非单向评判"
+      },
+      {
+        "text": "呈览",
+        "note": "修改后呈交审阅——个人修习后接受集体检验"
+      },
+      {
+        "text": "掣籖",
+        "note": "抽签决定背诵顺序——公平随机，无人特殊"
+      },
+      {
+        "text": "背五句",
+        "note": "每人每次背五句——定量不贪多，循环积累"
+      },
+      {
+        "text": "依次左旋",
+        "note": "按顺序左旋接力——有序而不混乱"
+      },
+      {
+        "text": "周而复始",
+        "note": "循环往复直至看完——持之以恒，步步推进"
+      }
+    ],
+    "interpretation": "会规第一步：互评文章（笔削批点）→呈交审阅→抽签背经→每人五句→左旋接力→周而复始。这个流程体现了“有体有用”在集体修行中的落实：互评是交流之用，背经是积累之体；抽签是公平之用，五句定量是节奏之体；左旋有序是纪律之用，周而复始是恒心之体。",
+    "sitHint": "静坐三秒，感受互评互促与公平有序的修行氛围。",
+    "insightText": "笔削互评、掣籖公平——集体修行中，体用兼备有序有恒。",
+    "questions": [
+      {
+        "text": "“私相笔削批点”——为什么是“私相”（互相）而非老师单向批改？",
+        "options": [
+          "因为老师太忙没时间批改",
+          "互相批改不重要，重要的是老师评判",
+          "互评互促而非单向评判——每个修行者既是学习者也是促进者",
+          "私相意味着秘密修改，不让别人看到"
+        ],
+        "correctIndex": 2,
+        "analysis": "互评互促是集体共修的核心——每人既是学习者也是促进者，双向促进而非单向评判。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将互评降格为老师忙碌的替代方案，忽视了互评本身的教育价值"
+          },
+          {
+            "selected": 0,
+            "explanation": "陷阱：贬低互评价值而抬高老师评判，林子设计的是双向促进"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：将“私相”歪曲为秘密，实际是私下互相而非保密"
+          }
+        ]
+      },
+      {
+        "text": "“掣籖背经”用抽签决定背诵顺序，这体现了什么原则？",
+        "options": [
+          "抽签是随机碰运气，背诵不重要",
+          "只有被抽到的人才需要背，其他人可以不背",
+          "抽签是因为背诵太枯燥，需要增加趣味",
+          "公平随机——无人特殊，人人平等参与，培养随时准备的心态"
+        ],
+        "correctIndex": 3,
+        "analysis": "抽签体现公平与随时准备——人人平等参与，培养“时刻准备好”的修行心态。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将抽签与背诵的重要性割裂，抽签恰恰保障了背诵的公平参与"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：将“左旋各背五句”歪曲为只有一人背诵，实际是全员接力"
+          },
+          {
+            "selected": 0,
+            "explanation": "陷阱：将公平设计降格为“增加趣味”，实际是培养修行纪律与平等心态"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "title": "掣籖讲说·发明本文",
+    "titleColor": "#e67e22",
+    "book": "第四册·明经堂",
+    "originalText": "次掣籖讲说经书，每掣二人，相为问难，若讲解不明，另举一人再讲，余者静坐以听，毋得噪言以乱规矩。其所讲者，只要发明本文，及体贴小注，截段明白。",
+    "annotations": [
+      {
+        "text": "每掣二人",
+        "note": "每次抽两人讲解——二人对讲互促，非单向灌输"
+      },
+      {
+        "text": "相为问难",
+        "note": "二人相互提问辩论——思维碰撞而非被动接受"
+      },
+      {
+        "text": "讲解不明另举一人",
+        "note": "讲解不清则换人——确保理解质量而非敷衍"
+      },
+      {
+        "text": "余者静坐以听",
+        "note": "其他人静坐聆听——纪律与专注，不喧哗扰乱"
+      },
+      {
+        "text": "发明本文",
+        "note": "深入阐发原文真意——讲的是“体”（原文本身）"
+      },
+      {
+        "text": "体贴小注",
+        "note": "结合注释详尽解释——用的是“用”（理解辅助）"
+      },
+      {
+        "text": "截段明白",
+        "note": "分段清晰条理分明——讲解的质量标准"
+      }
+    ],
+    "interpretation": "会规第二步：抽签两人对讲问难——这是“有体有用”在教学中的落实：发明本文是体（原文真意），体贴小注是用（理解辅助），截段明白是标准（体用兼备的表达）。讲解不清则换人——确保质量而非敷衍。余者静坐聆听——纪律与专注是集体修行的保障。",
+    "sitHint": "静坐三秒，感受二人对讲的思维碰撞与静坐聆听的专注纪律。",
+    "insightText": "发明本文为体，体贴小注为用——讲解须明，聆听须静。",
+    "questions": [
+      {
+        "text": "“每掣二人，相为问难”——为什么是两人对讲而非一人单向讲授？",
+        "options": [
+          "两人比一人更有效率，节省时间",
+          "二人对讲互为问难是思维碰撞，比单向灌输更能深化理解——双向促进",
+          "一人讲太枯燥，两人更有趣",
+          "因为没人愿意单独讲解，所以安排两人分担"
+        ],
+        "correctIndex": 1,
+        "analysis": "二人对讲问难是思维碰撞——双向促进深化理解，而非单向灌输被动接受。",
+        "traps": [
+          {
+            "selected": 0,
+            "explanation": "陷阱：将教育设计降格为效率考量，实际是修行逻辑的双向促进"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：将深刻的问难设计降格为“增加趣味”"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：将二人对讲歪曲为逃避责任，实际是主动的修行设计"
+          }
+        ]
+      },
+      {
+        "text": "“发明本文，及体贴小注”——讲解的要求为什么既要发明本文又要体贴小注？",
+        "options": [
+          "本文和小注只是两种不同的背诵内容",
+          "本文比小注重要得多，小注可以忽略",
+          "发明本文是体（原文真意），体贴小注是用（理解辅助）——体用兼备的讲解标准",
+          "只要讲小注就够了，本文学生自己看"
+        ],
+        "correctIndex": 2,
+        "analysis": "发明本文是体（深入原文真意），体贴小注是用（借助注释理解）——体用兼备才是完整讲解。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将本文与小注并列为无差别的背诵内容，忽视了体用关系"
+          },
+          {
+            "selected": 0,
+            "explanation": "陷阱：贬低小注价值，与“小注亦要熟诵”矛盾"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：忽视本文的核心地位，本文是体而非可忽略的内容"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "title": "疑问起止簿·掣籖背义论策表",
+    "titleColor": "#e67e22",
+    "book": "第四册·明经堂",
+    "originalText": "若有疑者，先书于起止簿上，俟讲书毕时问难，且便掣签时查考。又次掣籖背义论策表，只掣三人，务要应声朗诵十数句。",
+    "annotations": [
+      {
+        "text": "疑问书于起止簿",
+        "note": "疑问先记录而非即时打断——有序提问而非混乱喧哗"
+      },
+      {
+        "text": "俟讲书毕时问难",
+        "note": "待讲解结束后统一提问——尊重讲解过程的完整性"
+      },
+      {
+        "text": "掣签时查考",
+        "note": "记录也便于抽签时考查——双重功能：提问与考查"
+      },
+      {
+        "text": "掣籖背义论策表",
+        "note": "抽签背诵论策表——检验写作修行成果"
+      },
+      {
+        "text": "只掣三人",
+        "note": "每次只抽三人——重点检验而非全员疲劳"
+      },
+      {
+        "text": "应声朗诵十数句",
+        "note": "需迅速朗诵数十句——检验记忆与应变能力"
+      }
+    ],
+    "interpretation": "会规第三步：疑问记录在起止簿上，待讲解结束后统一提问——有序而非混乱。这既是提问的纪律，也是考查的工具。最后抽签三人背诵义论策表——检验写作修行的成果，应声朗诵考验的是记忆与应变。从互评文章→背经→对讲→提问→背诵，整个流程环环相扣，体用兼备。",
+    "sitHint": "静坐三秒，感受有序提问与应声背诵的修行检验。",
+    "insightText": "疑问有簿，讲解有序——修行非混乱喧哗，乃有序精进。",
+    "questions": [
+      {
+        "text": "“若有疑者先书于起止簿上，俟讲书毕时问难”——为什么疑问要先记录而非即时提问？",
+        "options": [
+          "因为提问不重要，可以延后处理",
+          "只是行政管理手段，与修行无关",
+          "说明疑问不被鼓励，应该自己解决",
+          "有序提问而非混乱打断——尊重讲解完整性，同时记录便于考查，纪律与效率兼备"
+        ],
+        "correctIndex": 3,
+        "analysis": "先记录后提问是有序纪律——尊重讲解过程完整性，同时记录便于考查，纪律与效率兼备。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将延后提问歪曲为“不重要”，实际是更重视才需要专门时间"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：将修行纪律降格为行政管理，起止簿是修行工具而非官僚手段"
+          },
+          {
+            "selected": 0,
+            "explanation": "陷阱：将有序提问歪曲为压制疑问，实际恰恰保障了疑问得到认真对待"
+          }
+        ]
+      },
+      {
+        "text": "“掣籖背义论策表，务要应声朗诵十数句”——这检验的是什么修行成果？",
+        "options": [
+          "只是背诵能力的检验，与写作修行无关",
+          "检验写作修行的积累——应声朗诵考验记忆深度与应变能力，是体用兼备的实践检验",
+          "朗诵不重要，重要的是写得好不好",
+          "三人抽签意味着大部分人不需要准备"
+        ],
+        "correctIndex": 1,
+        "analysis": "应声朗诵检验的是写作修行的积累成果——记忆深度与应变能力，是体（积累）用（应变）兼备的检验。",
+        "traps": [
+          {
+            "selected": 0,
+            "explanation": "陷阱：割裂背诵与写作的关系，背诵义论策表正是检验写作成果"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：割裂朗诵与写作的关系，朗诵是写作成果的表达检验"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：将三人抽签歪曲为大部分人可懈怠，“应声”要求恰恰意味着人人须时刻准备"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "title": "起止簿·以便查考",
+    "titleColor": "#1abc9c",
+    "book": "第四册·明经堂",
+    "originalText": "一各备起止簿，书所读某义论策表若干，所看某经书若干，以便查考。",
+    "annotations": [
+      {
+        "text": "各备起止簿",
+        "note": "每人自备记录簿——自我记录而非他人监督，培养自觉"
+      },
+      {
+        "text": "书所读义论策表若干",
+        "note": "记录阅读的各类文章数量——量化学习进度"
+      },
+      {
+        "text": "所看某经书若干",
+        "note": "记录经书阅读量——量化修行积累"
+      },
+      {
+        "text": "以便查考",
+        "note": "便于查考回顾——自我审视而非被动考核"
+      }
+    ],
+    "interpretation": "起止簿是修行的“自省工具”：每人自备而非他人分配，自己记录而非被动考核。记录的是读了多少义论策表、看了多少经书——量化进度便于自我审视。这是“有体有用”在记录中的落实：记录本身是体（自省自觉），便于查考是用（回顾规划）。",
+    "sitHint": "静坐三秒，想象翻开自己的修行记录簿，审视学习轨迹。",
+    "insightText": "起止簿非考核工具，乃自省之镜——自觉记录，自我审视。",
+    "questions": [
+      {
+        "text": "“各备起止簿”——为什么是“各备”（每人自备）而非统一发放？",
+        "options": [
+          "统一发放太麻烦，各备更省事",
+          "只是经济考虑，节约成本",
+          "培养自觉自省——自己准备记录簿是主动的自我审视，而非被动的他人考核",
+          "各备意味着记录不重要，随便用什么纸都行"
+        ],
+        "correctIndex": 2,
+        "analysis": "各备是培养自觉——主动准备记录簿意味着主动自省，而非被动接受考核。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将修行设计降格为省事的经济考量"
+          },
+          {
+            "selected": 0,
+            "explanation": "陷阱：将修行设计降格为成本节约，忽视了自觉自省的修行意图"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：将“各备”歪曲为不重要，实际恰恰因为重要才需要个人主动准备"
+          }
+        ]
+      },
+      {
+        "text": "起止簿记录“所读义论策表若干、所看经书若干”——量化记录的修行意义是什么？",
+        "options": [
+          "只是为了给别人看，证明自己没有偷懒",
+          "量化数字没有意义，修行不在于数量",
+          "记录只是为了考试时能回答问题",
+          "量化进度便于自我审视回顾——看清修行轨迹，科学规划未来方向"
+        ],
+        "correctIndex": 3,
+        "analysis": "量化记录便于自我审视——看清修行轨迹，科学规划未来方向，是自省而非展示。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将自省工具歪曲为向他人展示的工具，忽视了“以便查考”是自我查考"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：极端否定量化价值，林子明确要求“若干”的量化记录"
+          },
+          {
+            "selected": 0,
+            "explanation": "陷阱：将修行记录降格为应试工具，实际是全周期的自省规划"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "title": "恬淡省事·修行生活",
+    "titleColor": "#1abc9c",
+    "book": "第四册·明经堂",
+    "originalText": "一会日俱早膳后来，午膳要回家。不必轮流办会，务以恬淡省事为主。",
+    "annotations": [
+      {
+        "text": "早膳后来",
+        "note": "早餐后到堂——顺应日常节奏，不刻意早起"
+      },
+      {
+        "text": "午膳要回家",
+        "note": "午餐回家吃——保持家庭生活，修行不脱离日常"
+      },
+      {
+        "text": "不必轮流办会",
+        "note": "不必轮流办聚会——避免形式主义与社交负担"
+      },
+      {
+        "text": "恬淡省事",
+        "note": "以恬淡简约省事为主——修行重在内在而非外在繁复仪式"
+      }
+    ],
+    "interpretation": "这条会规体现了修行的“生活哲学”：早膳后来（顺应日常节奏），午膳回家（保持家庭生活），不必轮流办会（避免形式主义），恬淡省事（内在修持而非外在繁复）。修行不是脱离日常生活的苦行，也不是繁复仪式的社交——而是在日常中保持恬淡简约。这正是“有体有用”在生活中的落实：内在修持为体，简约生活为用。",
+    "sitHint": "静坐三秒，感受恬淡简约的修行生活——不繁复，不刻意。",
+    "insightText": "恬淡省事——修行不在繁复仪式，在日常简约中修持。",
+    "questions": [
+      {
+        "text": "“午膳要回家，不必轮流办会”——这体现了什么修行理念？",
+        "options": [
+          "回家吃饭是因为明经堂伙食不好",
+          "修行不脱离日常生活——保持家庭生活，避免形式主义的社交负担，以恬淡简约为主",
+          "不必轮流办会是因为没人愿意办",
+          "修行应该脱离家庭，专注于学业"
+        ],
+        "correctIndex": 1,
+        "analysis": "回家午餐保持家庭生活，不必轮流办会避免形式主义——修行在日常中，以恬淡简约为主。",
+        "traps": [
+          {
+            "selected": 0,
+            "explanation": "陷阱：将修行设计降格为伙食问题，忽视了“保持家庭生活”的修行意图"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：将“不必轮流”歪曲为无人愿意，实际是主动避免形式主义"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：与“午膳回家”完全相反——林子恰恰主张修行不脱离家庭生活"
+          }
+        ]
+      },
+      {
+        "text": "“务以恬淡省事为主”——“恬淡省事”的修行含义是什么？",
+        "options": [
+          "恬淡就是什么都不做，省事就是偷懒",
+          "只是节约开支的经济策略",
+          "内在修持而非外在繁复仪式——简约生活是修行的用，内在修持是修行的体",
+          "修行需要热闹隆重才能有效果"
+        ],
+        "correctIndex": 2,
+        "analysis": "恬淡省事是修行的生活哲学——内在修持为体，简约生活为用，不追求外在繁复仪式。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将“恬淡省事”歪曲为偷懒不做，实际是减少形式主义而非减少修行"
+          },
+          {
+            "selected": 0,
+            "explanation": "陷阱：将修行哲学降格为经济策略"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：与“恬淡省事”完全相反——林子主张简约而非热闹"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "title": "遇期有事预先禀明",
+    "titleColor": "#1abc9c",
+    "book": "第四册·明经堂",
+    "originalText": "一遇期有事，预先禀明。",
+    "annotations": [
+      {
+        "text": "遇期有事",
+        "note": "遇到固定聚会日有急事无法参加——正常的现实情况"
+      },
+      {
+        "text": "预先禀明",
+        "note": "提前说明原因而非缺席不报——纪律性与责任感的体现"
+      }
+    ],
+    "interpretation": "这条看似简单的会规，实则蕴含修行的“纪律与责任”：遇期有事是正常现实，但预先禀明是修行态度——提前说明而非缺席不报，既是对他人的尊重，也是对自己的负责。修行不是脱离现实的苦行，现实中有急事可以缺席，但态度不能缺席。",
+    "sitHint": "静坐三秒，感受纪律与责任感——缺席可以，态度不能缺席。",
+    "insightText": "预先禀明——缺席可以，态度不能缺席，纪律即修行。",
+    "questions": [
+      {
+        "text": "“遇期有事，预先禀明”——这条看似简单的会规，实则蕴含什么修行态度？",
+        "options": [
+          "只是请假制度，与修行无关",
+          "意味着修行活动不重要，随时可以请假",
+          "严格要求绝对不能缺席任何活动",
+          "纪律与责任感——缺席可以但态度不能缺席，提前说明是对他人尊重也是对自己负责"
+        ],
+        "correctIndex": 3,
+        "analysis": "预先禀明蕴含纪律与责任感——现实可缺席但态度不能缺席，是对他人尊重与自我负责。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将修行纪律降格为行政请假制度，忽视了责任感的修行含义"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：从“可以请假”滑向“活动不重要”的极端否定"
+          },
+          {
+            "selected": 0,
+            "explanation": "陷阱：与“遇期有事预先禀明”相反——林子允许有事缺席，只是要求提前说明"
+          }
+        ]
+      },
+      {
+        "text": "从“遇期有事预先禀明”可以看出林子对修行与现实的关系持什么态度？",
+        "options": [
+          "修行高于一切现实事务，有急事也必须参加",
+          "修行不脱离现实——现实急事可以缺席，但纪律态度不能缺席，修行在日常中",
+          "现实事务比修行更重要，所以随时可以请假",
+          "修行与现实完全无关，请假不需要理由"
+        ],
+        "correctIndex": 1,
+        "analysis": "林子的态度：修行不脱离现实——有急事可以缺席，但纪律态度不能缺席，修行在日常中。",
+        "traps": [
+          {
+            "selected": 0,
+            "explanation": "陷阱：极端强调修行高于一切，与“遇期有事预先禀明”的灵活性矛盾"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：极端贬低修行价值，与整个明经堂的修行体系矛盾"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：割裂修行与现实，而林子处处强调修行在日常中"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "title": "明经堂·有体有用大中至正",
+    "titleColor": "#f39c12",
+    "book": "第四册·明经堂",
+    "originalText": "其惟正心修身，以为兼善之地；业举遵制，以为进身之阶。斯谓之有体有用之学，大中至正之道也。条列于左，诸生其惟遵而行之。",
+    "annotations": [
+      {
+        "text": "正心修身",
+        "note": "内在修持是兼善天下的根基——体"
+      },
+      {
+        "text": "业举遵制",
+        "note": "外在遵制是进身仕途的阶梯——用"
+      },
+      {
+        "text": "有体有用之学",
+        "note": "体用兼备才是完整学问——贯穿全篇的核心命题"
+      },
+      {
+        "text": "大中至正之道",
+        "note": "不偏不倚的中正大道——全篇的终极指向"
+      },
+      {
+        "text": "条列于左",
+        "note": "以下条规是“有体有用”的具体落实"
+      },
+      {
+        "text": "遵而行之",
+        "note": "不是只看条规，而是遵行实践——知行合一"
+      }
+    ],
+    "interpretation": "全篇收束！明经堂的总旨就是“有体有用之学，大中至正之道”：正心修身是体，业举遵制是用——内在修持为根基，外在实践为阶梯，体用兼备才是完整学问。以下所有条规（作文、读书、会齐、起止簿、恬淡省事、预先禀明）都是这个总旨的具体落实。而“遵而行之”四个字是终极提醒——不是只看条规纸上谈兵，而是真正遵行实践，知行合一。",
+    "sitHint": "静坐三秒，感受体用兼备、大中至正的完整学问——从总旨到条规，知行合一。",
+    "insightText": "有体有用，大中至正——明经堂总旨贯穿条规，遵而行之即知行合一。",
+    "questions": [
+      {
+        "text": "明经堂全篇从总论到六条条规，贯穿始终的核心命题是什么？",
+        "options": [
+          "只是科举考试的备考指南",
+          "六条条规彼此独立，没有贯穿的核心命题",
+          "“有体有用之学，大中至正之道”——从总论到每条规，体用兼备贯穿始终",
+          "核心命题是“恬淡省事”的生活方式"
+        ],
+        "correctIndex": 2,
+        "analysis": "全篇核心命题是“有体有用之学，大中至正之道”——从总论到每条规，体用兼备贯穿始终。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将明经堂降格为科举备考指南，忽视了修道与学文并重的核心命题"
+          },
+          {
+            "selected": 0,
+            "explanation": "陷阱：割裂条规之间的内在联系，每条规都是“有体有用”的具体落实"
+          },
+          {
+            "selected": 3,
+            "explanation": "陷阱：将一条生活规条提升为核心命题，而“恬淡省事”只是体用思想在生活中的体现"
+          }
+        ]
+      },
+      {
+        "text": "“条列于左，诸生其惟遵而行之”——“遵而行之”的终极提醒是什么？",
+        "options": [
+          "只要记住条规内容就行，不需要真的去做",
+          "遵而行之意味着强制服从，不允许任何质疑",
+          "条规只是参考，可以根据个人喜好选择性执行",
+          "知行合一——不是只看条规纸上谈兵，而是真正遵行实践，体（知）用（行）兼备"
+        ],
+        "correctIndex": 3,
+        "analysis": "“遵而行之”是知行合一的终极提醒——体（知）用（行）兼备，不是纸上谈兵而是实践修行。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "陷阱：将“遵而行之”歪曲为“记住就行”，与“行”字直接矛盾"
+          },
+          {
+            "selected": 2,
+            "explanation": "陷阱：将“遵而行之”歪曲为强制服从，忽视了这是修行实践的自觉行动"
+          },
+          {
+            "selected": 0,
+            "explanation": "陷阱：将条规降格为可选参考，与“其惟遵而行之”的“惟”（只有）矛盾"
+          }
+        ]
+      }
+    ]
+  }
+];
+
+// 册号配置
+var BOOK_NUM = 4;
+var DATA_FILE = "zen-data-4.json";
+var PROGRESS_KEY = "zen_progress_4";
+var COMPLETED_KEY = "zen_completed_4";
+
+var levels = LEVELS_FALLBACK;
+
+// ═══ 注册道号（跨册共享） ═══
+function registerName() {
+  try {
+    var input = document.getElementById('regNameInput');
+    var pwdInput = document.getElementById('regPwdInput');
+    var name = (input && input.value) ? input.value.trim() : '';
+    var pwd = (pwdInput && pwdInput.value) ? pwdInput.value.trim() : '';
+
+    if (!name) {
+      if (input) {
+        input.style.borderColor = '#e74c3c';
+        input.setAttribute('placeholder', '请输入道号');
+        setTimeout(function() { input.style.borderColor = ''; }, 2000);
+      }
+      return;
+    }
+
+    if (!pwd) {
+      if (pwdInput) {
+        pwdInput.style.borderColor = '#e74c3c';
+        pwdInput.setAttribute('placeholder', '请输入口令');
+        setTimeout(function() { pwdInput.style.borderColor = ''; }, 2000);
+      }
+      return;
+    }
+
+    playerName = name;
+    isRegistered = true;
+    localStorage.setItem('zen_name', name);
+    localStorage.setItem('zen_pwd_' + name, pwd);
+    autoUpdateLeaderboard();
+    updateScoreDisplay();
+    updateRegisterUI();
+    var hint = document.getElementById('unregisteredHint');
+    if (hint) hint.style.display = 'none';
+
+    var regBox = document.getElementById('registerBox');
+    if (regBox) {
+      var successMsg = document.createElement('div');
+      successMsg.style.cssText = 'font-size:26px;color:#4CAF50;text-align:center;margin-top:10px;letter-spacing:4px;font-weight:600';
+      successMsg.textContent = '\u2726 \u767b\u5802\u6210\u529f';
+      regBox.appendChild(successMsg);
+      setTimeout(function() { if (successMsg.parentNode) successMsg.parentNode.removeChild(successMsg); }, 3000);
+    }
+  } catch(e) {
+    alert('注册出错: ' + e.message);
+  }
+}
+
+function updateRegisterUI() {
+  var regBox = document.getElementById('registerBox');
+  var hint = document.getElementById('unregisteredHint');
+  if (!regBox) return;
+  if (isRegistered && playerName) {
+    regBox.innerHTML = '<div class="reg-title">道号：<span style="color:#fff;font-weight:700">' + playerName + '</span></div>' +
+      '<div style="font-size:24px;color:var(--text-light);text-align:center;margin-bottom:6px">悟境 ' + score + ' 分 · 答对+1</div>' +
+      '<div style="font-size:22px;color:var(--gold);text-align:center;letter-spacing:4px;margin-bottom:14px">✦ 道号已记录于榜单 · 跨册通用</div>' +
+      '<button class="reg-btn" onclick="changeName()" style="font-size:20px;padding:12px 30px;letter-spacing:4px;margin-top:12px">修 改 道 号</button>';
+    if (hint) hint.style.display = 'none';
+  }
+}
+
+function changeName() {
+  var regBox = document.getElementById('registerBox');
+  regBox.innerHTML = '<div class="reg-title">修改道号 · 留名悟境</div>' +
+    '<input type="password" class="reg-input reg-input-pwd" id="regOldPwdInput" maxlength="4" placeholder="旧口令验证" inputmode="numeric">' +
+    '<input type="text" class="reg-input" id="regNameInput" maxlength="8" placeholder="输入新道号" value="' + (playerName || '') + '">' +
+    '<input type="password" class="reg-input reg-input-pwd" id="regNewPwdInput" maxlength="4" placeholder="新4位数字口令" inputmode="numeric">' +
+    '<div class="reg-hint">需验证旧口令才能修改<br>修改后旧道号将从榜单移除</div>' +
+    '<button class="reg-btn" onclick="changeNameConfirm()">确 认 修 改</button>';
+}
+
+function changeNameConfirm() {
+  var oldPwdInput = document.getElementById('regOldPwdInput');
+  var nameInput = document.getElementById('regNameInput');
+  var newPwdInput = document.getElementById('regNewPwdInput');
+  var oldPwd = oldPwdInput.value.trim();
+  var savedPwd = localStorage.getItem('zen_pwd_' + playerName) || '';
+  if (!savedPwd || oldPwd !== savedPwd) {
+    oldPwdInput.style.borderColor = 'var(--vermillion)';
+    oldPwdInput.value = '';
+    oldPwdInput.setAttribute('placeholder', '旧口令不正确');
+    setTimeout(function() { oldPwdInput.style.borderColor = ''; }, 2000);
+    return;
+  }
+  var newName = nameInput.value.trim();
+  if (!newName) {
+    nameInput.style.borderColor = 'var(--vermillion)';
+    nameInput.setAttribute('placeholder', '请输入新道号');
+    setTimeout(function() { nameInput.style.borderColor = ''; }, 2000);
+    return;
+  }
+  var newPwd = newPwdInput.value.trim();
+  if (!newPwd || !/^\d{4}$/.test(newPwd)) {
+    newPwdInput.style.borderColor = 'var(--vermillion)';
+    newPwdInput.value = '';
+    newPwdInput.setAttribute('placeholder', '请输入4位数字');
+    setTimeout(function() { newPwdInput.style.borderColor = ''; }, 2000);
+    return;
+  }
+  removeFromLeaderboard(playerName);
+  localStorage.removeItem('zen_pwd_' + playerName);
+  playerName = newName;
+  isRegistered = true;
+  localStorage.setItem('zen_name', newName);
+  localStorage.setItem('zen_pwd_' + newName, newPwd);
+  autoUpdateLeaderboard();
+  updateScoreDisplay();
+}
+
+function removeFromLeaderboard(name) {
+  var lb = getLeaderboard();
+  for (var i = 0; i < lb.length; i++) {
+    if (lb[i].name === name) {
+      lb.splice(i, 1);
+      break;
+    }
+  }
+  saveLeaderboard(lb);
+}
+
+function autoUpdateLeaderboard() {
+  if (!playerName) return;
+  var lb = getLeaderboard();
+  var found = false;
+  for (var i = 0; i < lb.length; i++) {
+    if (lb[i].name === playerName) {
+      lb[i].score = Math.max(lb[i].score, score);
+      lb[i].date = new Date().toLocaleDateString('zh-CN');
+      found = true;
+      break;
+    }
+  }
+  if (!found) {
+    lb.push({ name: playerName, score: score, date: new Date().toLocaleDateString('zh-CN') });
+  }
+  lb.sort(function(a, b) { return b.score - a.score; });
+  if (lb.length > 50) lb = lb.slice(0, 50);
+  saveLeaderboard(lb);
+}
+
+var currentLevel = 0;
+var currentQuestion = 0;
+var selectedOption = -1;
+var completedLevels = new Set();
+var sittingTimer = null;
+var sittingSeconds = 0;
+
+// ═══ 闯关进度存档（册内独立） ═══
+var savedProgress = parseInt(localStorage.getItem(PROGRESS_KEY) || '0');
+if (savedProgress > 0 && savedProgress < 100) {
+  for (var i = 0; i < savedProgress; i++) {
+    completedLevels.add(i);
+  }
+}
+var savedCompleted = localStorage.getItem(COMPLETED_KEY);
+if (savedCompleted) {
+  try {
+    var arr = JSON.parse(savedCompleted);
+    for (var i = 0; i < arr.length; i++) {
+      completedLevels.add(arr[i]);
+    }
+  } catch(e) {}
+}
+
+// ═══ 积分系统（跨册共享） ═══
+var score = parseInt(localStorage.getItem('zen_score') || '0');
+var playerName = localStorage.getItem('zen_name') || '';
+var isRegistered = !!playerName;
+var urlParams = new URLSearchParams(window.location.search);
+var callbackUsername = urlParams.get('username') || '';
+var callbackUrl = urlParams.get('callback') || '';
+if (callbackUsername && !playerName) {
+  playerName = callbackUsername;
+  localStorage.setItem('zen_name', playerName);
+}
+var earnedPoints = 0;
+
+function updateScoreDisplay() {
+  var el1 = document.getElementById('entranceScore');
+  var el2 = document.getElementById('gameScore');
+  var el3 = document.getElementById('lbMyScore');
+  var badgeName = document.getElementById('badgeName');
+  if (el1) el1.textContent = score;
+  if (el2) el2.textContent = score;
+  if (el3) el3.textContent = score;
+  if (badgeName) badgeName.textContent = playerName ? playerName : '';
+  localStorage.setItem('zen_score', score);
+  updateRegisterUI();
+}
+
+function addScore(delta) {
+  score = Math.max(0, score + delta);
+  earnedPoints = Math.max(0, earnedPoints + delta);
+  updateScoreDisplay();
+  if (playerName) autoUpdateLeaderboard();
+}
+
+// ═══ 排行榜（跨册共享） ═══
+function getLeaderboard() {
+  try {
+    return JSON.parse(localStorage.getItem('zen_leaderboard') || '[]');
+  } catch(e) { return []; }
+}
+
+function saveLeaderboard(lb) {
+  localStorage.setItem('zen_leaderboard', JSON.stringify(lb));
+}
+
+function saveToLeaderboard() {
+  var nameInput = document.getElementById('lbNameInput');
+  var name = nameInput.value.trim();
+  if (!name) {
+    nameInput.style.borderColor = 'var(--vermillion)';
+    nameInput.setAttribute('placeholder', '请输入道号');
+    setTimeout(function() { nameInput.style.borderColor = ''; }, 2000);
+    return;
+  }
+  playerName = name;
+  localStorage.setItem('zen_name', name);
+  var lb = getLeaderboard();
+  var found = false;
+  for (var i = 0; i < lb.length; i++) {
+    if (lb[i].name === name) {
+      lb[i].score = Math.max(lb[i].score, score);
+      lb[i].date = new Date().toLocaleDateString('zh-CN');
+      found = true;
+      break;
+    }
+  }
+  if (!found) {
+    lb.push({ name: name, score: score, date: new Date().toLocaleDateString('zh-CN') });
+  }
+  lb.sort(function(a, b) { return b.score - a.score; });
+  if (lb.length > 50) lb = lb.slice(0, 50);
+  saveLeaderboard(lb);
+  renderLeaderboard();
+}
+
+function renderLeaderboard() {
+  var lb = getLeaderboard();
+  var listEl = document.getElementById('lbList');
+  if (!listEl) return;
+  if (lb.length === 0) {
+    listEl.innerHTML = '<div class="zen-lb-empty">榜单尚空 · 留名登榜者即为开山之人</div>';
+    return;
+  }
+  var html = '';
+  for (var i = 0; i < lb.length; i++) {
+    var rankClass = i < 3 ? 'top3' : '';
+    var rankSymbol = i === 0 ? '壹' : (i === 1 ? '贰' : (i === 2 ? '叁' : (i + 1)));
+    html += '<div class="zen-lb-item">' +
+      '<span class="lb-rank ' + rankClass + '">' + rankSymbol + '</span>' +
+      '<span class="lb-name">' + lb[i].name + '</span>' +
+      '<span class="lb-score">' + lb[i].score + '分</span>' +
+    '</div>';
+  }
+  listEl.innerHTML = html;
+}
+
+function showLeaderboard() {
+  var overlay = document.getElementById('lbOverlay');
+  var nameInput = document.getElementById('lbNameInput');
+  var myNameEl = document.getElementById('lbMyName');
+  if (playerName && nameInput) nameInput.value = playerName;
+  if (myNameEl) myNameEl.textContent = playerName || '未注册';
+  updateScoreDisplay();
+  renderLeaderboard();
+  overlay.classList.add('visible');
+}
+
+function closeLeaderboard() {
+  document.getElementById('lbOverlay').classList.remove('visible');
+}
+
+// 动态加载 JSON
+function loadData() {
+  fetch(DATA_FILE)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data && data.length > 0) {
+        levels = data;
+        console.log('[OK] 从 ' + DATA_FILE + ' 加载了 ' + data.length + ' 个关卡');
+        document.getElementById('levelCount').textContent = '共 ' + data.length + ' 关 · 随时更新';
+      }
+    })
+    .catch(function(e) {
+      console.log('[INFO] fetch ' + DATA_FILE + ' 失败，使用内嵌数据：' + e.message);
+    });
+}
+loadData();
+
+// ═══ 册导航 ═══
+function switchBook(num) {
+  // 同域部署结构：deploy/book-X/index.html
+  var currentPath = window.location.pathname;
+  // 从当前册跳到另一册
+  if (currentPath.indexOf('book-') > -1) {
+    window.location.href = '../book-' + num + '/index.html';
+  } else {
+    // 本地开发模式
+    window.location.href = 'deploy/book-' + num + '/index.html';
+  }
+}
+
+// ═══ 入堂 ═══
+function enterZen() {
+  document.getElementById('levelCount').textContent = '共 ' + levels.length + ' 关 · 随时更新';
+  document.getElementById('zenEntrance').style.display = 'none';
+  document.getElementById('zenApp').style.display = 'block';
+  document.getElementById('bookNav').style.display = 'none';
+  window.scrollTo(0, 0);
+  var startLevel = 0;
+  if (isRegistered && savedProgress > 0 && savedProgress < levels.length) {
+    startLevel = savedProgress;
+  }
+  renderLevel(startLevel);
+}
+
+// ═══ 进度条 ═══
+function renderProgress() {
+  var cont = document.getElementById('zenProgress');
+  var html = '';
+  for (var i = 0; i < levels.length; i++) {
+    var cls = completedLevels.has(i) ? 'done' : (i === currentLevel ? 'active' : '');
+    html += '<div class="zen-node ' + cls + '" onclick="goToLevel(' + i + ')">' + (i+1) + '</div>';
+  }
+  cont.innerHTML = html;
+}
+
+function goToLevel(idx) {
+  if (idx <= currentLevel || completedLevels.has(idx)) {
+    currentLevel = idx;
+    selectedOption = -1;
+    renderLevel(idx);
+    window.scrollTo(0, 0);
+  }
+}
+
+// ═══ 渲染关卡 ═══
+function renderLevel(idx) {
+  currentLevel = idx;
+  currentQuestion = 0;
+  selectedOption = -1;
+  renderProgress();
+  var lv = levels[idx];
+
+  // 适配两种数据格式：original vs originalText
+  var originalText = lv.original || lv.originalText || '';
+  // 适配两种注解格式：term/explain vs text/note
+  var annotations = lv.annotations.map(function(a) {
+    return { term: a.term || a.text || '', explain: a.explain || a.note || '' };
+  });
+
+  var questionsHtml = '';
+  for (var qi = 0; qi < lv.questions.length; qi++) {
+    var q = lv.questions[qi];
+    var display = qi === 0 ? 'block' : 'none';
+    // 适配两种选项格式：string vs {letter,text}
+    var optsHtml = '';
+    var letters = ['壹','贰','叁','肆'];
+    for (var oi = 0; oi < q.options.length; oi++) {
+      var opt = q.options[oi];
+      var letter, text;
+      if (typeof opt === 'string') {
+        letter = letters[oi];
+        text = opt;
+      } else {
+        letter = opt.letter || letters[oi];
+        text = opt.text;
+      }
+      optsHtml += '<li class="zen-option-item" id="opt_' + qi + '_' + oi + '" onclick="selectOption(' + qi + ',' + oi + ')">' +
+        '<span class="opt-letter">' + letter + '</span>' +
+        '<span class="opt-text">' + text + '</span>' +
+      '</li>';
+    }
+    questionsHtml += '<div class="zen-question-section" id="qSection_' + qi + '" style="display:' + display + '">' +
+      '<div class="zen-question-label"><span class="icon">叩</span> 叩问 · 第 ' + (qi+1) + ' 问</div>' +
+      '<div class="zen-question-text">' + q.text + '</div>' +
+      '<ul class="zen-options" id="optList_' + qi + '">' + optsHtml + '</ul>' +
+      '<button class="zen-submit-btn" id="submitBtn_' + qi + '" disabled onclick="submitAnswer(' + qi + ')">印 证 悟 境</button>' +
+    '</div>' +
+    '<div class="zen-result" id="result_' + qi + '"></div>';
+  }
+
+  var html =
+    '<div class="zen-level-header">' +
+      '<div class="level-num">第 ' + (idx+1) + ' 关 / 共 ' + levels.length + ' 关</div>' +
+      '<div class="level-title ' + (lv.titleColor || 'gold') + '">' + lv.title + '</div>' +
+    '</div>' +
+    '<div class="zen-original-box"><div class="zen-original-text">' + originalText + '</div></div>' +
+    '<div class="zen-meditate-section">' +
+      '<div class="zen-meditate-label"><div class="dot"></div>参悟 · 概念注解</div>' +
+      '<ul class="zen-annotation-list">' +
+        annotations.map(function(a) {
+          return '<li class="zen-annotation-item"><div class="term">' + a.term + '</div><div class="explain">' + a.explain + '</div></li>';
+        }).join('') +
+      '</ul>' +
+      '<div class="zen-interpretation">' + lv.interpretation + '</div>' +
+    '</div>' +
+    '<div class="zen-sit-section" id="sitSection">' +
+      '<div class="sit-title">静 坐 参 悟</div>' +
+      '<div class="sit-hint">' + (lv.sitHint || '静坐参悟原文的深层逻辑，待心定后叩问印证。') + '</div>' +
+      '<button class="zen-sit-btn" id="sitBtn" onclick="startSitting()">开 始 静 坐</button>' +
+      '<div class="zen-sit-timer" id="sitTimer" style="display:none"></div>' +
+    '</div>' +
+    '<div id="questionArea" style="display:none">' + questionsHtml + '</div>';
+
+  document.getElementById('zenContent').innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+// ═══ 选择选项 ═══
+function selectOption(qi, oi) {
+  selectedOption = oi;
+  var opts = document.querySelectorAll('#optList_' + qi + ' .zen-option-item');
+  for (var i = 0; i < opts.length; i++) {
+    opts[i].classList.toggle('selected', i === oi);
+  }
+  document.getElementById('submitBtn_' + qi).disabled = false;
+}
+
+// ═══ 静坐 ═══
+function startSitting() {
+  var btn = document.getElementById('sitBtn');
+  var timer = document.getElementById('sitTimer');
+  btn.classList.add('sitting');
+  btn.textContent = '静 坐 中 · · ·';
+  btn.disabled = true;
+  timer.style.display = 'block';
+  sittingSeconds = 0;
+  sittingTimer = setInterval(function() {
+    sittingSeconds++;
+    var m = Math.floor(sittingSeconds / 60);
+    var s = sittingSeconds % 60;
+    timer.textContent = (m < 10 ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
+    if (sittingSeconds >= 3) {
+      clearInterval(sittingTimer);
+      btn.classList.remove('sitting');
+      btn.textContent = '参 悟 已 起';
+      timer.textContent = '可叩问印证';
+      document.getElementById('questionArea').style.display = 'block';
+    }
+  }, 1000);
+}
+
+// ═══ 提交答案 ═══
+function submitAnswer(qi) {
+  if (selectedOption < 0) return;
+  var lv = levels[currentLevel];
+  var q = lv.questions[qi];
+  var correct = q.correctIndex === selectedOption;
+  var resultEl = document.getElementById('result_' + qi);
+
+  if (correct) {
+    addScore(1);
+    resultEl.className = 'zen-result enlightened';
+    resultEl.style.display = 'block';
+    var trapsHtml = '';
+    if (q.traps && q.traps.length > 0) {
+      trapsHtml = '<ul class="zen-traps">' +
+        q.traps.map(function(t) {
+          var optIndex = typeof t.selected === 'number' ? t.selected : -1;
+          var optLabel = ['壹','贰','叁','肆'][optIndex] || String(optIndex + 1);
+          var trapText = t.explanation || t.trap || '';
+          return '<li class="zen-trap-item"><span class="trap-label">选项' + optLabel + '陷阱：</span><span class="trap-text">' + trapText + '</span></li>';
+        }).join('') +
+      '</ul>';
+    }
+    var insightHtml = '';
+    if (qi === lv.questions.length - 1 && lv.insightText) {
+      insightHtml = '<div class="zen-insight" style="display:block;margin-top:14px">' +
+        '<div class="insight-title">本关悟境铭言</div>' +
+        '<div class="insight-text">' + lv.insightText + '</div>' +
+      '</div>';
+    }
+    resultEl.innerHTML =
+      '<div class="zen-result-header">悟 境 印 证 · +1 分</div>' +
+      '<div class="zen-result-body">' +
+        '<div class="analysis-title">参悟解析</div>' +
+        '<div class="analysis-text">' + q.analysis + '</div>' +
+        trapsHtml + insightHtml +
+      '</div>';
+
+    var opts = document.querySelectorAll('#optList_' + qi + ' .zen-option-item');
+    for (var i = 0; i < opts.length; i++) {
+      opts[i].style.pointerEvents = 'none';
+      opts[i].style.opacity = '0.6';
+    }
+    document.getElementById('submitBtn_' + qi).style.display = 'none';
+
+    if (qi < lv.questions.length - 1) {
+      document.getElementById('qSection_' + (qi + 1)).style.display = 'block';
+      selectedOption = -1;
+      setTimeout(function() {
+        document.getElementById('qSection_' + (qi + 1)).scrollIntoView({behavior:'smooth', block:'start'});
+      }, 200);
+    } else {
+      completedLevels.add(currentLevel);
+      saveCompleted();
+      renderProgress();
+      if (currentLevel < levels.length - 1) {
+        resultEl.innerHTML += '<button class="zen-next-btn" onclick="nextLevel()">入 下 一 关</button>';
+        setTimeout(function() {
+          resultEl.scrollIntoView({behavior:'smooth', block:'end'});
+        }, 200);
+      } else {
+        showFinal();
+      }
+    }
+  } else {
+    resultEl.className = 'zen-result unenlightened';
+    resultEl.style.display = 'block';
+    var trapInfo = q.traps ? q.traps.find(function(t) {
+      var opt = q.options[selectedOption];
+      var letter = typeof opt === 'string' ? ['壹','贰','叁','肆'][selectedOption] : (opt.letter || '');
+      return t.selected === selectedOption;
+    }) : null;
+    resultEl.innerHTML =
+      '<div class="zen-result-header">参 悟 方 向</div>' +
+      '<div class="zen-result-body">' +
+        '<div class="analysis-title">此选项的参悟陷阱</div>' +
+        '<div class="analysis-text" style="color:var(--vermillion)">' +
+          (trapInfo ? '<strong>选项' + ['壹','贰','叁','肆'][selectedOption] + '</strong>：' + (trapInfo.explanation || trapInfo.trap || '') : '此选项偏离了林子的深层逻辑——请重新参悟原文的因果链') +
+        '</div>' +
+        '<div style="margin-top:10px;font-size:22px;color:var(--vermillion)">请重新静坐参悟，再叩问印证</div>' +
+      '</div>';
+    selectedOption = -1;
+    var opts = document.querySelectorAll('#optList_' + qi + ' .zen-option-item');
+    for (var i = 0; i < opts.length; i++) {
+      opts[i].classList.remove('selected');
+    }
+    document.getElementById('submitBtn_' + qi).disabled = true;
+    setTimeout(function() {
+      resultEl.scrollIntoView({behavior:'smooth', block:'start'});
+    }, 200);
+  }
+}
+
+// ═══ 保存已完成关卡 ═══
+function saveCompleted() {
+  var arr = Array.from(completedLevels);
+  localStorage.setItem(COMPLETED_KEY, JSON.stringify(arr));
+}
+
+// ═══ 下一关 ═══
+function nextLevel() {
+  if (!isRegistered && currentLevel >= 2) {
+    showRegisterPrompt();
+    return;
+  }
+  currentLevel++;
+  selectedOption = -1;
+  if (isRegistered) {
+    localStorage.setItem(PROGRESS_KEY, currentLevel);
+    savedProgress = currentLevel;
+  }
+  renderLevel(currentLevel);
+  window.scrollTo(0, 0);
+}
+
+// ═══ 注册提示 ═══
+function showRegisterPrompt() {
+  var cont = document.getElementById('zenContent');
+  cont.innerHTML = '<div style="text-align:center;padding:30px 20px">' +
+    '<div style="font-size:80px;color:var(--gold);margin-bottom:24px">✦</div>' +
+    '<div style="font-size:28px;color:var(--gold);letter-spacing:6px;font-weight:700;margin-bottom:18px">道 号 留 名</div>' +
+    '<div style="font-size:24px;color:var(--text-light);line-height:2.8;margin-bottom:24px">' +
+      '您已参悟两关，悟境初开。<br>' +
+      '注册道号，方可继续深入参悟。<br>' +
+      '道号跨册通用——一册注册即可通行全部。<br>' +
+      '道号将记录于悟境榜单，铭刻修行之证。' +
+    '</div>' +
+    '<input type="text" style="font-size:26px;padding:14px 18px;border:2px solid var(--border-zen);border-radius:6px;background:var(--bg-card);color:var(--text-zen);font-family:inherit;width:240px;text-align:center;outline:none" id="promptNameInput" maxlength="8" placeholder="输入您的道号">' +
+    '<input type="password" style="font-size:26px;padding:14px 18px;border:2px solid var(--border-zen);border-radius:6px;background:var(--bg-card);color:var(--text-zen);font-family:inherit;width:240px;text-align:center;outline:none;margin-top:10px;-webkit-text-security:disc" id="promptPwdInput" maxlength="4" placeholder="4位数字口令" inputmode="numeric">' +
+    '<button class="zen-next-btn" onclick="registerAndContinue()" style="margin-top:18px">注 册 继 续</button>' +
+    '<div style="font-size:22px;color:var(--text-muted);margin-top:12px;letter-spacing:2px">已注册道号？<span style="color:var(--gold);cursor:pointer" onclick="loginAndContinue()">点此登录继续</span></div>' +
+  '</div>';
+  window.scrollTo(0, 0);
+}
+
+function registerAndContinue() {
+  var input = document.getElementById('promptNameInput');
+  var pwdInput = document.getElementById('promptPwdInput');
+  var name = input.value.trim();
+  if (!name) {
+    input.style.borderColor = 'var(--vermillion)';
+    input.setAttribute('placeholder', '请输入道号');
+    setTimeout(function() { input.style.borderColor = ''; }, 2000);
+    return;
+  }
+  var pwd = pwdInput ? pwdInput.value.trim() : '';
+  if (!pwd || !/^\d{4}$/.test(pwd)) {
+    if (pwdInput) {
+      pwdInput.style.borderColor = 'var(--vermillion)';
+      pwdInput.value = '';
+      pwdInput.setAttribute('placeholder', '请输入4位数字口令');
+      setTimeout(function() { pwdInput.style.borderColor = ''; }, 2000);
+    }
+    return;
+  }
+  playerName = name;
+  isRegistered = true;
+  localStorage.setItem('zen_name', name);
+  localStorage.setItem('zen_pwd_' + name, pwd);
+  autoUpdateLeaderboard();
+  updateScoreDisplay();
+  currentLevel++;
+  selectedOption = -1;
+  renderLevel(currentLevel);
+  window.scrollTo(0, 0);
+}
+
+function loginAndContinue() {
+  var savedName = localStorage.getItem('zen_name');
+  if (savedName) {
+    var cont = document.getElementById('zenContent');
+    cont.innerHTML = '<div style="text-align:center;padding:30px 20px">' +
+      '<div style="font-size:80px;color:var(--gold);margin-bottom:24px">✦</div>' +
+      '<div style="font-size:28px;color:var(--gold);letter-spacing:6px;font-weight:700;margin-bottom:18px">道 号 登 堂</div>' +
+      '<div style="font-size:24px;color:var(--text-light);margin-bottom:24px">' +
+        '道号：<span style="color:#fff;font-weight:700">' + savedName + '</span>' +
+      '</div>' +
+      '<input type="password" style="font-size:26px;padding:14px 18px;border:2px solid var(--border-zen);border-radius:6px;background:var(--bg-card);color:var(--text-zen);font-family:inherit;width:240px;text-align:center;outline:none;-webkit-text-security:disc" id="loginPwdInput" maxlength="4" placeholder="输入口令验证" inputmode="numeric">' +
+      '<button class="zen-next-btn" onclick="verifyLoginAndContinue()" style="margin-top:18px">验 证 继 续</button>' +
+    '</div>';
+    window.scrollTo(0, 0);
+  } else {
+    alert('未找到已注册的道号，请先注册');
+  }
+}
+
+function verifyLoginAndContinue() {
+  var pwdInput = document.getElementById('loginPwdInput');
+  var savedPwd = localStorage.getItem('zen_pwd_' + playerName) || localStorage.getItem('zen_pwd_' + localStorage.getItem('zen_name')) || '';
+  var inputPwd = pwdInput.value.trim();
+  if (inputPwd !== savedPwd) {
+    pwdInput.style.borderColor = 'var(--vermillion)';
+    pwdInput.value = '';
+    pwdInput.setAttribute('placeholder', '口令不正确');
+    setTimeout(function() { pwdInput.style.borderColor = ''; }, 2000);
+    return;
+  }
+  playerName = localStorage.getItem('zen_name');
+  isRegistered = true;
+  updateScoreDisplay();
+  currentLevel++;
+  selectedOption = -1;
+  renderLevel(currentLevel);
+  window.scrollTo(0, 0);
+}
+
+// ═══ 通关 ═══
+function showFinal() {
+  var callbackBtnHtml = '';
+  if (callbackUrl && callbackUsername) {
+    callbackBtnHtml = '<button class="zen-next-btn" onclick="returnToXiawu()" style="margin-top:10px;background:var(--gold);color:var(--bg-dark);width:100%;letter-spacing:4px">参悟功德 · 入账夏午之音</button>';
+  }
+  var cont = document.getElementById('zenContent');
+  cont.innerHTML =
+    '<div class="zen-final" style="display:flex">' +
+      '<div class="final-seal">悟</div>' +
+      '<h2>' + levels.length + '关悟境 · 第' + BOOK_NUM + '册圆融贯通</h2>' +
+      '<div class="final-insight" style="text-align:center;margin-bottom:16px">' +
+        '最终悟境：<span style="color:var(--gold);font-weight:700;font-size:28px">' + score + '</span> 分（跨册累计）' +
+        (earnedPoints > 0 ? '<br><span style="color:var(--teal-zen);font-size:20px">本次参悟获得 ' + earnedPoints + ' 功德</span>' : '') +
+      '</div>' +
+      '<div class="final-insight">' +
+        '恭喜完成第' + BOOK_NUM + '册全部关卡！<br>' +
+        '悟境积分跨册累计——继续参悟其他册数，积累更多功德。' +
+      '</div>' +
+      '<div class="final-quote">' +
+        '道一教三，万法归心<br>' +
+        '即心即圣，你我皆可' +
+      '</div>' +
+      '<button class="zen-next-btn" onclick="restartZen()">重 新 参 悟</button>' +
+      '<div style="text-align:center;margin-top:14px;font-size:24px;color:var(--gold);letter-spacing:3px">✦ ' + (playerName || '未注册') + ' · 悟境 ' + score + ' 分</div>' +
+      '<button class="zen-leaderboard-btn" onclick="showLeaderboard()" style="margin-top:10px;width:100%">查 看 榜 单</button>' +
+      callbackBtnHtml +
+    '</div>';
+  renderProgress();
+  window.scrollTo(0, 0);
+}
+
+function restartZen() {
+  currentLevel = 0;
+  selectedOption = -1;
+  completedLevels.clear();
+  earnedPoints = 0;
+  localStorage.setItem(PROGRESS_KEY, '0');
+  localStorage.removeItem(COMPLETED_KEY);
+  savedProgress = 0;
+  renderLevel(0);
+  window.scrollTo(0, 0);
+}
+
+// ═══ 回传夏午之音 ═══
+async function generateSign(username, points) {
+  var secret = 'xiawu_sanjiao_2026';
+  var msg = username + ':' + points + ':' + secret;
+  var buffer = new TextEncoder().encode(msg);
+  var hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
+  var hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(function(b) { return b.toString(16).padStart(2, '0'); }).join('').slice(0, 16);
+}
+
+async function returnToXiawu() {
+  var sign = await generateSign(callbackUsername, earnedPoints);
+  var returnUrl = callbackUrl + '?username=' + encodeURIComponent(callbackUsername) + '&points=' + earnedPoints + '&sign=' + sign;
+  window.location.href = returnUrl;
+}
+
+// ═══ 初始化 ═══
+document.getElementById('levelCount').textContent = '共 ' + levels.length + ' 关 · 随时更新';
+if (playerName) {
+  isRegistered = true;
+  updateRegisterUI();
+} else {
+  updateScoreDisplay();
+  var hint = document.getElementById('unregisteredHint');
+  if (hint) hint.style.display = 'block';
+}
+var lbNameInput = document.getElementById('lbNameInput');
+if (lbNameInput && playerName) {
+  lbNameInput.value = playerName;
+}
+if (callbackUsername) {
+  var entranceDesc = document.querySelector('.zen-entrance .desc');
+  if (entranceDesc) {
+    entranceDesc.innerHTML += '<br><span style="color:var(--gold);font-size:18px">来自夏午之音 · ' + callbackUsername + '</span>';
+  }
+}
+if (isRegistered && savedProgress > 0 && savedProgress < levels.length) {
+  var enterBtn = document.getElementById('enterBtn');
+  if (enterBtn) {
+    enterBtn.textContent = '继 续 参 悟（第' + (savedProgress + 1) + '关）';
+  }
+}
+</script>
+</body>
+</html>
