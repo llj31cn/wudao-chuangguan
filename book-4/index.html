@@ -11411,7 +11411,7 @@ if (savedCompleted) {
 // ═══ 积分系统（跨册共享） ═══
 var score = parseInt(localStorage.getItem('zen_score') || '0');
 var playerName = localStorage.getItem('zen_name') || '';
-var isRegistered = !!playerName;
+var isRegistered = true; // 暂时关闭注册要求，所有用户可直接游玩
 var urlParams = new URLSearchParams(window.location.search);
 var callbackUsername = urlParams.get('username') || '';
 var callbackUrl = urlParams.get('callback') || '';
@@ -11790,14 +11790,9 @@ function saveCompleted() {
 
 // ═══ 下一关 ═══
 function nextLevel() {
-  if (!isRegistered && currentLevel >= 2) {
-    showRegisterPrompt();
-    return;
-  }
   currentLevel++;
   selectedOption = -1;
-  if (isRegistered) {
-    localStorage.setItem(PROGRESS_KEY, currentLevel);
+  localStorage.setItem(PROGRESS_KEY, currentLevel);
     savedProgress = currentLevel;
   }
   renderLevel(currentLevel);

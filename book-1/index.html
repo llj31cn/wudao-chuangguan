@@ -10013,7 +10013,7 @@ if (savedCompleted) {
 // ═══ 积分系统（跨册共享） ═══
 var score = parseInt(localStorage.getItem('zen_score') || '0');
 var playerName = localStorage.getItem('zen_name') || '';
-var isRegistered = !!playerName;
+var isRegistered = true; // 暂时关闭注册要求，所有用户可直接游玩
 var urlParams = new URLSearchParams(window.location.search);
 var callbackUsername = urlParams.get('username') || '';
 var callbackUrl = urlParams.get('callback') || '';
@@ -10307,7 +10307,10 @@ function submitAnswer(qi) {
     if (q.traps && q.traps.length > 0) {
       trapsHtml = '<ul class="zen-traps">' +
         q.traps.map(function(t) {
-          return '<li class="zen-trap-item"><span class="trap-label">选项' + t.option + '陷阱：</span><span class="trap-text">' + t.trap + '</span></li>';
+          var optIndex = typeof t.selected === 'number' ? t.selected : -1;
+          var optLabel = ['壹','贰','叁','肆'][optIndex] || String(optIndex + 1);
+          var trapText = t.explanation || t.trap || '';
+          return '<li class="zen-trap-item"><span class="trap-label">选项' + optLabel + '陷阱：</span><span class="trap-text">' + trapText + '</span></li>';
         }).join('') +
       '</ul>';
     }
@@ -10358,14 +10361,14 @@ function submitAnswer(qi) {
     var trapInfo = q.traps ? q.traps.find(function(t) {
       var opt = q.options[selectedOption];
       var letter = typeof opt === 'string' ? ['壹','贰','叁','肆'][selectedOption] : (opt.letter || '');
-      return t.option === letter;
+      return t.selected === selectedOption;
     }) : null;
     resultEl.innerHTML =
       '<div class="zen-result-header">参 悟 方 向</div>' +
       '<div class="zen-result-body">' +
         '<div class="analysis-title">此选项的参悟陷阱</div>' +
         '<div class="analysis-text" style="color:var(--vermillion)">' +
-          (trapInfo ? '<strong>选项' + trapInfo.option + '</strong>：' + trapInfo.trap : '此选项偏离了林子的深层逻辑——请重新参悟原文的因果链') +
+          (trapInfo ? '<strong>选项' + ['壹','贰','叁','肆'][selectedOption] + '</strong>：' + (trapInfo.explanation || trapInfo.trap || '') : '此选项偏离了林子的深层逻辑——请重新参悟原文的因果链') +
         '</div>' +
         '<div style="margin-top:10px;font-size:22px;color:var(--vermillion)">请重新静坐参悟，再叩问印证</div>' +
       '</div>';
@@ -10389,14 +10392,9 @@ function saveCompleted() {
 
 // ═══ 下一关 ═══
 function nextLevel() {
-  if (!isRegistered && currentLevel >= 2) {
-    showRegisterPrompt();
-    return;
-  }
   currentLevel++;
   selectedOption = -1;
-  if (isRegistered) {
-    localStorage.setItem(PROGRESS_KEY, currentLevel);
+  localStorage.setItem(PROGRESS_KEY, currentLevel);
     savedProgress = currentLevel;
   }
   renderLevel(currentLevel);
