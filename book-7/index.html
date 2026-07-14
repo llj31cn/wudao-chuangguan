@@ -1,0 +1,1826 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta property="og:title" content="林子正宗统论 · 第7册 · 参悟闯关">
+<meta property="og:description" content="深度参悟林兆恩思想。选项皆似合理，唯有真悟者方能辨明。">
+<meta property="og:type" content="website">
+<title>林子正宗统论 · 第7册 · 参悟闯关</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap');
+:root {
+  --bg-dark: #0a0a08; --bg-zen: #1a1815; --bg-card: #222019; --bg-card-light: #2d2b24;
+  --text-zen: #f0e8d6; --text-light: #ffffff; --text-muted: #d0c8b0; --text-bright: #ffffff;
+  --gold: #e8c060; --gold-dim: #b89848; --gold-glow: rgba(232,192,96,0.22);
+  --vermillion: #e05848; --vermillion-dim: rgba(224,88,72,0.40);
+  --teal-zen: #78d0a0; --teal-dim: rgba(120,208,160,0.30);
+  --purple-zen: #b898d8; --purple-dim: rgba(184,152,216,0.30);
+  --border-zen: #6a6050; --border-light: #807060;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: "Noto Serif SC","Source Han Serif SC","SimSun",serif;
+  background: var(--bg-dark); color: var(--text-zen); line-height: 2.6; font-size: 22px;
+  min-height: 100vh; overflow-x: hidden;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ═══ 册导航 ═══ */
+.book-nav {
+  display:flex; gap:6px; flex-wrap:wrap; justify-content:center;
+  padding:10px 10px 4px; background:var(--bg-zen); border-bottom:1px solid var(--border-zen);
+}
+.nav-book {
+  padding:6px 12px; border:1px solid var(--border-zen); border-radius:4px;
+  font-size:16px; color:var(--text-muted); cursor:pointer; transition:all 0.3s;
+  background:var(--bg-card); letter-spacing:1px; -webkit-tap-highlight-color:transparent;
+}
+.nav-book:hover,.nav-book:active { background:var(--gold-glow); color:var(--gold); }
+.nav-book.active { border-color:var(--gold); color:var(--gold); background:var(--gold-glow); }
+.nav-book.done { border-color:var(--teal-zen); color:var(--teal-zen); background:var(--teal-dim); }
+.nav-book.done.active { border-color:var(--gold); color:var(--gold); background:var(--gold-glow); }
+
+/* ═══ 入口页 ═══ */
+.zen-entrance {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  min-height:100vh; min-height:100dvh; text-align:center; padding:60px 28px 50px;
+  background: radial-gradient(ellipse at center, var(--bg-zen) 0%, var(--bg-dark) 70%);
+}
+.zen-entrance .seal {
+  width:120px; height:120px; border-radius:50%; border:3px solid var(--gold);
+  display:flex; align-items:center; justify-content:center;
+  font-size:46px; color:var(--gold); margin-bottom:40px;
+  background:radial-gradient(circle,var(--gold-glow) 0%,transparent 70%);
+  animation: seal-glow 3s ease-in-out infinite;
+}
+@keyframes seal-glow {
+  0%,100% { box-shadow:0 0 28px rgba(232,192,96,0.25); }
+  50% { box-shadow:0 0 56px rgba(232,192,96,0.45); }
+}
+.zen-entrance h1 { font-size:34px; color:var(--gold); letter-spacing:8px; margin-bottom:14px; font-weight:700; }
+.zen-entrance .sub { font-size:20px; color:var(--text-muted); margin-bottom:8px; letter-spacing:3px; }
+.zen-entrance .desc { font-size:20px; color:var(--text-muted); max-width:420px; margin-bottom:40px; line-height:2.8; }
+.zen-entrance .enter-btn {
+  padding:20px 72px; border:2px solid var(--gold); background:transparent;
+  color:var(--gold); font-family:inherit; font-size:22px; letter-spacing:6px;
+  cursor:pointer; transition:all 0.4s; border-radius:6px;
+  -webkit-tap-highlight-color: transparent;
+}
+.zen-entrance .enter-btn:hover,
+.zen-entrance .enter-btn:active { background:var(--gold-glow); box-shadow:0 0 40px rgba(232,192,96,0.4); }
+.zen-entrance .level-count { font-size:18px; color:var(--gold-dim); margin-top:14px; letter-spacing:2px; }
+
+.score-row { display:flex; align-items:center; justify-content:center; gap:12px; margin-top:10px; }
+.score-display { font-size:22px; color:var(--text-zen); letter-spacing:2px; }
+.score-val { color:var(--gold); font-weight:700; font-size:26px; }
+.zen-leaderboard-btn {
+  padding:8px 18px; border:1px solid var(--gold-dim); background:transparent;
+  color:var(--gold); font-family:inherit; font-size:18px; letter-spacing:3px;
+  cursor:pointer; transition:all 0.3s; border-radius:4px;
+  -webkit-tap-highlight-color: transparent;
+}
+.zen-leaderboard-btn:hover,.zen-leaderboard-btn:active { background:var(--gold-glow); }
+
+/* ═══ 注册道号 ═══ */
+.zen-register-box {
+  margin-top:20px; padding:20px; background:var(--bg-card); border:2px solid var(--border-light);
+  border-radius:8px; max-width:360px; text-align:center;
+}
+.reg-title { font-size:22px; color:var(--gold); letter-spacing:4px; margin-bottom:12px; font-weight:600; }
+.reg-input {
+  font-size:24px; padding:12px 16px; border:2px solid var(--border-zen); border-radius:6px;
+  background:var(--bg-card); color:var(--text-zen); font-family:inherit;
+  width:100%; text-align:center; outline:none; margin-bottom:10px;
+}
+.reg-input-pwd { -webkit-text-security:disc; }
+.reg-input:focus { border-color:var(--gold); }
+.reg-hint { font-size:18px; color:var(--text-muted); line-height:2.4; margin-bottom:12px; }
+.reg-btn {
+  padding:14px 40px; border:2px solid var(--gold); background:transparent;
+  color:var(--gold); font-family:inherit; font-size:22px; letter-spacing:4px;
+  cursor:pointer; transition:all 0.4s; border-radius:6px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ═══ 排行榜 ═══ */
+.zen-leaderboard-overlay {
+  display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85);
+  z-index:999; padding:20px; overflow-y:auto;
+}
+.zen-leaderboard-overlay.visible { display:flex; flex-direction:column; align-items:center; }
+.zen-lb-card {
+  background:var(--bg-card); border:2px solid var(--border-light); border-radius:8px;
+  padding:24px; max-width:400px; width:100%; margin-top:40px;
+}
+.zen-lb-title { font-size:26px; color:var(--gold); letter-spacing:6px; text-align:center; font-weight:700; margin-bottom:16px; }
+.zen-lb-my-score { font-size:22px; color:var(--text-zen); text-align:center; margin-bottom:16px; }
+.zen-lb-input-row { display:flex; align-items:center; gap:8px; margin-bottom:12px; }
+.zen-lb-input-row label { font-size:20px; color:var(--text-muted); }
+.zen-lb-input-row input { font-size:22px; padding:10px 14px; border:2px solid var(--border-zen); border-radius:6px; background:var(--bg-card); color:var(--text-zen); font-family:inherit; flex:1; outline:none; }
+.zen-lb-save-btn {
+  padding:12px 30px; border:2px solid var(--gold); background:transparent;
+  color:var(--gold); font-family:inherit; font-size:20px; letter-spacing:4px;
+  cursor:pointer; transition:all 0.4s; border-radius:6px; width:100%;
+}
+.zen-lb-list { margin-top:16px; }
+.zen-lb-item { display:flex; align-items:center; padding:8px 0; border-bottom:1px solid var(--border-zen); }
+.lb-rank { width:40px; font-size:20px; color:var(--text-muted); font-weight:600; }
+.lb-rank.top3 { color:var(--gold); }
+.lb-name { flex:1; font-size:22px; color:var(--text-light); }
+.lb-score { font-size:22px; color:var(--gold); font-weight:600; }
+.zen-lb-empty { font-size:20px; color:var(--text-muted); text-align:center; padding:20px; }
+.zen-lb-close-btn {
+  margin-top:16px; padding:12px 30px; border:2px solid var(--border-light); background:transparent;
+  color:var(--text-muted); font-family:inherit; font-size:20px; letter-spacing:4px;
+  cursor:pointer; transition:all 0.3s; border-radius:6px;
+}
+
+/* ═══ 主应用 ═══ */
+.zen-app { display:none; max-width:100%; margin:0 auto; padding:20px 20px 100px; }
+.zen-score-badge {
+  display:flex; align-items:center; gap:6px; padding:10px 16px;
+  background:var(--bg-card); border:1px solid var(--border-zen); border-radius:6px;
+  margin-bottom:16px;
+}
+.zen-name-tag { font-size:18px; color:var(--gold); letter-spacing:2px; }
+.score-icon { color:var(--gold); font-size:18px; }
+.score-label { font-size:18px; color:var(--text-muted); }
+.score-num { font-size:22px; color:var(--gold); font-weight:700; }
+
+/* ═══ 进度条 ═══ */
+.zen-progress {
+  display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;
+  padding:20px 0 16px; margin-bottom:20px;
+}
+.zen-node {
+  width:50px; height:50px; border-radius:50%; border:2px solid var(--border-zen);
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px; color:var(--text-muted); transition:all 0.4s; background:var(--bg-card);
+  cursor:pointer; -webkit-tap-highlight-color: transparent;
+}
+.zen-node.active { border-color:var(--gold); color:var(--gold); background:var(--gold-glow); box-shadow:0 0 20px rgba(232,192,96,0.4); }
+.zen-node.done { border-color:var(--teal-zen); color:var(--teal-zen); background:var(--teal-dim); }
+
+/* ═══ 关卡标题 ═══ */
+.zen-level-header { text-align:center; padding:24px 0 18px; border-bottom:1px solid var(--border-light); margin-bottom:20px; }
+.zen-level-header .level-num { font-size:18px; color:var(--text-muted); letter-spacing:4px; margin-bottom:6px; }
+.zen-level-header .level-title { font-size:26px; font-weight:700; letter-spacing:3px; margin-bottom:10px; }
+.zen-level-header .level-title.gold { color:var(--gold); }
+.zen-level-header .level-title.vermillion { color:var(--vermillion); }
+.zen-level-header .level-title.teal { color:var(--teal-zen); }
+.zen-level-header .level-title.purple { color:var(--purple-zen); }
+
+/* ═══ 原文框 ═══ */
+.zen-original-box {
+  background:var(--bg-card); border:2px solid var(--border-light);
+  border-radius:8px; padding:28px 20px; margin-bottom:18px; position:relative;
+}
+.zen-original-box::before {
+  content:'原文'; position:absolute; top:-1px; left:16px;
+  padding:3px 12px; background:var(--gold); color:var(--bg-dark);
+  font-size:18px; letter-spacing:3px; border-radius:0 0 6px 6px;
+}
+.zen-original-text { font-size:26px; line-height:2.8; color:var(--text-light); padding-top:10px; }
+
+/* ═══ 注解 ═══ */
+.zen-meditate-section { margin-bottom:18px; }
+.zen-meditate-label {
+  display:flex; align-items:center; gap:10px; font-size:22px; color:var(--teal-zen);
+  letter-spacing:4px; margin-bottom:14px; font-weight:600;
+}
+.zen-meditate-label .dot { width:8px; height:8px; border-radius:50%; background:var(--teal-zen); }
+.zen-annotation-list { list-style:none; }
+.zen-annotation-item {
+  display:flex; gap:10px; padding:10px 0; border-bottom:1px solid var(--border-zen);
+}
+.zen-annotation-item .term {
+  min-width:80px; font-size:22px; color:var(--gold); font-weight:600; letter-spacing:2px;
+}
+.zen-annotation-item .explain { font-size:22px; color:var(--text-zen); line-height:2.6; }
+.zen-interpretation {
+  margin-top:14px; padding:18px; background:var(--bg-card-light); border-radius:6px;
+  font-size:22px; line-height:2.8; color:var(--text-zen);
+}
+.key-concept { color:var(--gold); font-weight:700; }
+
+/* ═══ 静坐 ═══ */
+.zen-sit-section { margin-bottom:18px; text-align:center; }
+.sit-title { font-size:24px; color:var(--purple-zen); letter-spacing:6px; font-weight:600; margin-bottom:10px; }
+.sit-hint { font-size:20px; color:var(--text-muted); line-height:2.6; margin-bottom:14px; }
+.zen-sit-btn {
+  padding:16px 50px; border:2px solid var(--purple-zen); background:transparent;
+  color:var(--purple-zen); font-family:inherit; font-size:22px; letter-spacing:4px;
+  cursor:pointer; transition:all 0.4s; border-radius:6px;
+  -webkit-tap-highlight-color: transparent;
+}
+.zen-sit-btn:hover,.zen-sit-btn:active { background:var(--purple-dim); }
+.zen-sit-btn.sitting { background:var(--purple-dim); animation:pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
+.zen-sit-timer { font-size:24px; color:var(--purple-zen); margin-top:10px; letter-spacing:4px; }
+
+/* ═══ 叩问 ═══ */
+.zen-question-section { margin-bottom:18px; }
+.zen-question-label {
+  display:flex; align-items:center; gap:10px; font-size:22px; color:var(--vermillion);
+  letter-spacing:4px; margin-bottom:14px; font-weight:600;
+}
+.zen-question-label .icon { font-size:20px; }
+.zen-question-text { font-size:24px; line-height:2.8; color:var(--text-light); margin-bottom:14px; }
+.zen-options { list-style:none; }
+.zen-option-item {
+  display:flex; align-items:flex-start; gap:10px; padding:14px 12px;
+  border:1px solid var(--border-zen); border-radius:6px; margin-bottom:8px;
+  cursor:pointer; transition:all 0.3s; background:var(--bg-card);
+  -webkit-tap-highlight-color: transparent;
+}
+.zen-option-item:hover,.zen-option-item:active { background:var(--bg-card-light); }
+.zen-option-item.selected { border-color:var(--gold); background:var(--gold-glow); }
+.opt-letter { font-size:22px; color:var(--gold); font-weight:600; min-width:30px; }
+.opt-text { font-size:22px; color:var(--text-zen); line-height:2.6; }
+.zen-submit-btn {
+  padding:14px 40px; border:2px solid var(--gold); background:transparent;
+  color:var(--gold); font-family:inherit; font-size:22px; letter-spacing:4px;
+  cursor:pointer; transition:all 0.4s; border-radius:6px; margin-top:10px;
+  -webkit-tap-highlight-color: transparent;
+}
+.zen-submit-btn:disabled { opacity:0.4; cursor:not-allowed; }
+.zen-submit-btn:hover:not(:disabled),.zen-submit-btn:active:not(:disabled) { background:var(--gold-glow); }
+
+/* ═══ 结果 ═══ */
+.zen-result { margin-bottom:18px; display:none; }
+.zen-result.enlightened { border:2px solid var(--gold); }
+.zen-result.unenlightened { border:2px solid var(--vermillion); }
+.zen-result-header {
+  font-size:24px; letter-spacing:6px; text-align:center; padding:14px;
+  font-weight:700;
+}
+.zen-result.enlightened .zen-result-header { color:var(--gold); background:var(--gold-glow); }
+.zen-result.unenlightened .zen-result-header { color:var(--vermillion); background:var(--vermillion-dim); }
+.zen-result-body { padding:20px; }
+.analysis-title { font-size:22px; color:var(--text-muted); letter-spacing:3px; margin-bottom:10px; }
+.analysis-text { font-size:22px; line-height:2.8; color:var(--text-zen); }
+.zen-traps { list-style:none; margin-top:12px; }
+.zen-trap-item {
+  padding:8px 0; border-bottom:1px solid var(--border-zen);
+  font-size:20px; color:var(--text-muted); line-height:2.4;
+}
+.trap-label { color:var(--vermillion); font-weight:600; }
+.trap-text { color:var(--text-muted); }
+
+/* ═══ 悟境铭言 ═══ */
+.zen-insight {
+  margin-top:16px; padding:18px; background:var(--bg-card-light);
+  border:1px solid var(--gold-dim); border-radius:6px; text-align:center;
+}
+.insight-title { font-size:22px; color:var(--gold); letter-spacing:4px; font-weight:600; margin-bottom:10px; }
+.insight-text { font-size:24px; color:var(--text-light); line-height:2.8; }
+
+/* ═══ 下一关按钮 ═══ */
+.zen-next-btn {
+  padding:16px 50px; border:2px solid var(--gold); background:transparent;
+  color:var(--gold); font-family:inherit; font-size:22px; letter-spacing:4px;
+  cursor:pointer; transition:all 0.4s; border-radius:6px;
+  -webkit-tap-highlight-color: transparent; margin-top:8px;
+}
+
+/* ═══ 通关 ═══ */
+.zen-final {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  min-height:80vh; padding:40px 20px; text-align:center;
+  background:radial-gradient(ellipse at center, var(--bg-zen) 0%, var(--bg-dark) 70%);
+}
+.final-seal {
+  width:120px; height:120px; border-radius:50%; border:3px solid var(--gold);
+  display:flex; align-items:center; justify-content:center;
+  font-size:46px; color:var(--gold); margin-bottom:30px;
+  background:radial-gradient(circle,var(--gold-glow) 0%,transparent 70%);
+}
+.zen-final h2 { font-size:28px; color:var(--gold); letter-spacing:6px; margin-bottom:18px; }
+.final-insight { font-size:22px; color:var(--text-zen); line-height:2.8; max-width:420px; }
+.final-quote {
+  margin-top:24px; font-size:26px; color:var(--gold); letter-spacing:4px; line-height:3.0;
+  border:1px solid var(--gold-dim); padding:20px; border-radius:6px;
+}
+
+/* ═══ 更新提示 ═══ */
+.zen-update-hint {
+  font-size:18px; color:var(--text-muted); text-align:center; margin-top:20px; letter-spacing:2px;
+}
+.wechat-toolbar-space { height:60px; width:100%; }
+</style>
+</head>
+<body>
+
+<!-- ═══ 册导航 ═══ -->
+<div class="book-nav" id="bookNav"><div class="nav-book" onclick="switchBook(1)">第1册</div><div class="nav-book" onclick="switchBook(2)">第2册</div><div class="nav-book" onclick="switchBook(3)">第3册</div><div class="nav-book" onclick="switchBook(4)">第4册</div><div class="nav-book" onclick="switchBook(5)">第5册</div><div class="nav-book" onclick="switchBook(6)">第6册</div><div class="nav-book active" onclick="switchBook(7)">第7册</div><div class="nav-book" onclick="switchBook(8)">第8册</div><div class="nav-book" onclick="switchBook(9)">第9册</div><div class="nav-book" onclick="switchBook(10)">第10册</div><div class="nav-book" onclick="switchBook(11)">第11册</div><div class="nav-book" onclick="switchBook(12)">第12册</div><div class="nav-book" onclick="switchBook(13)">第13册</div><div class="nav-book" onclick="switchBook(14)">第14册</div><div class="nav-book" onclick="switchBook(15)">第15册</div><div class="nav-book" onclick="switchBook(16)">第16册</div><div class="nav-book" onclick="switchBook(17)">第17册</div><div class="nav-book" onclick="switchBook(18)">第18册</div><div class="nav-book" onclick="switchBook(19)">第19册</div><div class="nav-book" onclick="switchBook(20)">第20册</div><div class="nav-book" onclick="switchBook(21)">第21册</div><div class="nav-book" onclick="switchBook(22)">第22册</div><div class="nav-book" onclick="switchBook(23)">第23册</div><div class="nav-book" onclick="switchBook(24)">第24册</div><div class="nav-book" onclick="switchBook(25)">第25册</div><div class="nav-book" onclick="switchBook(26)">第26册</div><div class="nav-book" onclick="switchBook(27)">第27册</div><div class="nav-book" onclick="switchBook(28)">第28册</div><div class="nav-book" onclick="switchBook(29)">第29册</div><div class="nav-book" onclick="switchBook(30)">第30册</div><div class="nav-book" onclick="switchBook(31)">第31册</div><div class="nav-book" onclick="switchBook(32)">第32册</div><div class="nav-book" onclick="switchBook(33)">第33册</div><div class="nav-book" onclick="switchBook(34)">第34册</div><div class="nav-book" onclick="switchBook(35)">第35册</div><div class="nav-book" onclick="switchBook(36)">第36册</div></div>
+
+<div class="zen-entrance" id="zenEntrance">
+  <div class="seal">悟</div>
+  <h1>林子正宗统论</h1>
+  <div class="sub">第7册 · 参悟闯关</div>
+  <div class="desc">
+    此非考试，乃参悟之旅。<br>
+    每关先静心品读原文，再叩问印证悟境。<br>
+    选项皆似合理，唯有真悟者方能辨明。<br>
+    答错非失败——乃是参悟方向的指引。
+  </div>
+  <button class="enter-btn" onclick="enterZen()" id="enterBtn">入 堂 参 悟</button>
+  <div class="score-row">
+    <div class="score-display">悟境 <span class="score-val" id="entranceScore">0</span> 分</div>
+    <button class="zen-leaderboard-btn" onclick="showLeaderboard()">榜 单</button>
+  </div>
+  <div class="level-count" id="levelCount"></div>
+  <div style="font-size:20px;color:#4CAF50;text-align:center;margin-top:6px;letter-spacing:2px" id="versionTag">v1</div>
+  <div id="unregisteredHint" style="font-size:22px;color:var(--gold);letter-spacing:2px;margin-top:10px;text-align:center;display:none">⚠ 未注册道号仅可参悟前两关 · 注册后可继续深入</div>
+  <!-- 注册道号 -->
+  <div class="zen-register-box" id="registerBox">
+    <div class="reg-title">注册道号 · 留名悟境</div>
+    <input type="text" class="reg-input" id="regNameInput" maxlength="8" placeholder="输入您的道号">
+    <input type="text" class="reg-input reg-input-pwd" id="regPwdInput" maxlength="8" placeholder="输入任意口令（如1234）" inputmode="numeric">
+    <div class="reg-hint">道号将显示在积分与榜单上<br>口令防止他人冒用您的道号<br>答对一题 +1分<br>道号跨册通用——一册注册即可通行全部</div>
+    <button class="reg-btn" onclick="registerName()" id="regBtn" type="button">注 册 登 堂</button>
+  </div>
+</div>
+
+<!-- 排行榜浮层 -->
+<div class="zen-leaderboard-overlay" id="lbOverlay">
+  <div class="zen-lb-card">
+    <div class="zen-lb-title">悟 境 榜 单</div>
+    <div class="zen-lb-my-score">我的悟境：<span class="val" id="lbMyScore">0</span> 分 · <span id="lbMyName" style="color:var(--gold)"></span></div>
+    <div class="zen-lb-input-row">
+      <label>道号</label>
+      <input type="text" id="lbNameInput" maxlength="8" placeholder="输入道号登榜" value="">
+    </div>
+    <button class="zen-lb-save-btn" onclick="saveToLeaderboard()">留 名 登 榜</button>
+    <div class="zen-lb-list" id="lbList"></div>
+  </div>
+  <button class="zen-lb-close-btn" onclick="closeLeaderboard()">返 回 参 悟</button>
+</div>
+
+<div class="zen-app" id="zenApp">
+  <div class="zen-score-badge" id="scoreBadge">
+    <span class="zen-name-tag" id="badgeName"></span>
+    <span class="score-icon">✦</span>
+    <span class="score-label">悟境</span>
+    <span class="score-num" id="gameScore">0</span>
+    <span class="score-label">分</span>
+  </div>
+  <div class="zen-progress" id="zenProgress"></div>
+  <div id="zenContent"></div>
+  <div class="zen-update-hint">新关卡持续更新 · 关注公众号获取最新关卡</div>
+  <div class="wechat-toolbar-space"></div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// 关卡数据加载逻辑
+// 优先从 zen-data-7.json 动态加载
+// 加载失败则使用内嵌 fallback 数据
+// ═══════════════════════════════════════════
+
+// 内嵌 fallback 数据
+var LEVELS_FALLBACK = [
+  {
+    "id": 1,
+    "title": "无用之用为大用背如天之冬天人一也",
+    "titleColor": "#BF360C",
+    "book": "第七册·心圣直指",
+    "originalText": "或问：'人之一身，背则无所于用矣。而诸生之来受业也，必以艮背语之者，何也？'林子曰：'天有四时，而冬则不用矣；人有四肢，而背则不用矣。由是观之，人之背亦天之冬也，岂其无所用耶？故人知有用之为有用，而不知无用之为有用焉，天人一也。'",
+    "annotations": [
+      {
+        "text": "背则无所于用矣",
+        "note": "背部似乎没有实际用处——表面无用论"
+      },
+      {
+        "text": "必以艮背语之者何也",
+        "note": "为何总是用艮背来教导学生——艮背的教育意义"
+      },
+      {
+        "text": "天有四时而冬则不用矣",
+        "note": "四季中冬天似乎没有用处——冬之无用论"
+      },
+      {
+        "text": "人有四肢而背则不用矣",
+        "note": "四肢中背部似乎不参与劳作——背之无用论"
+      },
+      {
+        "text": "人之背亦天之冬也",
+        "note": "背部如同冬天——天人对应"
+      },
+      {
+        "text": "岂其无所用耶",
+        "note": "难道真的没有用处吗——反问引出无用之用"
+      },
+      {
+        "text": "人知有用之为有用而不知无用之为有用焉",
+        "note": "人只知显见之用为有用却不知看似无用实有大用——无用之用"
+      },
+      {
+        "text": "天人一也",
+        "note": "天道与人事在此层面是一致的——天人合一"
+      }
+    ],
+    "interpretation": "此段是心圣直指的开篇——无用之用为大用。有人质疑背无用为何教艮背，林子以天人对应论证：背如冬（表面无用）→冬为春蓄力（无用中有大用）→背如冬亦有大用→人只知有用之用不知无用之用→天人一也（天道人事一致）。核心命题：无用之为有用——看似无用的事物蕴含深远价值，背之无用正是艮背心法的基础。",
+    "sitHint": "静坐3秒，体悟无用之用——背如天之冬，无用中有大用，天人一也。",
+    "insightText": "背如冬→冬蓄春力→无用之有用→人知有用不知无用→天人一也。",
+    "questions": [
+      {
+        "question": "'人知有用之为有用，而不知无用之为有用焉'揭示了什么？",
+        "options": [
+          "无用和有用是完全对立的没有统一的可能性",
+          "无用之用——看似无用的事物蕴含深远价值，背如冬蓄春力，无用中有大用，人往往只关注显见之用而忽视深远之用",
+          "有用的事物才是真正有价值的无用的事物毫无意义",
+          "有用之用和无用之用只是修辞没有实质区别"
+        ],
+        "correctIndex": 2,
+        "analysis": "'不知无用之为有用'揭示了无用之用——看似无用的事物蕴含深远价值，背如冬蓄春力，人往往忽视深远之用。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "无用毫无意义违背了无用之为有用——无用实有大用而非毫无意义"
+          },
+          {
+            "selected": 0,
+            "explanation": "完全对立违背了天人一也——有用与无用统一于天人合一"
+          },
+          {
+            "selected": 3,
+            "explanation": "修辞无实质忽视了背如冬的论证——无用之用是实质性的哲学命题"
+          }
+        ]
+      },
+      {
+        "question": "'人之背亦天之冬也'的天人对应论证了什么？",
+        "options": [
+          "冬天比背部更重要应该优先关注天气",
+          "天人合一——背如冬（表面无用实则蓄力），天道（冬蓄春力）与人事（背蓄心力）一致，无用之用的天人共同规律",
+          "背和冬只是偶然相似没有深层含义",
+          "背部和冬天的对应只是医学观点与哲学无关"
+        ],
+        "correctIndex": 2,
+        "analysis": "'背亦天之冬'论证天人合一——背如冬蓄力，天道与人事在无用之用上一致，揭示天人共同规律。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "偶然相似无深层含义忽视了岂其无所用耶的论证意图——对应是有深意的"
+          },
+          {
+            "selected": 0,
+            "explanation": "冬天更重要颠倒了论证目的——论证是要说明背如冬而非冬更重要"
+          },
+          {
+            "selected": 3,
+            "explanation": "医学观点与哲学无关割裂了天人一也——背冬对应是哲学论证而非纯医学"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "黄中行庭非异端羲文周孔古今神圣",
+    "titleColor": "#D50000",
+    "book": "第七册·心圣直指",
+    "originalText": "又问：'《易》曰黄中，而道亦曰中黄；《易》曰行庭，而道亦曰黄庭。自羲文周孔以后，而世之儒者，皆讳言之，惧其有以类乎其道，而人异端之也。今子必欲举之以教人者，何也？'林子曰：'岂曰讳言之云乎哉，亦且别求其义，以训释之矣。若以黄中行庭之有类乎其道者非也，而作易之圣人其亦非邪？又况羲文周孔古今之神圣也，后虽有作者不可得而及矣。顾有不明夫心身之大道性命之微，而专有在于言语文字之间手容足容之细也，岂其然哉？'",
+    "annotations": [
+      {
+        "text": "易曰黄中而道亦曰中黄",
+        "note": "易经讲黄中道教讲中黄——儒道概念相似"
+      },
+      {
+        "text": "易曰行庭而道亦曰黄庭",
+        "note": "易经讲行庭道教讲黄庭——儒道概念相似"
+      },
+      {
+        "text": "世之儒者皆讳言之惧其有以类乎其道而人异端之",
+        "note": "儒家学者因恐类道而被视为异端故讳言——讳言的原因"
+      },
+      {
+        "text": "岂曰讳言之云乎哉亦且别求其义以训释之矣",
+        "note": "岂能讳言应另求真义进行训释——不应讳言应正解"
+      },
+      {
+        "text": "若以黄中行庭之有类乎其道者非也而作易之圣人其亦非邪",
+        "note": "若因类道而非之则作易之圣人亦非——圣人亦讲黄中行庭"
+      },
+      {
+        "text": "羲文周孔古今之神圣也后虽有作者不可得而及矣",
+        "note": "羲文周孔是古今神圣后人不可企及——圣人权威"
+      },
+      {
+        "text": "不明心身之大道性命之微而专在于言语文字手容足容之细",
+        "note": "不明心身大道性命之微而专在言辞举止细节——本末倒置"
+      }
+    ],
+    "interpretation": "此段论证黄中行庭非异端：儒者因黄中行庭类道而讳言→林子反驳：①岂能讳言应别求其义训释；②若类道则非则作易圣人亦非；③羲文周孔古今神圣不可企及。核心批评：不明心身大道性命之微而专在言辞举止细节——本末倒置。圣人之道在心身性命而非言语文字。",
+    "sitHint": "静坐3秒，体悟黄中行庭非异端——不应讳言应正解，圣人讲心身大道而非言语细节。",
+    "insightText": "儒者讳言类道→岂能讳言应训释→若类道非则圣人亦非→羲文周孔神圣→不明心身大道而专言辞细节=本末倒置。",
+    "questions": [
+      {
+        "question": "林子如何反驳'黄中行庭类道故讳言'的观点？",
+        "options": [
+          "三重反驳：①岂能讳言应别求真义训释；②若类道则非则作易圣人亦非；③不明心身大道而专言辞细节是本末倒置——讳言是逃避而非解决",
+          "承认确实应该讳言避免与道教混淆",
+          "黄中行庭确实是道教概念儒者回避是正确的",
+          "圣人也有错误不应该盲从羲文周孔"
+        ],
+        "correctIndex": 1,
+        "analysis": "林子三重反驳：岂能讳言应训释→若类道非则圣人亦非→不明心身大道是本末倒置——讳言是逃避而非解决。",
+        "traps": [
+          {
+            "selected": 0,
+            "explanation": "承认应该讳言违背了岂曰讳言之云乎哉——林子恰恰反对讳言"
+          },
+          {
+            "selected": 2,
+            "explanation": "确实是道教概念违背了作易之圣人其亦非邪——黄中行庭出自易经而非道教"
+          },
+          {
+            "selected": 3,
+            "explanation": "圣人也有错误否定了羲文周孔古今之神圣——林子恰恰强调圣人权威不可企及"
+          }
+        ]
+      },
+      {
+        "question": "'不明夫心身之大，性命之微，而专有在于言语文字之间，手容足容之细也'批评了什么？",
+        "options": [
+          "认为言语文字和礼仪举止是异端应该完全废除",
+          "本末倒置——忽视心身性命的大道而专注于言辞举止的细节，圣人之道在心身性命而非外在形式",
+          "批评所有儒者都不懂心身性命",
+          "批评言语文字和礼仪举止本身没有价值"
+        ],
+        "correctIndex": 3,
+        "analysis": "批评本末倒置——忽视心身性命大道而专注言辞举止细节，圣人之道在心身性命而非外在形式。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "言辞举止无价值过于极端——林子批评的是本末倒置而非言辞本身无价值"
+          },
+          {
+            "selected": 2,
+            "explanation": "所有儒者都不懂过于宽泛——林子批评的是专在细节的儒者而非所有儒者"
+          },
+          {
+            "selected": 0,
+            "explanation": "完全废除过于极端——林子反对的是专在细节而非废除言辞礼仪"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "道家饮食亦非异端天下万世非之不能恤",
+    "titleColor": "#880E4F",
+    "book": "第七册·心圣直指",
+    "originalText": "且道家亦尝饮食矣，而子亦将以其饮食之有类乎其道也，而异端之，而讳言之，而不复饮食之欤？余闻之师，而直指行庭心法如此，是虽天下万世非之，而有所不能恤矣。",
+    "annotations": [
+      {
+        "text": "道家亦尝饮食矣",
+        "note": "道家也有日常饮食——道家的日常行为"
+      },
+      {
+        "text": "以其饮食之有类乎其道也而异端之而讳言之而不复饮食欤",
+        "note": "若因饮食类道而视为异端讳言难道要停止饮食——类比反驳"
+      },
+      {
+        "text": "余闻之师而直指行庭心法如此",
+        "note": "我听从老师传授直指行庭心法如此——师传心法"
+      },
+      {
+        "text": "虽天下万世非之而有所不能恤矣",
+        "note": "即使天下万世非议我也不顾虑——坚定信念"
+      }
+    ],
+    "interpretation": "此段是心圣直指的信念宣言：林子用饮食类比反驳——道家也饮食，难道因类道而停止饮食？以此证明不能因类道而讳言黄中行庭。'余闻之师而直指行庭心法如此'——师传心法的权威。'虽天下万世非之而有所不能恤'——即使天下万世非议也不动摇，这是对心圣直指的坚定承诺。",
+    "sitHint": "静坐3秒，体悟信念坚定——不能因类道而讳言，天下万世非之不能恤。",
+    "insightText": "饮食类比→不能因类道而讳言→师传行庭心法→天下万世非之不能恤。",
+    "questions": [
+      {
+        "question": "'道家亦尝饮食矣'的类比反驳在论证中的作用是什么？",
+        "options": [
+          "饮食和道法完全无关类比不成立",
+          "揭示讳言的逻辑荒谬——若因类道而讳言则连饮食都要停止，因为道家也饮食，说明不能因类道而讳言合理概念",
+          "道家饮食是异端应该避免",
+          "说明道家饮食比儒家饮食更健康"
+        ],
+        "correctIndex": 3,
+        "analysis": "饮食类比揭示讳言的逻辑荒谬——若因类道而讳言则连饮食都要停止，说明不能因类道而讳言合理概念。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "道家饮食更健康偏离了论证目的——类比不是比较健康而是揭示逻辑荒谬"
+          },
+          {
+            "selected": 2,
+            "explanation": "道家饮食是异端应避免恰恰是被反驳的观点——林子反驳的是将类道视为异端"
+          },
+          {
+            "selected": 0,
+            "explanation": "饮食和道法无关类比不成立忽视了道家也饮食的事实——饮食类道是客观事实类比有效"
+          }
+        ]
+      },
+      {
+        "question": "'虽天下万世非之，而有所不能恤矣'表达了什么？",
+        "options": [
+          "对天下万世完全不在乎冷漠无情",
+          "坚定信念——即使天下万世非议也不动摇，师传心法的权威超越世俗评价",
+          "对天下万世的怨恨和愤怒",
+          "期待天下万世最终会认同自己的观点"
+        ],
+        "correctIndex": 2,
+        "analysis": "'不能恤'表达坚定信念——师传心法的权威超越世俗评价，即使天下万世非议也不动摇。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "怨恨愤怒误解了不能恤——不能恤是坚定而非愤怒"
+          },
+          {
+            "selected": 0,
+            "explanation": "冷漠无情将坚定信念降格为冷漠——不能恤是对信念的执着而非冷漠"
+          },
+          {
+            "selected": 3,
+            "explanation": "期待最终认同违背了有所不能恤——不能恤是不顾虑而非期待认同"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "艮背心法洗心退藏于密背北水心南火",
+    "titleColor": "#4A148C",
+    "book": "第七册·心圣直指",
+    "originalText": "林子曰：'背字从北从肉，背乃北方之肉也。北方属水，今以北方之背之水推之，而南方之心则火矣。火阳也，南之而居前；水阴也，北之而居后。今以心之火之南，而洗之以背之水之北者，《易》之所谓洗心退藏于密，孔门传授心法也。'",
+    "annotations": [
+      {
+        "text": "背字从北从肉背乃北方之肉也",
+        "note": "背字由北和肉组成背是北方的肉——字形与方位"
+      },
+      {
+        "text": "北方属水北方之背之水推之南方之心则火矣",
+        "note": "北方属水背属水推之则南方心属火——水火对应"
+      },
+      {
+        "text": "火阳也南之而居前水阴也北之而居后",
+        "note": "火属阳居南在前水属阴居北在后——阴阳方位"
+      },
+      {
+        "text": "以心之火之南而洗之以背之水之北",
+        "note": "以背之水洗涤心之火——水洗火即艮背心法"
+      },
+      {
+        "text": "易之所谓洗心退藏于密",
+        "note": "易经所说洗心退藏于密——艮背心法即洗心退藏"
+      },
+      {
+        "text": "孔门传授心法也",
+        "note": "这是孔门传授的心法——艮背是孔门心法"
+      }
+    ],
+    "interpretation": "此段是艮背心法的核心论证：背=北+肉→背属北方→北方属水→背属水→推之心属南方火→火阳居前水阴居后→以背水洗心火=洗心退藏于密→孔门传授心法。整个论证从字形（背从北从肉）出发，经过五行方位（北水南火），到达心法实践（以背水洗心火=洗心退藏于密）。",
+    "sitHint": "静坐3秒，体悟艮背心法——背北水洗心南火，洗心退藏于密，孔门传授心法。",
+    "insightText": "背=北肉→背属水→心属火→火阳前水阴后→背水洗心火=洗心退藏于密→孔门心法。",
+    "questions": [
+      {
+        "question": "林子从'背字从北从肉'出发的论证链揭示了什么？",
+        "options": [
+          "背字从北从肉只是巧合没有深层含义",
+          "艮背心法的完整论证——从字形（背从北从肉）→五行方位（北水南火）→阴阳属性（火阳前水阴后）→心法实践（背水洗心火=洗心退藏于密）→孔门心法",
+          "北方和南方只是地理概念与人体无关",
+          "背字的字形只是语言学问题与心法无关"
+        ],
+        "correctIndex": 3,
+        "analysis": "从背字字形出发的完整论证链揭示艮背心法——字形→五行→阴阳→心法实践→孔门心法。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "语言学问题与心法无关割裂了论证链——字形是论证的起点而非孤立问题"
+          },
+          {
+            "selected": 2,
+            "explanation": "地理概念与人体无关忽视了推之——推之是将方位对应人体"
+          },
+          {
+            "selected": 0,
+            "explanation": "巧合无深层含义否定了孔门传授心法也的结论——字形论证是有意而非巧合"
+          }
+        ]
+      },
+      {
+        "question": "'以心之火之南，而洗之以背之水之北'与'洗心退藏于密'之间什么关系？",
+        "options": [
+          "前者是后者的具体实践——背水洗心火就是洗心退藏于密的艮背心法操作，将易经抽象概念转化为可实践的心法",
+          "两者是不同的概念没有关联",
+          "洗心退藏于密比背水洗心火更高级",
+          "背水洗心火只是比喻洗心退藏于密才是真实"
+        ],
+        "correctIndex": 1,
+        "analysis": "背水洗心火是洗心退藏于密的具体实践——将易经抽象概念转化为可操作的艮背心法。",
+        "traps": [
+          {
+            "selected": 0,
+            "explanation": "不同概念无关联忽视了孔门传授心法也的统一——两者是同一心法的理论与实践"
+          },
+          {
+            "selected": 2,
+            "explanation": "后者更高级将理论与实践割裂为层级——两者是同一心法的不同表述"
+          },
+          {
+            "selected": 3,
+            "explanation": "只是比喻不是真实否定了孔门传授心法的实践性——背水洗心火是真实的心法操作"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "洗之退之之义心火藏背水洗心前藏背后退",
+    "titleColor": "#6A1B9A",
+    "book": "第七册·心圣直指",
+    "originalText": "林子曰：'洗也者，洗之也。心属乎火，而藏之以背之水者，洗之之义也。退也者，退之也，心居乎前，而藏之以背之后者，退之之义也。'",
+    "annotations": [
+      {
+        "text": "洗也者洗之也",
+        "note": "洗就是清洗净化——洗的定义"
+      },
+      {
+        "text": "心属乎火而藏之以背之水者洗之之义也",
+        "note": "心属火藏于背水就是清洗净化——洗的具体含义"
+      },
+      {
+        "text": "退也者退之也",
+        "note": "退就是后退隐退——退的定义"
+      },
+      {
+        "text": "心居乎前而藏之以背之后者退之之义也",
+        "note": "心居前藏于背后就是后退隐退——退的具体含义"
+      }
+    ],
+    "interpretation": "此段是艮背心法的操作释义：洗=心火藏于背水（以水洗火即净化）；退=心前藏于背后（从前退后即隐退）。洗心退藏于密拆解为两个操作：洗（净化）=心火→背水；退（隐退）=心前→背后。两者统一于艮背——将心从前方火的位置退藏到背后水的位置。",
+    "sitHint": "静坐3秒，体悟洗退之义——洗=心火藏背水（净化），退=心前藏背后（隐退）。",
+    "insightText": "洗=心火藏背水（净化）→退=心前藏背后（隐退）→洗心退藏=艮背操作。",
+    "questions": [
+      {
+        "question": "'洗之之义'与'退之之义'分别对应什么操作？",
+        "options": [
+          "洗和退是同一个操作没有区别",
+          "洗=心火藏于背水（以水之冷静净化心之炽热），退=心前藏于背后（从显在前退隐在后）——洗是净化退是隐退，两者统一于艮背",
+          "洗是洗澡退是走路两者与心法无关",
+          "洗比退更重要退是次要的辅助操作"
+        ],
+        "correctIndex": 2,
+        "analysis": "洗=心火藏背水（净化），退=心前藏背后（隐退）——洗是净化退是隐退，两者统一于艮背操作。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "洗澡走路与心法无关将心法操作降格为日常行为——洗退是心法的核心操作"
+          },
+          {
+            "selected": 0,
+            "explanation": "同一操作没有区别忽略了洗和退的不同含义——洗是净化退是隐退两者各有侧重"
+          },
+          {
+            "selected": 3,
+            "explanation": "洗比退重要将统一操作割裂为层级——洗退是同一心法的两面而非主次"
+          }
+        ]
+      },
+      {
+        "question": "'心居乎前，而藏之以背之后者'中的'藏'是什么含义？",
+        "options": [
+          "将心从前方显在的位置退藏到背后隐蔽的位置——藏不是隐藏而是退隐，从显到隐的主动性转移",
+          "把心藏起来不让别人看到",
+          "心被背部压迫无法在前方活动",
+          "藏意味着心消失了不再存在"
+        ],
+        "correctIndex": 1,
+        "analysis": "'藏'是将心从前方显在位置退藏到背后隐蔽位置——藏不是隐藏消失而是退隐，从显到隐的主动性转移。",
+        "traps": [
+          {
+            "selected": 0,
+            "explanation": "藏起来不让看到将藏误解为对外隐藏——藏是对内退隐而非对外隐藏"
+          },
+          {
+            "selected": 2,
+            "explanation": "被背部压迫将藏误解为被动——藏是主动的退隐而非被动压迫"
+          },
+          {
+            "selected": 3,
+            "explanation": "心消失了违背了藏之义——藏是位置转移而非消失"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "五脏丽于背心清净五脏皆清净",
+    "titleColor": "#1565C0",
+    "book": "第七册·心圣直指",
+    "originalText": "林子曰：'五脏皆丽于背，心既背而水之，则心清净矣；心既清净，则五脏亦皆清净矣。'",
+    "annotations": [
+      {
+        "text": "五脏皆丽于背",
+        "note": "五脏都与背部有密切关联——背是五脏的依托"
+      },
+      {
+        "text": "心既背而水之则心清净矣",
+        "note": "心若退藏于背以水净化则心清净——艮背使心清净"
+      },
+      {
+        "text": "心既清净则五脏亦皆清净矣",
+        "note": "心既清净则五脏也随之清净——心清净是五脏清净的关键"
+      }
+    ],
+    "interpretation": "此段论证艮背的身心效果：五脏皆丽于背（背是五脏依托）→心背而水之则心清净（艮背使心清净）→心清净则五脏皆清净（心清净影响全身）。核心命题：心是五脏的主宰——心清净则五脏皆清净，艮背心法不仅净化心更净化全身。",
+    "sitHint": "静坐3秒，体悟心净身净——五脏丽于背，心背水之则心清净，心清净则五脏清净。",
+    "insightText": "五脏丽于背→心背而水之→心清净→五脏皆清净——心净身净。",
+    "questions": [
+      {
+        "question": "'五脏皆丽于背'与'心既清净则五脏亦皆清净'之间什么关系？",
+        "options": [
+          "因果链——五脏丽于背（背是五脏依托）→心背水之则心清净→心清净则五脏皆清净，背是依托心是主宰",
+          "两者是独立的没有因果关系",
+          "五脏清净比心清净更重要",
+          "背和五脏只是解剖学关系与心法无关"
+        ],
+        "correctIndex": 1,
+        "analysis": "因果链——五脏丽于背→心背水之→心清净→五脏清净，背是五脏依托心是五脏主宰。",
+        "traps": [
+          {
+            "selected": 0,
+            "explanation": "独立无因果忽视了则的递进关系——则表示因果递进"
+          },
+          {
+            "selected": 2,
+            "explanation": "五脏比心重要颠倒了主宰关系——心既清净则五脏清净说明心是主宰"
+          },
+          {
+            "selected": 3,
+            "explanation": "解剖学与心法无关割裂了身心关系——解剖关系是心法的基础"
+          }
+        ]
+      },
+      {
+        "question": "'心既背而水之，则心清净矣'中的'背而水之'指什么？",
+        "options": [
+          "心被背部的水淹没导致心消失",
+          "心退藏于背以背之水（冷静平和）净化心之火（炽热杂念）——艮背心法的核心操作",
+          "背部泡在水里进行水疗",
+          "用水清洗背部保持背部清洁"
+        ],
+        "correctIndex": 3,
+        "analysis": "'背而水之'指心退藏于背以背之水净化心之火——艮背心法的核心操作，水洗火即净化。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "用水清洗背部将心法操作降格为物理清洗——背而水之是心退藏于背而非洗背"
+          },
+          {
+            "selected": 2,
+            "explanation": "背部泡水水疗将心法降格为物理疗法——背而水之是精神净化而非物理水疗"
+          },
+          {
+            "selected": 0,
+            "explanation": "水淹没心消失误解了清净——清净是净化而非消失"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "真水真火以神用凡水火以形用交相养",
+    "titleColor": "#B71C1C",
+    "book": "第七册·心圣直指",
+    "originalText": "或问：'以心之火之南，而藏之以背之水之北，而心之火也，其不为背之水所熄灭邪？'林子曰：'世间之凡水凡火，则以形用焉者也；而吾身之真水真火，则以神用焉者也。水多则火灭，火多则水干，此凡水凡火之性者然也；若夫以心之火之南，而藏之于背之水之北，岂惟水不能干，火不能灭，而亦且能交相养，而互相用者，其神之所为乎。'",
+    "annotations": [
+      {
+        "text": "心之火其不为背之水所熄灭邪",
+        "note": "心火是否会被背水熄灭——水火相克的疑问"
+      },
+      {
+        "text": "凡水凡火则以形用焉",
+        "note": "世间普通水火以形态发挥作用——凡水火以形用"
+      },
+      {
+        "text": "真水真火则以神用焉",
+        "note": "体内真水真火以精神发挥作用——真水火以神用"
+      },
+      {
+        "text": "水多则火灭火多则水干此凡水凡火之性",
+        "note": "水灭火火干水是凡水火的性质——凡水火相克"
+      },
+      {
+        "text": "岂惟水不能干火不能灭而亦且能交相养互相用",
+        "note": "真水火不仅不相克还能相互滋养——真水火交相养"
+      },
+      {
+        "text": "其神之所为乎",
+        "note": "这是精神作用的结果——神用使水火交相养"
+      }
+    ],
+    "interpretation": "此段解决水火相克的质疑：凡水火以形用→水灭火火干水（相克）；真水火以神用→水不干火不灭且交相养（相生）。关键区别：凡水火=物质形态→相克；真水火=精神作用→交相养。心火藏背水不是相克而是以神用交相养——艮背心法的水火不是物质对立而是精神协同。",
+    "sitHint": "静坐3秒，体悟真水真火——凡水火以形用相克，真水火以神用交相养。",
+    "insightText": "凡水火以形用→相克（水灭火火干水）→真水火以神用→交相养（水不干火不灭）→神之所为。",
+    "questions": [
+      {
+        "question": "'凡水凡火以形用'与'真水真火以神用'的关键区别是什么？",
+        "options": [
+          "凡水火是真的真水火是假的",
+          "作用方式不同——凡水火以物质形态作用（相克：水灭火火干水），真水火以精神作用（交相养：水火互相滋养），形态相克而精神相生",
+          "凡水火比真水火更强大",
+          "真水火就是凡水火的另一种说法没有区别"
+        ],
+        "correctIndex": 0,
+        "analysis": "关键区别是作用方式——凡水火以形用（相克），真水火以神用（交相养），形态相克而精神相生。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "真的vs假的误解了凡和真——凡是普通物质真是内在精神而非真假"
+          },
+          {
+            "selected": 2,
+            "explanation": "凡水火更强大颠倒了价值——真水火的交相养比凡水火的相克更有价值"
+          },
+          {
+            "selected": 3,
+            "explanation": "同一说法无区别忽视了形用vs神用的根本区别——两者作用方式完全不同"
+          }
+        ]
+      },
+      {
+        "question": "'交相养，而互相用'在艮背心法中意味着什么？",
+        "options": [
+          "心火和背水互相消灭最终两者都不存在",
+          "心火与背水在精神层面相互滋养协同作用——心火不被背水熄灭背水不被心火干涸，水火交相养而非相克",
+          "交相养意味着心火变得更弱背水变得更强",
+          "交相养只是理论实际做不到"
+        ],
+        "correctIndex": 0,
+        "analysis": "'交相养互相用'意味着心火与背水在精神层面相互滋养——水火协同而非相克，是艮背心法的核心效果。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "互相消灭违背了交相养——养是滋养而非消灭"
+          },
+          {
+            "selected": 2,
+            "explanation": "火更弱水更强将交相养误解为单向削弱——交相是双向滋养而非单向"
+          },
+          {
+            "selected": 3,
+            "explanation": "只是理论做不到否定了神之所为乎的实践性——交相养是真实的心法体验"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "神寄目藏肾日丽天藏海洗心之义天人共证",
+    "titleColor": "#0D47A1",
+    "book": "第七册·心圣直指",
+    "originalText": "今以常人言之，神则寄之于目矣，而夜寐既熟则藏之于肾，亦易之所谓洗之之义也。至夙兴之时，而目之神，有不爽然清乎？籍其不夜而肾，神岂能清？今又以天道言之，日则丽之于天矣，而夜沦地中，则藏之于海，亦易之所谓洗之之义也。",
+    "annotations": [
+      {
+        "text": "神则寄之于目矣",
+        "note": "人的精神通过眼睛感知外界——神寄于目"
+      },
+      {
+        "text": "夜寐既熟则藏之于肾",
+        "note": "夜间深度睡眠时精神收敛于肾——神藏于肾"
+      },
+      {
+        "text": "亦易之所谓洗之之义也",
+        "note": "这也是易经洗心的含义——神藏于肾即洗心"
+      },
+      {
+        "text": "至夙兴之时而目之神有不爽然清乎",
+        "note": "清晨醒来时眼神自然清晰明澈——洗心后的效果"
+      },
+      {
+        "text": "籍其不夜而肾神岂能清",
+        "note": "若夜间精神不收敛于肾则白天精神不能清醒——不洗心则不清"
+      },
+      {
+        "text": "日则丽之于天矣",
+        "note": "太阳白天高悬天空——日丽于天"
+      },
+      {
+        "text": "夜沦地中则藏之于海",
+        "note": "夜晚太阳隐没藏于海洋——日藏于海"
+      },
+      {
+        "text": "亦易之所谓洗之之义也",
+        "note": "这也是易经洗心的含义——日藏于海即洗心"
+      }
+    ],
+    "interpretation": "此段以天人双重验证洗心之义：人道验证——神寄于目→夜寐藏于肾（洗心）→夙兴目神爽然清（洗心后清醒）→不夜藏于肾则神不能清（不洗心则不清）；天道验证——日丽于天→夜沦地中藏于海（洗心）→日藏于海亦洗心之义。双重验证：人道（神夜藏肾=洗心）与天道（日夜藏海=洗心）共同证明洗心退藏于密的普遍性——天人一也。",
+    "sitHint": "静坐3秒，体悟洗心之义天人共证——神夜藏肾则日清，日夜藏海亦洗心，天人一也。",
+    "insightText": "神寄目→夜藏肾（洗心）→夙兴目清→不藏则不清→日丽天→夜藏海（洗心）→天人共证洗心之义。",
+    "questions": [
+      {
+        "question": "林子用'神夜藏肾'和'日夜藏海'双重验证了什么？",
+        "options": [
+          "验证了肾脏和海洋的健康功能",
+          "验证了洗心退藏于密的普遍性——人道（神夜藏肾=洗心）与天道（日夜藏海=洗心）共同证明洗心之义是天人共同的规律",
+          "验证了睡眠对眼睛的重要性",
+          "验证了太阳和海洋的关系与心法无关"
+        ],
+        "correctIndex": 0,
+        "analysis": "双重验证洗心退藏于密的普遍性——人道神夜藏肾与天道日夜藏海共同证明洗心是天人共同的规律。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "肾脏和海洋健康将哲学验证降格为生理地理——验证的是洗心之义而非器官功能"
+          },
+          {
+            "selected": 2,
+            "explanation": "睡眠对眼睛重要过于窄化——验证的是洗心的普遍规律而非仅睡眠功能"
+          },
+          {
+            "selected": 3,
+            "explanation": "太阳海洋与心法无关忽视了亦易之所谓洗之之义也——日夜藏海是洗心的天道验证"
+          }
+        ]
+      },
+      {
+        "question": "'籍其不夜而肾，神岂能清'在论证中的作用是什么？",
+        "options": [
+          "说明肾脏在夜间工作最辛苦",
+          "反面论证——若夜间精神不收敛于肾（不洗心）则白天精神不能清醒，证明洗心退藏是清醒的必要条件",
+          "说明夜间精神应该留在眼睛而非收敛",
+          "说明清醒与是否藏肾没有关系"
+        ],
+        "correctIndex": 0,
+        "analysis": "反面论证——若不洗心（不夜藏肾）则不清醒（神岂能清），证明洗心退藏是清醒的必要条件。",
+        "traps": [
+          {
+            "selected": 1,
+            "explanation": "肾脏最辛苦偏离了论证目的——论证的是洗心而非肾脏工作量"
+          },
+          {
+            "selected": 2,
+            "explanation": "留在眼睛违背了藏之于肾——夜藏于肾是正确的做法而非留在眼睛"
+          },
+          {
+            "selected": 3,
+            "explanation": "没有关系否定了岂能清的因果——岂能清恰恰说明有关系"
+          }
+        ]
+      }
+    ]
+  }
+];
+
+// 册号配置
+var BOOK_NUM = 7;
+var DATA_FILE = "zen-data-7.json";
+var PROGRESS_KEY = "zen_progress_7";
+var COMPLETED_KEY = "zen_completed_7";
+
+var levels = LEVELS_FALLBACK;
+
+// ═══ 注册道号（跨册共享） ═══
+function registerName() {
+  try {
+    var input = document.getElementById('regNameInput');
+    var pwdInput = document.getElementById('regPwdInput');
+    var name = (input && input.value) ? input.value.trim() : '';
+    var pwd = (pwdInput && pwdInput.value) ? pwdInput.value.trim() : '';
+
+    if (!name) {
+      if (input) {
+        input.style.borderColor = '#e74c3c';
+        input.setAttribute('placeholder', '请输入道号');
+        setTimeout(function() { input.style.borderColor = ''; }, 2000);
+      }
+      return;
+    }
+
+    if (!pwd) {
+      if (pwdInput) {
+        pwdInput.style.borderColor = '#e74c3c';
+        pwdInput.setAttribute('placeholder', '请输入口令');
+        setTimeout(function() { pwdInput.style.borderColor = ''; }, 2000);
+      }
+      return;
+    }
+
+    playerName = name;
+    isRegistered = true;
+    localStorage.setItem('zen_name', name);
+    localStorage.setItem('zen_pwd_' + name, pwd);
+    autoUpdateLeaderboard();
+    updateScoreDisplay();
+    updateRegisterUI();
+    var hint = document.getElementById('unregisteredHint');
+    if (hint) hint.style.display = 'none';
+
+    var regBox = document.getElementById('registerBox');
+    if (regBox) {
+      var successMsg = document.createElement('div');
+      successMsg.style.cssText = 'font-size:26px;color:#4CAF50;text-align:center;margin-top:10px;letter-spacing:4px;font-weight:600';
+      successMsg.textContent = '\u2726 \u767b\u5802\u6210\u529f';
+      regBox.appendChild(successMsg);
+      setTimeout(function() { if (successMsg.parentNode) successMsg.parentNode.removeChild(successMsg); }, 3000);
+    }
+  } catch(e) {
+    alert('注册出错: ' + e.message);
+  }
+}
+
+function updateRegisterUI() {
+  var regBox = document.getElementById('registerBox');
+  var hint = document.getElementById('unregisteredHint');
+  if (!regBox) return;
+  if (isRegistered && playerName) {
+    regBox.innerHTML = '<div class="reg-title">道号：<span style="color:#fff;font-weight:700">' + playerName + '</span></div>' +
+      '<div style="font-size:24px;color:var(--text-light);text-align:center;margin-bottom:6px">悟境 ' + score + ' 分 · 答对+1</div>' +
+      '<div style="font-size:22px;color:var(--gold);text-align:center;letter-spacing:4px;margin-bottom:14px">✦ 道号已记录于榜单 · 跨册通用</div>' +
+      '<button class="reg-btn" onclick="changeName()" style="font-size:20px;padding:12px 30px;letter-spacing:4px;margin-top:12px">修 改 道 号</button>';
+    if (hint) hint.style.display = 'none';
+  }
+}
+
+function changeName() {
+  var regBox = document.getElementById('registerBox');
+  regBox.innerHTML = '<div class="reg-title">修改道号 · 留名悟境</div>' +
+    '<input type="password" class="reg-input reg-input-pwd" id="regOldPwdInput" maxlength="4" placeholder="旧口令验证" inputmode="numeric">' +
+    '<input type="text" class="reg-input" id="regNameInput" maxlength="8" placeholder="输入新道号" value="' + (playerName || '') + '">' +
+    '<input type="password" class="reg-input reg-input-pwd" id="regNewPwdInput" maxlength="4" placeholder="新4位数字口令" inputmode="numeric">' +
+    '<div class="reg-hint">需验证旧口令才能修改<br>修改后旧道号将从榜单移除</div>' +
+    '<button class="reg-btn" onclick="changeNameConfirm()">确 认 修 改</button>';
+}
+
+function changeNameConfirm() {
+  var oldPwdInput = document.getElementById('regOldPwdInput');
+  var nameInput = document.getElementById('regNameInput');
+  var newPwdInput = document.getElementById('regNewPwdInput');
+  var oldPwd = oldPwdInput.value.trim();
+  var savedPwd = localStorage.getItem('zen_pwd_' + playerName) || '';
+  if (!savedPwd || oldPwd !== savedPwd) {
+    oldPwdInput.style.borderColor = 'var(--vermillion)';
+    oldPwdInput.value = '';
+    oldPwdInput.setAttribute('placeholder', '旧口令不正确');
+    setTimeout(function() { oldPwdInput.style.borderColor = ''; }, 2000);
+    return;
+  }
+  var newName = nameInput.value.trim();
+  if (!newName) {
+    nameInput.style.borderColor = 'var(--vermillion)';
+    nameInput.setAttribute('placeholder', '请输入新道号');
+    setTimeout(function() { nameInput.style.borderColor = ''; }, 2000);
+    return;
+  }
+  var newPwd = newPwdInput.value.trim();
+  if (!newPwd || !/^\d{4}$/.test(newPwd)) {
+    newPwdInput.style.borderColor = 'var(--vermillion)';
+    newPwdInput.value = '';
+    newPwdInput.setAttribute('placeholder', '请输入4位数字');
+    setTimeout(function() { newPwdInput.style.borderColor = ''; }, 2000);
+    return;
+  }
+  removeFromLeaderboard(playerName);
+  localStorage.removeItem('zen_pwd_' + playerName);
+  playerName = newName;
+  isRegistered = true;
+  localStorage.setItem('zen_name', newName);
+  localStorage.setItem('zen_pwd_' + newName, newPwd);
+  autoUpdateLeaderboard();
+  updateScoreDisplay();
+}
+
+function removeFromLeaderboard(name) {
+  var lb = getLeaderboard();
+  for (var i = 0; i < lb.length; i++) {
+    if (lb[i].name === name) {
+      lb.splice(i, 1);
+      break;
+    }
+  }
+  saveLeaderboard(lb);
+}
+
+function autoUpdateLeaderboard() {
+  if (!playerName) return;
+  var lb = getLeaderboard();
+  var found = false;
+  for (var i = 0; i < lb.length; i++) {
+    if (lb[i].name === playerName) {
+      lb[i].score = Math.max(lb[i].score, score);
+      lb[i].date = new Date().toLocaleDateString('zh-CN');
+      found = true;
+      break;
+    }
+  }
+  if (!found) {
+    lb.push({ name: playerName, score: score, date: new Date().toLocaleDateString('zh-CN') });
+  }
+  lb.sort(function(a, b) { return b.score - a.score; });
+  if (lb.length > 50) lb = lb.slice(0, 50);
+  saveLeaderboard(lb);
+}
+
+var currentLevel = 0;
+var currentQuestion = 0;
+var selectedOption = -1;
+var completedLevels = new Set();
+var sittingTimer = null;
+var sittingSeconds = 0;
+
+// ═══ 闯关进度存档（册内独立） ═══
+var savedProgress = parseInt(localStorage.getItem(PROGRESS_KEY) || '0');
+if (savedProgress > 0 && savedProgress < 100) {
+  for (var i = 0; i < savedProgress; i++) {
+    completedLevels.add(i);
+  }
+}
+var savedCompleted = localStorage.getItem(COMPLETED_KEY);
+if (savedCompleted) {
+  try {
+    var arr = JSON.parse(savedCompleted);
+    for (var i = 0; i < arr.length; i++) {
+      completedLevels.add(arr[i]);
+    }
+  } catch(e) {}
+}
+
+// ═══ 积分系统（跨册共享） ═══
+var score = parseInt(localStorage.getItem('zen_score') || '0');
+var playerName = localStorage.getItem('zen_name') || '';
+var isRegistered = true; // 暂时关闭注册要求，所有用户可直接游玩
+var urlParams = new URLSearchParams(window.location.search);
+var callbackUsername = urlParams.get('username') || '';
+var callbackUrl = urlParams.get('callback') || '';
+if (callbackUsername && !playerName) {
+  playerName = callbackUsername;
+  localStorage.setItem('zen_name', playerName);
+}
+var earnedPoints = 0;
+
+function updateScoreDisplay() {
+  var el1 = document.getElementById('entranceScore');
+  var el2 = document.getElementById('gameScore');
+  var el3 = document.getElementById('lbMyScore');
+  var badgeName = document.getElementById('badgeName');
+  if (el1) el1.textContent = score;
+  if (el2) el2.textContent = score;
+  if (el3) el3.textContent = score;
+  if (badgeName) badgeName.textContent = playerName ? playerName : '';
+  localStorage.setItem('zen_score', score);
+  updateRegisterUI();
+}
+
+function addScore(delta) {
+  score = Math.max(0, score + delta);
+  earnedPoints = Math.max(0, earnedPoints + delta);
+  updateScoreDisplay();
+  if (playerName) autoUpdateLeaderboard();
+}
+
+// ═══ 排行榜（跨册共享） ═══
+function getLeaderboard() {
+  try {
+    return JSON.parse(localStorage.getItem('zen_leaderboard') || '[]');
+  } catch(e) { return []; }
+}
+
+function saveLeaderboard(lb) {
+  localStorage.setItem('zen_leaderboard', JSON.stringify(lb));
+}
+
+function saveToLeaderboard() {
+  var nameInput = document.getElementById('lbNameInput');
+  var name = nameInput.value.trim();
+  if (!name) {
+    nameInput.style.borderColor = 'var(--vermillion)';
+    nameInput.setAttribute('placeholder', '请输入道号');
+    setTimeout(function() { nameInput.style.borderColor = ''; }, 2000);
+    return;
+  }
+  playerName = name;
+  localStorage.setItem('zen_name', name);
+  var lb = getLeaderboard();
+  var found = false;
+  for (var i = 0; i < lb.length; i++) {
+    if (lb[i].name === name) {
+      lb[i].score = Math.max(lb[i].score, score);
+      lb[i].date = new Date().toLocaleDateString('zh-CN');
+      found = true;
+      break;
+    }
+  }
+  if (!found) {
+    lb.push({ name: name, score: score, date: new Date().toLocaleDateString('zh-CN') });
+  }
+  lb.sort(function(a, b) { return b.score - a.score; });
+  if (lb.length > 50) lb = lb.slice(0, 50);
+  saveLeaderboard(lb);
+  renderLeaderboard();
+}
+
+function renderLeaderboard() {
+  var lb = getLeaderboard();
+  var listEl = document.getElementById('lbList');
+  if (!listEl) return;
+  if (lb.length === 0) {
+    listEl.innerHTML = '<div class="zen-lb-empty">榜单尚空 · 留名登榜者即为开山之人</div>';
+    return;
+  }
+  var html = '';
+  for (var i = 0; i < lb.length; i++) {
+    var rankClass = i < 3 ? 'top3' : '';
+    var rankSymbol = i === 0 ? '壹' : (i === 1 ? '贰' : (i === 2 ? '叁' : (i + 1)));
+    html += '<div class="zen-lb-item">' +
+      '<span class="lb-rank ' + rankClass + '">' + rankSymbol + '</span>' +
+      '<span class="lb-name">' + lb[i].name + '</span>' +
+      '<span class="lb-score">' + lb[i].score + '分</span>' +
+    '</div>';
+  }
+  listEl.innerHTML = html;
+}
+
+function showLeaderboard() {
+  var overlay = document.getElementById('lbOverlay');
+  var nameInput = document.getElementById('lbNameInput');
+  var myNameEl = document.getElementById('lbMyName');
+  if (playerName && nameInput) nameInput.value = playerName;
+  if (myNameEl) myNameEl.textContent = playerName || '未注册';
+  updateScoreDisplay();
+  renderLeaderboard();
+  overlay.classList.add('visible');
+}
+
+function closeLeaderboard() {
+  document.getElementById('lbOverlay').classList.remove('visible');
+}
+
+// 动态加载 JSON
+function loadData() {
+  fetch(DATA_FILE)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data && data.length > 0) {
+        levels = data;
+        console.log('[OK] 从 ' + DATA_FILE + ' 加载了 ' + data.length + ' 个关卡');
+        document.getElementById('levelCount').textContent = '共 ' + data.length + ' 关 · 随时更新';
+      }
+    })
+    .catch(function(e) {
+      console.log('[INFO] fetch ' + DATA_FILE + ' 失败，使用内嵌数据：' + e.message);
+    });
+}
+loadData();
+
+// ═══ 册导航 ═══
+function switchBook(num) {
+  // 同域部署结构：deploy/book-X/index.html
+  var currentPath = window.location.pathname;
+  // 从当前册跳到另一册
+  if (currentPath.indexOf('book-') > -1) {
+    window.location.href = '../book-' + num + '/index.html';
+  } else {
+    // 本地开发模式
+    window.location.href = 'deploy/book-' + num + '/index.html';
+  }
+}
+
+// ═══ 入堂 ═══
+function enterZen() {
+  document.getElementById('levelCount').textContent = '共 ' + levels.length + ' 关 · 随时更新';
+  document.getElementById('zenEntrance').style.display = 'none';
+  document.getElementById('zenApp').style.display = 'block';
+  document.getElementById('bookNav').style.display = 'none';
+  window.scrollTo(0, 0);
+  var startLevel = 0;
+  if (isRegistered && savedProgress > 0 && savedProgress < levels.length) {
+    startLevel = savedProgress;
+  }
+  renderLevel(startLevel);
+}
+
+// ═══ 进度条 ═══
+function renderProgress() {
+  var cont = document.getElementById('zenProgress');
+  var html = '';
+  for (var i = 0; i < levels.length; i++) {
+    var cls = completedLevels.has(i) ? 'done' : (i === currentLevel ? 'active' : '');
+    html += '<div class="zen-node ' + cls + '" onclick="goToLevel(' + i + ')">' + (i+1) + '</div>';
+  }
+  cont.innerHTML = html;
+}
+
+function goToLevel(idx) {
+  if (idx <= currentLevel || completedLevels.has(idx)) {
+    currentLevel = idx;
+    selectedOption = -1;
+    renderLevel(idx);
+    window.scrollTo(0, 0);
+  }
+}
+
+// ═══ 渲染关卡 ═══
+function renderLevel(idx) {
+  currentLevel = idx;
+  currentQuestion = 0;
+  selectedOption = -1;
+  renderProgress();
+  var lv = levels[idx];
+
+  // 适配两种数据格式：original vs originalText
+  var originalText = lv.original || lv.originalText || '';
+  // 适配两种注解格式：term/explain vs text/note
+  var annotations = lv.annotations.map(function(a) {
+    return { term: a.term || a.text || '', explain: a.explain || a.note || '' };
+  });
+
+  var questionsHtml = '';
+  for (var qi = 0; qi < lv.questions.length; qi++) {
+    var q = lv.questions[qi];
+    var display = qi === 0 ? 'block' : 'none';
+    // 适配两种选项格式：string vs {letter,text}
+    var optsHtml = '';
+    var letters = ['壹','贰','叁','肆'];
+    for (var oi = 0; oi < q.options.length; oi++) {
+      var opt = q.options[oi];
+      var letter, text;
+      if (typeof opt === 'string') {
+        letter = letters[oi];
+        text = opt;
+      } else {
+        letter = opt.letter || letters[oi];
+        text = opt.text;
+      }
+      optsHtml += '<li class="zen-option-item" id="opt_' + qi + '_' + oi + '" onclick="selectOption(' + qi + ',' + oi + ')">' +
+        '<span class="opt-letter">' + letter + '</span>' +
+        '<span class="opt-text">' + text + '</span>' +
+      '</li>';
+    }
+    questionsHtml += '<div class="zen-question-section" id="qSection_' + qi + '" style="display:' + display + '">' +
+      '<div class="zen-question-label"><span class="icon">叩</span> 叩问 · 第 ' + (qi+1) + ' 问</div>' +
+      '<div class="zen-question-text">' + q.text + '</div>' +
+      '<ul class="zen-options" id="optList_' + qi + '">' + optsHtml + '</ul>' +
+      '<button class="zen-submit-btn" id="submitBtn_' + qi + '" disabled onclick="submitAnswer(' + qi + ')">印 证 悟 境</button>' +
+    '</div>' +
+    '<div class="zen-result" id="result_' + qi + '"></div>';
+  }
+
+  var html =
+    '<div class="zen-level-header">' +
+      '<div class="level-num">第 ' + (idx+1) + ' 关 / 共 ' + levels.length + ' 关</div>' +
+      '<div class="level-title ' + (lv.titleColor || 'gold') + '">' + lv.title + '</div>' +
+    '</div>' +
+    '<div class="zen-original-box"><div class="zen-original-text">' + originalText + '</div></div>' +
+    '<div class="zen-meditate-section">' +
+      '<div class="zen-meditate-label"><div class="dot"></div>参悟 · 概念注解</div>' +
+      '<ul class="zen-annotation-list">' +
+        annotations.map(function(a) {
+          return '<li class="zen-annotation-item"><div class="term">' + a.term + '</div><div class="explain">' + a.explain + '</div></li>';
+        }).join('') +
+      '</ul>' +
+      '<div class="zen-interpretation">' + lv.interpretation + '</div>' +
+    '</div>' +
+    '<div class="zen-sit-section" id="sitSection">' +
+      '<div class="sit-title">静 坐 参 悟</div>' +
+      '<div class="sit-hint">' + (lv.sitHint || '静坐参悟原文的深层逻辑，待心定后叩问印证。') + '</div>' +
+      '<button class="zen-sit-btn" id="sitBtn" onclick="startSitting()">开 始 静 坐</button>' +
+      '<div class="zen-sit-timer" id="sitTimer" style="display:none"></div>' +
+    '</div>' +
+    '<div id="questionArea" style="display:none">' + questionsHtml + '</div>';
+
+  document.getElementById('zenContent').innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+// ═══ 选择选项 ═══
+function selectOption(qi, oi) {
+  selectedOption = oi;
+  var opts = document.querySelectorAll('#optList_' + qi + ' .zen-option-item');
+  for (var i = 0; i < opts.length; i++) {
+    opts[i].classList.toggle('selected', i === oi);
+  }
+  document.getElementById('submitBtn_' + qi).disabled = false;
+}
+
+// ═══ 静坐 ═══
+function startSitting() {
+  var btn = document.getElementById('sitBtn');
+  var timer = document.getElementById('sitTimer');
+  btn.classList.add('sitting');
+  btn.textContent = '静 坐 中 · · ·';
+  btn.disabled = true;
+  timer.style.display = 'block';
+  sittingSeconds = 0;
+  sittingTimer = setInterval(function() {
+    sittingSeconds++;
+    var m = Math.floor(sittingSeconds / 60);
+    var s = sittingSeconds % 60;
+    timer.textContent = (m < 10 ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
+    if (sittingSeconds >= 3) {
+      clearInterval(sittingTimer);
+      btn.classList.remove('sitting');
+      btn.textContent = '参 悟 已 起';
+      timer.textContent = '可叩问印证';
+      document.getElementById('questionArea').style.display = 'block';
+    }
+  }, 1000);
+}
+
+// ═══ 提交答案 ═══
+function submitAnswer(qi) {
+  if (selectedOption < 0) return;
+  var lv = levels[currentLevel];
+  var q = lv.questions[qi];
+  var correct = q.correctIndex === selectedOption;
+  var resultEl = document.getElementById('result_' + qi);
+
+  if (correct) {
+    addScore(1);
+    resultEl.className = 'zen-result enlightened';
+    resultEl.style.display = 'block';
+    var trapsHtml = '';
+    if (q.traps && q.traps.length > 0) {
+      trapsHtml = '<ul class="zen-traps">' +
+        q.traps.map(function(t) {
+          var optIndex = typeof t.selected === 'number' ? t.selected : -1;
+          var optLabel = ['壹','贰','叁','肆'][optIndex] || String(optIndex + 1);
+          var trapText = t.explanation || t.trap || '';
+          return '<li class="zen-trap-item"><span class="trap-label">选项' + optLabel + '陷阱：</span><span class="trap-text">' + trapText + '</span></li>';
+        }).join('') +
+      '</ul>';
+    }
+    var insightHtml = '';
+    if (qi === lv.questions.length - 1 && lv.insightText) {
+      insightHtml = '<div class="zen-insight" style="display:block;margin-top:14px">' +
+        '<div class="insight-title">本关悟境铭言</div>' +
+        '<div class="insight-text">' + lv.insightText + '</div>' +
+      '</div>';
+    }
+    resultEl.innerHTML =
+      '<div class="zen-result-header">悟 境 印 证 · +1 分</div>' +
+      '<div class="zen-result-body">' +
+        '<div class="analysis-title">参悟解析</div>' +
+        '<div class="analysis-text">' + q.analysis + '</div>' +
+        trapsHtml + insightHtml +
+      '</div>';
+
+    var opts = document.querySelectorAll('#optList_' + qi + ' .zen-option-item');
+    for (var i = 0; i < opts.length; i++) {
+      opts[i].style.pointerEvents = 'none';
+      opts[i].style.opacity = '0.6';
+    }
+    document.getElementById('submitBtn_' + qi).style.display = 'none';
+
+    if (qi < lv.questions.length - 1) {
+      document.getElementById('qSection_' + (qi + 1)).style.display = 'block';
+      selectedOption = -1;
+      setTimeout(function() {
+        document.getElementById('qSection_' + (qi + 1)).scrollIntoView({behavior:'smooth', block:'start'});
+      }, 200);
+    } else {
+      completedLevels.add(currentLevel);
+      saveCompleted();
+      renderProgress();
+      if (currentLevel < levels.length - 1) {
+        resultEl.innerHTML += '<button class="zen-next-btn" onclick="nextLevel()">入 下 一 关</button>';
+        setTimeout(function() {
+          resultEl.scrollIntoView({behavior:'smooth', block:'end'});
+        }, 200);
+      } else {
+        showFinal();
+      }
+    }
+  } else {
+    resultEl.className = 'zen-result unenlightened';
+    resultEl.style.display = 'block';
+    var trapInfo = q.traps ? q.traps.find(function(t) {
+      var opt = q.options[selectedOption];
+      var letter = typeof opt === 'string' ? ['壹','贰','叁','肆'][selectedOption] : (opt.letter || '');
+      return t.selected === selectedOption;
+    }) : null;
+    resultEl.innerHTML =
+      '<div class="zen-result-header">参 悟 方 向</div>' +
+      '<div class="zen-result-body">' +
+        '<div class="analysis-title">此选项的参悟陷阱</div>' +
+        '<div class="analysis-text" style="color:var(--vermillion)">' +
+          (trapInfo ? '<strong>选项' + ['壹','贰','叁','肆'][selectedOption] + '</strong>：' + (trapInfo.explanation || trapInfo.trap || '') : '此选项偏离了林子的深层逻辑——请重新参悟原文的因果链') +
+        '</div>' +
+        '<div style="margin-top:10px;font-size:22px;color:var(--vermillion)">请重新静坐参悟，再叩问印证</div>' +
+      '</div>';
+    selectedOption = -1;
+    var opts = document.querySelectorAll('#optList_' + qi + ' .zen-option-item');
+    for (var i = 0; i < opts.length; i++) {
+      opts[i].classList.remove('selected');
+    }
+    document.getElementById('submitBtn_' + qi).disabled = true;
+    setTimeout(function() {
+      resultEl.scrollIntoView({behavior:'smooth', block:'start'});
+    }, 200);
+  }
+}
+
+// ═══ 保存已完成关卡 ═══
+function saveCompleted() {
+  var arr = Array.from(completedLevels);
+  localStorage.setItem(COMPLETED_KEY, JSON.stringify(arr));
+}
+
+// ═══ 下一关 ═══
+function nextLevel() {
+  currentLevel++;
+  selectedOption = -1;
+  localStorage.setItem(PROGRESS_KEY, currentLevel);
+  savedProgress = currentLevel;
+  renderLevel(currentLevel);
+  window.scrollTo(0, 0);
+}
+
+// ═══ 注册提示 ═══
+function showRegisterPrompt() {
+  var cont = document.getElementById('zenContent');
+  cont.innerHTML = '<div style="text-align:center;padding:30px 20px">' +
+    '<div style="font-size:80px;color:var(--gold);margin-bottom:24px">✦</div>' +
+    '<div style="font-size:28px;color:var(--gold);letter-spacing:6px;font-weight:700;margin-bottom:18px">道 号 留 名</div>' +
+    '<div style="font-size:24px;color:var(--text-light);line-height:2.8;margin-bottom:24px">' +
+      '您已参悟两关，悟境初开。<br>' +
+      '注册道号，方可继续深入参悟。<br>' +
+      '道号跨册通用——一册注册即可通行全部。<br>' +
+      '道号将记录于悟境榜单，铭刻修行之证。' +
+    '</div>' +
+    '<input type="text" style="font-size:26px;padding:14px 18px;border:2px solid var(--border-zen);border-radius:6px;background:var(--bg-card);color:var(--text-zen);font-family:inherit;width:240px;text-align:center;outline:none" id="promptNameInput" maxlength="8" placeholder="输入您的道号">' +
+    '<input type="password" style="font-size:26px;padding:14px 18px;border:2px solid var(--border-zen);border-radius:6px;background:var(--bg-card);color:var(--text-zen);font-family:inherit;width:240px;text-align:center;outline:none;margin-top:10px;-webkit-text-security:disc" id="promptPwdInput" maxlength="4" placeholder="4位数字口令" inputmode="numeric">' +
+    '<button class="zen-next-btn" onclick="registerAndContinue()" style="margin-top:18px">注 册 继 续</button>' +
+    '<div style="font-size:22px;color:var(--text-muted);margin-top:12px;letter-spacing:2px">已注册道号？<span style="color:var(--gold);cursor:pointer" onclick="loginAndContinue()">点此登录继续</span></div>' +
+  '</div>';
+  window.scrollTo(0, 0);
+}
+
+function registerAndContinue() {
+  var input = document.getElementById('promptNameInput');
+  var pwdInput = document.getElementById('promptPwdInput');
+  var name = input.value.trim();
+  if (!name) {
+    input.style.borderColor = 'var(--vermillion)';
+    input.setAttribute('placeholder', '请输入道号');
+    setTimeout(function() { input.style.borderColor = ''; }, 2000);
+    return;
+  }
+  var pwd = pwdInput ? pwdInput.value.trim() : '';
+  if (!pwd || !/^\d{4}$/.test(pwd)) {
+    if (pwdInput) {
+      pwdInput.style.borderColor = 'var(--vermillion)';
+      pwdInput.value = '';
+      pwdInput.setAttribute('placeholder', '请输入4位数字口令');
+      setTimeout(function() { pwdInput.style.borderColor = ''; }, 2000);
+    }
+    return;
+  }
+  playerName = name;
+  isRegistered = true;
+  localStorage.setItem('zen_name', name);
+  localStorage.setItem('zen_pwd_' + name, pwd);
+  autoUpdateLeaderboard();
+  updateScoreDisplay();
+  currentLevel++;
+  selectedOption = -1;
+  renderLevel(currentLevel);
+  window.scrollTo(0, 0);
+}
+
+function loginAndContinue() {
+  var savedName = localStorage.getItem('zen_name');
+  if (savedName) {
+    var cont = document.getElementById('zenContent');
+    cont.innerHTML = '<div style="text-align:center;padding:30px 20px">' +
+      '<div style="font-size:80px;color:var(--gold);margin-bottom:24px">✦</div>' +
+      '<div style="font-size:28px;color:var(--gold);letter-spacing:6px;font-weight:700;margin-bottom:18px">道 号 登 堂</div>' +
+      '<div style="font-size:24px;color:var(--text-light);margin-bottom:24px">' +
+        '道号：<span style="color:#fff;font-weight:700">' + savedName + '</span>' +
+      '</div>' +
+      '<input type="password" style="font-size:26px;padding:14px 18px;border:2px solid var(--border-zen);border-radius:6px;background:var(--bg-card);color:var(--text-zen);font-family:inherit;width:240px;text-align:center;outline:none;-webkit-text-security:disc" id="loginPwdInput" maxlength="4" placeholder="输入口令验证" inputmode="numeric">' +
+      '<button class="zen-next-btn" onclick="verifyLoginAndContinue()" style="margin-top:18px">验 证 继 续</button>' +
+    '</div>';
+    window.scrollTo(0, 0);
+  } else {
+    alert('未找到已注册的道号，请先注册');
+  }
+}
+
+function verifyLoginAndContinue() {
+  var pwdInput = document.getElementById('loginPwdInput');
+  var savedPwd = localStorage.getItem('zen_pwd_' + playerName) || localStorage.getItem('zen_pwd_' + localStorage.getItem('zen_name')) || '';
+  var inputPwd = pwdInput.value.trim();
+  if (inputPwd !== savedPwd) {
+    pwdInput.style.borderColor = 'var(--vermillion)';
+    pwdInput.value = '';
+    pwdInput.setAttribute('placeholder', '口令不正确');
+    setTimeout(function() { pwdInput.style.borderColor = ''; }, 2000);
+    return;
+  }
+  playerName = localStorage.getItem('zen_name');
+  isRegistered = true;
+  updateScoreDisplay();
+  currentLevel++;
+  selectedOption = -1;
+  renderLevel(currentLevel);
+  window.scrollTo(0, 0);
+}
+
+// ═══ 通关 ═══
+function showFinal() {
+  var callbackBtnHtml = '';
+  if (callbackUrl && callbackUsername) {
+    callbackBtnHtml = '<button class="zen-next-btn" onclick="returnToXiawu()" style="margin-top:10px;background:var(--gold);color:var(--bg-dark);width:100%;letter-spacing:4px">参悟功德 · 入账夏午之音</button>';
+  }
+  var cont = document.getElementById('zenContent');
+  cont.innerHTML =
+    '<div class="zen-final" style="display:flex">' +
+      '<div class="final-seal">悟</div>' +
+      '<h2>' + levels.length + '关悟境 · 第' + BOOK_NUM + '册圆融贯通</h2>' +
+      '<div class="final-insight" style="text-align:center;margin-bottom:16px">' +
+        '最终悟境：<span style="color:var(--gold);font-weight:700;font-size:28px">' + score + '</span> 分（跨册累计）' +
+        (earnedPoints > 0 ? '<br><span style="color:var(--teal-zen);font-size:20px">本次参悟获得 ' + earnedPoints + ' 功德</span>' : '') +
+      '</div>' +
+      '<div class="final-insight">' +
+        '恭喜完成第' + BOOK_NUM + '册全部关卡！<br>' +
+        '悟境积分跨册累计——继续参悟其他册数，积累更多功德。' +
+      '</div>' +
+      '<div class="final-quote">' +
+        '道一教三，万法归心<br>' +
+        '即心即圣，你我皆可' +
+      '</div>' +
+      '<button class="zen-next-btn" onclick="restartZen()">重 新 参 悟</button>' +
+      '<div style="text-align:center;margin-top:14px;font-size:24px;color:var(--gold);letter-spacing:3px">✦ ' + (playerName || '未注册') + ' · 悟境 ' + score + ' 分</div>' +
+      '<button class="zen-leaderboard-btn" onclick="showLeaderboard()" style="margin-top:10px;width:100%">查 看 榜 单</button>' +
+      callbackBtnHtml +
+    '</div>';
+  renderProgress();
+  window.scrollTo(0, 0);
+}
+
+function restartZen() {
+  currentLevel = 0;
+  selectedOption = -1;
+  completedLevels.clear();
+  earnedPoints = 0;
+  localStorage.setItem(PROGRESS_KEY, '0');
+  localStorage.removeItem(COMPLETED_KEY);
+  savedProgress = 0;
+  renderLevel(0);
+  window.scrollTo(0, 0);
+}
+
+// ═══ 回传夏午之音 ═══
+async function generateSign(username, points) {
+  var secret = 'xiawu_sanjiao_2026';
+  var msg = username + ':' + points + ':' + secret;
+  var buffer = new TextEncoder().encode(msg);
+  var hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
+  var hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(function(b) { return b.toString(16).padStart(2, '0'); }).join('').slice(0, 16);
+}
+
+async function returnToXiawu() {
+  var sign = await generateSign(callbackUsername, earnedPoints);
+  var returnUrl = callbackUrl + '?username=' + encodeURIComponent(callbackUsername) + '&points=' + earnedPoints + '&sign=' + sign;
+  window.location.href = returnUrl;
+}
+
+// ═══ 初始化 ═══
+document.getElementById('levelCount').textContent = '共 ' + levels.length + ' 关 · 随时更新';
+if (playerName) {
+  isRegistered = true;
+  updateRegisterUI();
+} else {
+  updateScoreDisplay();
+  var hint = document.getElementById('unregisteredHint');
+  if (hint) hint.style.display = 'block';
+}
+var lbNameInput = document.getElementById('lbNameInput');
+if (lbNameInput && playerName) {
+  lbNameInput.value = playerName;
+}
+if (callbackUsername) {
+  var entranceDesc = document.querySelector('.zen-entrance .desc');
+  if (entranceDesc) {
+    entranceDesc.innerHTML += '<br><span style="color:var(--gold);font-size:18px">来自夏午之音 · ' + callbackUsername + '</span>';
+  }
+}
+if (isRegistered && savedProgress > 0 && savedProgress < levels.length) {
+  var enterBtn = document.getElementById('enterBtn');
+  if (enterBtn) {
+    enterBtn.textContent = '继 续 参 悟（第' + (savedProgress + 1) + '关）';
+  }
+}
+</script>
+</body>
+</html>
