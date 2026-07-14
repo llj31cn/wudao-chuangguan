@@ -11793,8 +11793,7 @@ function nextLevel() {
   currentLevel++;
   selectedOption = -1;
   localStorage.setItem(PROGRESS_KEY, currentLevel);
-    savedProgress = currentLevel;
-  }
+  savedProgress = currentLevel;
   renderLevel(currentLevel);
   window.scrollTo(0, 0);
 }
